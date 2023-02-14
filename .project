@@ -3,10 +3,6 @@
 	<name>FoodTruck</name>
 	<comment></comment>
 	<projects>
-		<project>activation-1.1.1</project>
-		<project>mail-1.4.7</project>
-		<project>mysql-connector-j-8.0.31</project>
-		<project>json-simple-1.1.1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
