@@ -61,5 +61,6 @@ public class reviewDTO {
 		this.rupdatetime = rupdatetime;
 	}
 	
-	
+	public reviewDTO() {
+	}
 }
