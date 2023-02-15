@@ -1,7 +1,7 @@
 package jdbc;
 
 public class userDTO {
-	private String id, pw, mail, mname;
+	private String id, password, mail, mname;
 
 	public String getId() {
 		return id;
@@ -11,12 +11,12 @@ public class userDTO {
 		this.id = id;
 	}
 
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPw(String password) {
+		this.password = password;
 	}
 
 	public String getMail() {
@@ -35,13 +35,15 @@ public class userDTO {
 		this.mname = mname;
 	}
 
-	public userDTO(String id, String pw, String mail, String mname) {
+	public userDTO(String id, String password, String mail, String mname) {
 		super();
 		this.id = id;
-		this.pw = pw;
+		this.password = password;
 		this.mail = mail;
 		this.mname = mname;
 	}
 	
-	
+	public userDTO() {
+		
+	}
 }

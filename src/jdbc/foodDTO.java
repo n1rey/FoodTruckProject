@@ -70,6 +70,8 @@ public class foodDTO {
 		this.fpro = fpro;
 	}
 	
-	
+	public foodDTO() {
+		
+	}
 	
 }
