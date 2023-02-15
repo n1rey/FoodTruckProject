@@ -13,9 +13,9 @@ public class notiDAO {
 
     public static String notiList(int page) throws SQLException {
         String sql = "SELECT * " +
-                    "FROM noti " +
-                    "ORDER BY nno DESC " +
-                    "LIMIT ?, 10";
+                    "FROM (SELECT ROWNUM AS rnum, A.* " +
+                    "      FROM (SELECT * FROM noti ORDER BY nregtime DESC) A) " +
+                    "WHERE rnum >= ? AND rnum <= ?";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -24,11 +24,14 @@ public class notiDAO {
         try {
             conn = ConnectionPool.get();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1,  (page-1) * 10);
+            pstmt.setInt(1,  (page-1) * 10 + 1);
+            pstmt.setInt(2,  page * 10);
 
             rs = pstmt.executeQuery();
 
             JSONArray notices = new JSONArray();
+
+
 
             while(rs.next()) {
                 JSONObject obj = new JSONObject();
@@ -40,6 +43,7 @@ public class notiDAO {
                 obj.put("nupdatetime", rs.getString(5));
 
                 notices.add(obj);
+
             }
 
             return notices.toJSONString();
@@ -54,7 +58,7 @@ public class notiDAO {
     }
 
     // 전체 페이지 최대값 계산
-    public static int paging() throws SQLException {
+    public int paging() throws SQLException {
         String sql = "SELECT count(*) FROM noti";
 
         Connection conn = null;
