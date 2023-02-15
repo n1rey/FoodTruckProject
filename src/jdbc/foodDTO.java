@@ -1,7 +1,7 @@
 package jdbc;
 
 public class foodDTO {
-	private String fno, fname, flocation, ftime, fmenu, fprice, fpro;
+	private String fno, fname, fphoto, flocation, ftime, fmenu, fprice, fpro;
 
 	public String getFno() {
 		return fno;
@@ -17,6 +17,14 @@ public class foodDTO {
 
 	public void setFname(String fname) {
 		this.fname = fname;
+	}
+	
+	public String getFphoto() {
+		return fphoto;
+	}
+	
+	public void setFphoto(String fphoto) {
+		this.fphoto = fphoto;
 	}
 
 	public String getFlocation() {
@@ -59,17 +67,24 @@ public class foodDTO {
 		this.fpro = fpro;
 	}
 
-	public foodDTO(String fno, String fname, String flocation, String ftime, String fmenu, String fprice, String fpro) {
+	public foodDTO(String fno, String fname, String fphoto, String flocation, String ftime, String fmenu, String fprice, String fpro) {
 		super();
 		this.fno = fno;
 		this.fname = fname;
+		this.fphoto = fphoto;
 		this.flocation = flocation;
 		this.ftime = ftime;
 		this.fmenu = fmenu;
 		this.fprice = fprice;
 		this.fpro = fpro;
 	}
+<<<<<<< Updated upstream
 
 	public foodDTO() {
 	}
+=======
+	
+	
+	
+>>>>>>> Stashed changes
 }
