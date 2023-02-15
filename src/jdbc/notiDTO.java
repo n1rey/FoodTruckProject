@@ -51,6 +51,7 @@ public class notiDTO {
 		this.nregtime = nregtime;
 		this.nupdatetime = nupdatetime;
 	}
-	
-	
+
+	public notiDTO() {
+	}
 }

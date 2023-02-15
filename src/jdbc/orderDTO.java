@@ -43,5 +43,7 @@ public class orderDTO {
 		this.menu = menu;
 		this.opro = opro;
 	}
-		
+
+	public orderDTO() {
+	}
 }
