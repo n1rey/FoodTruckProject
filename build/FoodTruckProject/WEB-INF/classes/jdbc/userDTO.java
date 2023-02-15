@@ -3,7 +3,7 @@ package jdbc;
 public class userDTO {
 	private String id, password, mail, mname;
 
-	 public String getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -42,6 +42,7 @@ public class userDTO {
 		this.mail = mail;
 		this.mname = mname;
 	}
+
 	public userDTO() {
 	}
 }
