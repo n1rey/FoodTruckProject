@@ -42,7 +42,6 @@ public class userDTO {
 		this.mail = mail;
 		this.mname = mname;
 	}
-
 	public userDTO() {
 	}
 }

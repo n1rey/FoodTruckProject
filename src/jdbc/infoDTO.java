@@ -2,7 +2,7 @@ package jdbc;
 
 public class infoDTO {
 	private String id, ilocation, icontent, iregtime;
-
+	
 	public infoDTO(String id, String ilocation, String icontent, String iregtime) {
 		this.id = id;
 		this.ilocation = ilocation;
