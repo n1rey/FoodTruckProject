@@ -51,5 +51,7 @@ public class questionDTO {
 		this.qcon = qcon;
 		this.qpro = qpro;
 	}
-	
+	public questionDTO() {
+		
+	}
 }
