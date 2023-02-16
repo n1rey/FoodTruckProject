@@ -82,9 +82,9 @@
           </a>
           
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="/common/info.jsp">Action</a></li>
+            <li><a class="dropdown-item" href="/common/edit.jsp">Another action</a></li>
+            <li><a class="dropdown-item" href="/common/delete.jsp">Something else here</a></li>
           </ul>
         </li>
         
