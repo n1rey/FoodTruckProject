@@ -63,7 +63,7 @@ request.setCharacterEncoding("utf-8");
 </form>
     </div>
 
-
+<%@ include file ="/footer.jsp" %>	
 
 </body>
 

@@ -77,7 +77,7 @@
 		  로그인에 성공하였습니다. 메인페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
-		      <button onclick="location.href='/foodtruckmain.jsp'" class="btn btn-secondary" data-bs-dismiss="modal">메인페이지</button>
+		      <button onclick="location.href='foodtruckmain.jsp'" class="btn btn-secondary" data-bs-dismiss="modal">메인페이지</button>
 		      
 		      </div>
 		    </div>
