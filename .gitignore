@@ -4,6 +4,7 @@
 
 src/util/ConnectionPool.java
 WebContent/META-INF/context.xml
+build
 
 # Log file
 *.log
