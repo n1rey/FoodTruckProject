@@ -1,5 +1,6 @@
 package jdbc;
 
+
 public class userDTO {
 	private String id, password, mail, mname;
 
@@ -42,6 +43,8 @@ public class userDTO {
 		this.mail = mail;
 		this.mname = mname;
 	}
+
 	public userDTO() {
+		
 	}
 }
