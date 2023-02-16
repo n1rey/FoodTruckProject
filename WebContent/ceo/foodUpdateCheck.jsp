@@ -2,7 +2,7 @@
 최초작성자 : 변예린 (n1rey009@gmail.com)
 최초작성일 : 2023/02/15
 
-버전  기록 : 0.1(시작 23/02/15) 
+버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/)
           1.0(1차 완성 23/02/)
@@ -41,7 +41,7 @@
 	String time4 = "";
 	String fmenu = "";	
 	String fprice = ""; 
-	String id = ""; 
+	String fno = ""; 
 	
 	ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
 	
@@ -62,7 +62,7 @@
 			else if(name.equals("time4")) time4 = value;
 			else if(name.equals("fmenu")) fmenu = value;
 			else if(name.equals("fprice")) fprice = value;
-			else if(name.equals("id")) id = value;
+			else if(name.equals("fno")) fno = value;
 			ftime = time1 + time2 + "&" + time3 + time4;
 		} else {
 			if(name.equals("fphoto")){
@@ -75,7 +75,7 @@
 		
 	}
 	
- 	if((foodDAO.inserttemp(fname, fphoto, flocation, ftime, fmenu, fprice, id) == 1) ? true : false) {
+ 	if((foodDAO.updatefood(fname, fphoto, flocation, ftime, fmenu, fprice, fno) == 1) ? true : false) {
 		%>
 
 		<!-- Modal -->
