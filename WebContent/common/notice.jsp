@@ -25,7 +25,7 @@
 
             $.ajax({
                 type:'post',
-                url:'/notice/noticeSearch.jsp',
+                url:'/common/noticeSearch.jsp',
                 data:{ page : page },
                 success:function(data){
                     var notices = JSON.parse(data.trim());
