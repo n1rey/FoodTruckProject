@@ -56,7 +56,11 @@
                             str += "<i style='color:gold' class='far fas fa-star'></i>";
                         }
                         str += reviews[i].point + "점"
-                        str += "<span class='date'>" + reviews[i].rregtime + "</span></div>";
+                        if (reviews[i].rupdatetime == null) {
+                            str += "<span class='date'>" + reviews[i].rregtime + "</span></div>";
+                        } else {
+                            str += "<span class='date'>" + reviews[i].rupdatetime + " (수정됨)</span></div>";
+                        }
                         str += "<div>" + reviews[i].rcontent + "</div></ul>";
                     }
                     str += "<ul><div id='moreList' style='display: flex;'>";
@@ -69,6 +73,9 @@
                     } else {
                         $("#moreList").css('display', 'flex');
                     }
+                },
+                error:function(request, status, error){
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 }
             });
         }
