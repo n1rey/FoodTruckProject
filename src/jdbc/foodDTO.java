@@ -78,7 +78,13 @@ public class foodDTO {
 		this.fprice = fprice;
 		this.fpro = fpro;
 	}
+<<<<<<< Updated upstream
 
 	public foodDTO() {
 	}
+=======
+	
+	
+	
+>>>>>>> Stashed changes
 }

@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import util.ConnectionPool;
 
 public class foodDAO {
@@ -122,6 +123,7 @@ public class foodDAO {
 			if(conn != null) pstmt.close();
 		}
 	}
+
 
 	//가게 이름 가져오기
 	public static String getName(int fno) throws SQLException {
