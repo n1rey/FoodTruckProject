@@ -25,7 +25,7 @@
 
             $.ajax({
                 type:'post',
-                url:'/notice/noticeSearch.jsp',
+                url:'/common/noticeSearch.jsp',
                 data:{ page : page },
                 success:function(data){
                     var notices = JSON.parse(data.trim());
@@ -39,7 +39,7 @@
                         if (notices[i].nupdatetime == null) {
                             str += "<div class='col-3 themed-grid-col'>" + notices[i].nregtime + "</div>";
                         } else {
-                            str += "<div class='col-3 themed-grid-col'>" + notices[i].nupdatetime + "</div>";
+                            str += "<div class='col-3 themed-grid-col'>" + notices[i].nupdatetime + " (수정됨)</div>";
                         }
                         str += "</div>"
                     }
@@ -64,6 +64,9 @@
                     }
                     $("#notice").html(str);
                     $("#pageNumber").html(pageStr);
+                },
+                error:function(request, status, error){
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 }
             });
         }

@@ -150,12 +150,10 @@ public class foodDTO {
 	}
 
 
-
-
-
 	public foodDTO() {
 		
 	}
+
 	
 	
 	

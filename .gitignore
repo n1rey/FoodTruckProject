@@ -4,6 +4,7 @@
 
 src/util/ConnectionPool.java
 WebContent/META-INF/context.xml
+build
 
 # Log file
 *.log
@@ -115,3 +116,5 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+WebContent/META-INF/context.xml
+src/util/ConnectionPool.java
