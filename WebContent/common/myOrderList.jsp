@@ -1,4 +1,3 @@
-
 <!--  
 최초작성자 : 박성준 (sjpttr927@gmail.com)
 최초작성일 : 2023/2/16
@@ -14,27 +13,7 @@
 <%@ include file="/header.jsp" %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta charset="UTF-8">
-<title>내 주문 목록</title>
-</head>
-<body>
-
-
-<!-- 주문 목록 -->
-<div class="container">
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">가게 이름</th>
-        <th scope="col">o주문확인</th>
-        <th scope="col">f메뉴</th>
-        <th scope="col">f가격</th>
-      </tr>
-    </thead>
-	<tbody id="ajaxTable">
-    </tbody>
-</table>
-</div>
-
+<%request.setCharacterEncoding("utf-8"); %>
 <!-- 함수 -->
 <script>
 
@@ -56,7 +35,10 @@
  				    
  				    
  				} $("#ajaxTable").html(str);
- 			}
+ 			},
+ 			 error : function(request, status, error) { // 결과 에러 콜백함수
+ 		        console.log(error)
+ 		    }
  		});
  	}
 	
@@ -65,5 +47,28 @@
  	}
 	
 </script>
+
+<title>내 주문 목록</title>
+</head>
+<body>
+
+
+<!-- 주문 목록 -->
+<div class="container">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">가게 이름</th>
+        <th scope="col">o주문확인</th>
+        <th scope="col">f메뉴</th>
+        <th scope="col">f가격</th>
+      </tr>
+    </thead>
+	<tbody id="ajaxTable">
+    </tbody>
+</table>
+</div>
+
+
 </body>
 </html>

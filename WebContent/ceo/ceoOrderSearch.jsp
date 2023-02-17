@@ -5,10 +5,10 @@
     버전  기록 : 0.1(시작 23/02/17)
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jdbc.questionDAO" %>
+<%@ page import="jdbc.orderDAO" %>
 <%
-    String sid = "aaaa";
-    int pg = Integer.parseInt(request.getParameter("page"));
+    int fno = Integer.parseInt(request.getParameter("fno"));
+    int pg = Integer.parseInt(request.getParameter("pg"));
 
-    out.print(questionDAO.getMyQuestList(sid, pg));
+    out.print(orderDAO.getCeoOrderList(fno, pg));
 %>

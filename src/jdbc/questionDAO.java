@@ -68,7 +68,7 @@ public class questionDAO {
     }
 
     //문의 내용 보기 (1개)
-    public static String getMyQuestion(String qno) throws SQLException {
+    public static String getMyQuestion(int qno) throws SQLException {
         String sql = "SELECT * FROM question WHERE qno = ?";
 
         Connection conn = null;
@@ -79,7 +79,7 @@ public class questionDAO {
 
             conn = ConnectionPool.get();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, qno);
+            pstmt.setInt(1, qno);
 
             rs = pstmt.executeQuery();
 
@@ -134,6 +134,8 @@ public class questionDAO {
 
                 obj.put("qno", rs.getString(1));
                 obj.put("qtitle", rs.getString(3));
+                obj.put("mail", rs.getString(4));
+                obj.put("qcon", rs.getString(5));
                 obj.put("qpro", rs.getString(6));
 
                 reviews.add(obj);

@@ -24,6 +24,8 @@
 
 
 <%
+request.setCharacterEncoding("utf-8");
+
 sid ="1";                     // sid 나중에 받아오도록 변경해야한다.
 
 String id = sid;
@@ -44,19 +46,19 @@ String password = userDTO.getPassword();
 <div class="mb-3 row">
 	<div class="mb-3" style="margin-top:5%">
 	  <label for="id" class="form-label">회원 아이디</label>
-	  <input type="text" class="form-control" id="id" name="id" value="1" readonly>
+	  <input type="text" class="form-control" id="id" name="id" value="<%=request.getParameter("id") %>" readonly>
 	</div>
 	<div class="mb-3">
 	  <label for="name" class="form-label">회원 이름</label>
-	  <input type="text" class="form-control" id="name" name="name" value="íì¤í¸22" >
+	  <input type="text" class="form-control" id="name" name="name" value="<%=request.getParameter("name") %>" >
 	</div>
 	<div class="mb-3">
 	  <label for="mail" class="form-label">회원 메일</label>
-	  <input type="email" class="form-control" id="mail" name="mail" value="T11@xx.xx" >
+	  <input type="email" class="form-control" id="mail" name="mail" value="<%=request.getParameter("mail") %>" >
 	</div>
 	<div class="mb-3">
 	  <label for="password" class="form-label">비밀번호</label>
-	  <input type="password" class="form-control" id="password" name="password" value="1" >
+	  <input type="password" class="form-control" id="password" name="password" value="<%=request.getParameter("password") %>" >
 	</div>
 
  

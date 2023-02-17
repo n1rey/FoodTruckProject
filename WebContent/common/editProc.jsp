@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="jdbc.*" %>    
+<%request.setCharacterEncoding("utf-8"); %>
 <%
 String id = request.getParameter("id");
 String name = request.getParameter("name");
@@ -10,10 +11,20 @@ String mail = request.getParameter("mail");
 
 
 if (userDAO.edit(id, password, name, mail) == 1) {
-	response.sendRedirect("info.jsp");
-	
+	%>
+
+	<script>
+	  alert("회원 정보 수정이 성공하였습니다.\n내 프로필로 이동합니다.");
+	  window.location.href = "myInfo.jsp";
+	</script>
+	<%
 }else {
-	out.print("fail");
+	%>
+	<script>
+	  alert("회원 정보 수정이 성공하였습니다.");
+	  //window.location.href = "리다이렉트할 페이지 URL";
+	</script>
+	<%
 }
 
 %>
