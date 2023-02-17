@@ -118,3 +118,11 @@ fabric.properties
 
 WebContent/META-INF/context.xml
 src/util/ConnectionPool.java
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/notiDTO.class
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/questionDTO.class
+build/classes/jdbc/reviewDTO.class
+build/classes/jdbc/userDTO.class
+.classpath
