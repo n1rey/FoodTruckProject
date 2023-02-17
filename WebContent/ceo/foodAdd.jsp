@@ -7,7 +7,6 @@
           0.7(추가 디자인 23/02/16)
           1.0(1차 완성 23/02/)
  -->
-<!-- menu json 처리 --> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -104,8 +103,8 @@
 	function add(){
 		let tmp = '';
 		tmp += '<div class="input-group has-validation">';
-		tmp += '<input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴">';
-		tmp += '<input type="text" class="form-control" name="fprice" id="price" placeholder="가격">';
+		tmp += '<input type="text" class="form-control" name="fmenu" id="fmenu" placeholder="메뉴">';
+		tmp += '<input type="text" class="form-control" name="fprice" id="fprice" placeholder="가격">';
 		tmp += '<button type="button" class="btn btn-danger btnRemove">삭제</button></div>';
 		$('.addInput').append(
 				tmp
@@ -118,6 +117,7 @@
 				$(this).remove();
 			});
 	}
+	
 
 </script>  
 <%@ include file = "/header.jsp" %>   
@@ -131,7 +131,7 @@
     <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3 text-center">푸드 트럭 정보 입력</h4><br>
-        <form class="needs-validation" action="realUpload.jsp" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" action="foodAddCheck.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
@@ -143,7 +143,7 @@
             <div class="col-12">
               <label class="form-label">사진</label>
               <div class="input-group has-validation">
-                <input type="file" class="form-control" name="fphoto">
+                <input type="file" class="form-control" name="fphoto" required>
               </div>
             </div>
             
@@ -216,8 +216,8 @@
             <div class="col-8 addInput" >
               <label class="form-label">메뉴 & 가격</label> 
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴" required>
-                <input type="text" class="form-control" name="fprice" id="price" placeholder="가격" required>
+                <input type="text" class="form-control" name="fmenu" id="fmenu" placeholder="메뉴" required>
+                <input type="text" class="form-control" name="fprice" id="fprice" placeholder="가격" required>
                 <button type="button" class="btn btn-info btnAdd" onclick="add();">추가</button>
               </div>
               <div class="input-group has-validation ">
@@ -230,7 +230,7 @@
 
           <hr class="my-4"> 
 		  <input type="hidden" name="id" value="<%=sid%>">
-          <button class="w-100 btn btn-primary btn-lg" type="submit">등록</button>
+		  <input type="submit" class="w-100 btn btn-primary btn-lg" value="등록">
         </form>
       </div>
     </div>
