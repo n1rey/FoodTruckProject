@@ -16,6 +16,25 @@
             justify-content: center;
             align-items: center;
         }
+         .box {
+             margin-top: 10px;
+             margin-bottom: 10px;
+             border: 1px solid #ddd;
+             border-radius: 10px;
+             padding: 15px 50px 5px;
+             width: 100%;
+         }
+        .email{
+            float: right;
+        }
+        .qcontent {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 50px;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -61,7 +80,12 @@
         var maxPage = <%= questionDAO.paging(sid) %>;
 
         function detailQuest(qno) {
+            if( $("#qdetail"+qno).css('display') == 'none') {
 
+                $("#qdetail"+qno).css('display', 'flex');
+            } else {
+                $("#qdetail"+qno).css('display', 'none');
+            }
         }
 
         function searchFunction() {
@@ -78,13 +102,17 @@
                     for(var i = 0; i < questions.length; i++){
                         str += "<div class='row mb-3 text-center'>"
                         str += "<div class='col-1 themed-grid-col'>" + questions[i].qno + "</div>"
-                        str += "<div class='col-8 themed-grid-col'>" + questions[i].qtitle + "</div>"
+                        str += "<div class='col-8 themed-grid-col' onclick='detailQuest(" + questions[i].qno +")'>" + questions[i].qtitle + "</div>"
                         if (questions[i].qpro == 0) {
                             str += "<div class='col-3 themed-grid-col text-danger'>답변 중</div>";
                         } else {
                             str += "<div class='col-3 themed-grid-col text-success'>답변 완료</div>";
                         }
-                        str += "</div><div class='col-12 themed-grid-col text-center' id='qcontent" + questions[i].qno + "' onclick='detailQuest(" + questions[i].qno +")'>test</div>";
+                        str += "<div class='col-12 themed-grid-col text-center' id='qdetail" + questions[i].qno + "' style='display: none'>";
+                        str += "<div class='box shadow'><div class='question_header'>";
+                        str += "<div class='title fw-bold fs-3'>" + questions[i].qtitle + "</div>";
+                        str += "<div class='email fs-6'>" + questions[i].mail + "</div></div>";
+                        str += "<div class='qcontent'>" + questions[i].qcon + "</div></div></div></div>";
                     }
                     $("a.next").attr("href",'?page=' + (Math.floor((page-1)/5) * 5 + 6));
                     if (page > 5) {
