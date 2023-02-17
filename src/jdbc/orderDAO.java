@@ -52,4 +52,48 @@ public class orderDAO {
 		
 	}
 	
+	//내 주문 목록
+	public static String getmylist(String id) throws NamingException, SQLException {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			//String sql = "SELECT * FROM `order` WHERE id=?";
+			String sql ="SELECT o.id, o.fno, f.fmenu, f.fname, f.fprice, o.menu, o.opro" +
+			" FROM `order` o" +
+			" JOIN `food` f ON o.fno = f.fno" +
+			" WHERE o.id=? ";
+			// 이후에 opro 값에 따라서 주문중인 것만 보여줄 것인지 생각해봐야 한다.
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			JSONArray reviews = new JSONArray();
+			
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("id", rs.getString(1));
+				obj.put("fno", rs.getString(2));
+				obj.put("fmenu", rs.getString(3));
+				obj.put("fname", rs.getString(4));
+				obj.put("fprice", rs.getString(5));
+				obj.put("menu", rs.getString(6));
+				obj.put("opro", rs.getString(7));
+				//추가 하고 싶은 데이터 열 추가해서 가져오면 됨.
+				
+				reviews.add(obj);
+			}
+			return reviews.toJSONString();
+		} finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+	}
+
+	
 }

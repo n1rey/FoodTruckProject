@@ -4,9 +4,12 @@
 
 버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
-          0.7(추가 디자인 23/02/)
+          0.7(추가 디자인 23/02/17)
           1.0(1차 완성 23/02/)
  -->
+<!-- menu json으로 성공하면 수정 / 로그인 되면 sid로 변경 / 삭제 버튼 누르면 foodUpdateCheck로 가는 문제 해결 -->
+<%@page import="jdbc.*"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -21,19 +24,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
 <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#712cf9">
-
-<!-- 
-	가게 정보 select 하는 거 완성되면 value 값 넣기        
- -->
 
     <style>
       .bd-placeholder-img {
@@ -115,39 +105,78 @@
 				$(this).remove();
 			});
 	}
-
+	
+	function del(fno){
+		$.ajax({
+ 			type:"post",
+ 			url: "foodDelete.jsp",
+ 			data : {fno:fno
+ 				
+ 			},
+ 			dataType:"text",
+ 			
+ 			success:function(data) {
+ 				
+ 			}
+ 		});
+	}
+	
+	
 </script>  
 <%@ include file = "/header.jsp" %>   
+<%
+	String id = "3";
+
+	ArrayList<foodDTO> foods = foodDAO.getList(id);
+	
+	for (foodDTO food : foods) {
+		
+		String menu = food.getFmenu();
+		String price = food.getFprice();
+		String menus = "";
+		if(menu != null) {
+			menus += "<div class='input-group has-validation'>";
+			menus += "<input type='text' class='form-control' value='" + menu + "' name='fmenu' id='menu' placeholder='메뉴'>";
+			menus += "<input type='text' class='form-control' value='" + price + "' name='fprice' id='price' placeholder='가격'>";
+			menus += "<button type='button' class='btn btn-danger' onclick='add();'>추가</button></div>";
+			
+		}
+		
+		String time[] = food.getFtime().split("&");
+		
+		
+		
+%>
 <div class="container"> 
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../etc/car3.png" alt="" width="72" height="57">
-      <h2>푸드 트럭 등록</h2>
+      <h2>푸드 트럭 수정</h2>
     </div>
 
     <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3 text-center">푸드 트럭 정보 입력</h4><br>
-        <form class="needs-validation" action="upload.jsp" method="post" enctype="multipart/form-data">
+        <h4 class="mb-3 text-center">푸드 트럭 정보 수정</h4><br>
+        <form class="needs-validation" action="foodUpdateCheck.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="fname" required>
+                <input type="text" class="form-control" name="fname" value="<%=food.getFname() %>" required>
               </div>
             </div>
             
-            <div class="col-12">
+            <div class="col-8">
               <label class="form-label">사진</label>
               <div class="input-group has-validation">
-                <input type="file" class="form-control" name="fphoto" required>
+                <input type="file" class="form-control" name="fphoto" value="">
               </div>
             </div>
             
             <div class="col-12">
               <label class="form-label">위치</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="flocation" required>
+                <input type="text" class="form-control" name="flocation" value="<%=food.getFlocation()%>" required>
               </div>
               <div class="invalid-feedback">
                 Please enter your shipping address.
@@ -159,24 +188,24 @@
               <div class="row">
 	              <div class="col-md-2">
 		              <select class="form-select" name="time1">
-		              	<option value="오전">오전</option>
-		              	<option value="오후">오후</option>
+		              	<option value="오전" <%=time[0].contains("오전") ? "selected" : ""%>>오전</option>
+		              	<option value="오후" <%=time[0].contains("오후") ? "selected" : ""%>>오후</option>
 		              </select>
 		          </div>    
 		          <div class="col-md-2">    
 		              <select class="form-select" name="time2">
-		              	<option value="1시">1시</option>
-		              	<option value="2시">2시</option>
-		              	<option value="3시">3시</option>
-		              	<option value="4시">4시</option>
-		              	<option value="5시">5시</option>
-		              	<option value="6시">6시</option>
-		              	<option value="7시">7시</option>
-		              	<option value="8시">8시</option>
-		              	<option value="9시">9시</option>
-		              	<option value="10시">10시</option>
-		              	<option value="11시">11시</option>
-		              	<option value="12시">12시</option>
+		              	<option value="1시" <%=time[0].contains("1") ? "selected" : ""%>>1시</option>
+		              	<option value="2시" <%=time[0].contains("2") ? "selected" : ""%>>2시</option>
+		              	<option value="3시" <%=time[0].contains("3") ? "selected" : ""%>>3시</option>
+		              	<option value="4시" <%=time[0].contains("4") ? "selected" : ""%>>4시</option>
+		              	<option value="5시" <%=time[0].contains("5") ? "selected" : ""%>>5시</option>
+		              	<option value="6시" <%=time[0].contains("6") ? "selected" : ""%>>6시</option>
+		              	<option value="7시" <%=time[0].contains("7") ? "selected" : ""%>>7시</option>
+		              	<option value="8시" <%=time[0].contains("8") ? "selected" : ""%>>8시</option>
+		              	<option value="9시" <%=time[0].contains("9") ? "selected" : ""%>>9시</option>
+		              	<option value="10시" <%=time[0].contains("10") ? "selected" : ""%>>10시</option>
+		              	<option value="11시" <%=time[0].contains("11") ? "selected" : ""%>>11시</option>
+		              	<option value="12시" <%=time[0].contains("12") ? "selected" : ""%>>12시</option>
 		              </select>
 		          </div>    
 	              <div class="col-md-1">
@@ -184,24 +213,24 @@
 		          </div>    
 	              <div class="col-md-2">
 		              <select class="form-select" name="time3">
-		              	<option value="오전">오전</option>
-		              	<option value="오후" selected>오후</option>
+		              	<option value="오전" <%=time[1].contains("오전") ? "selected" : ""%>>오전</option>
+		              	<option value="오후" <%=time[1].contains("오후") ? "selected" : ""%>>오후</option>
 		              </select>
 		          </div>    
 		          <div class="col-md-2">    
 		              <select class="form-select" name="time4">
-		              	<option value="1시">1시</option>
-		              	<option value="2시">2시</option>
-		              	<option value="3시">3시</option>
-		              	<option value="4시">4시</option>
-		              	<option value="5시">5시</option>
-		              	<option value="6시">6시</option>
-		              	<option value="7시">7시</option>
-		              	<option value="8시">8시</option>
-		              	<option value="9시">9시</option>
-		              	<option value="10시">10시</option>
-		              	<option value="11시">11시</option>
-		              	<option value="12시">12시</option>
+		              	<option value="1시" <%=time[1].contains("1") ? "selected" : ""%>>1시</option>
+		              	<option value="2시" <%=time[1].contains("2") ? "selected" : ""%>>2시</option>
+		              	<option value="3시" <%=time[1].contains("3") ? "selected" : ""%>>3시</option>
+		              	<option value="4시" <%=time[1].contains("4") ? "selected" : ""%>>4시</option>
+		              	<option value="5시" <%=time[1].contains("5") ? "selected" : ""%>>5시</option>
+		              	<option value="6시" <%=time[1].contains("6") ? "selected" : ""%>>6시</option>
+		              	<option value="7시" <%=time[1].contains("7") ? "selected" : ""%>>7시</option>
+		              	<option value="8시" <%=time[1].contains("8") ? "selected" : ""%>>8시</option>
+		              	<option value="9시" <%=time[1].contains("9") ? "selected" : ""%>>9시</option>
+		              	<option value="10시" <%=time[1].contains("10") ? "selected" : ""%>>10시</option>
+		              	<option value="11시" <%=time[1].contains("11") ? "selected" : ""%>>11시</option>
+		              	<option value="12시" <%=time[1].contains("12") ? "selected" : ""%>>12시</option>
 		              </select>
 		          </div>    
               </div>
@@ -213,32 +242,34 @@
             <div class="col-8 addInput" >
               <label class="form-label">메뉴 & 가격</label> 
               <div class="input-group has-validation">
-                <input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴" required>
-                <input type="text" class="form-control" name="fprice" id="price" placeholder="가격" required>
-                <button type="button" class="btn btn-info btnAdd" onclick="add();">추가</button>
+<!--                 <input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴" required> -->
+<!--                 <input type="text" class="form-control" name="fprice" id="price" placeholder="가격" required> -->
+<!--                 <button type="button" class="btn btn-info btnAdd" onclick="add();">추가</button> -->
               </div>
-              <div class="input-group has-validation ">
-              
-              </div>
+              <%=menus %>
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
             </div>
 
           <hr class="my-4"> 
-		  <input type="hidden" name="fno" value="<%=%>">
+		  <input type="hidden" name="fno" value="<%=food.getFno()%>">
 		  <div class="row justify-content-center">
 			  <div class="col-3">
 	          	<button class="w-100 btn btn-primary btn-lg" type="submit">수정</button>
 	          </div>	
 	          <div class="col-3">
-	          	<button class="w-100 btn btn-danger btn-lg" type="">삭제</button>
+	          	<button class="w-100 btn btn-danger btn-lg" onclick="del('<%=food.getFno() %>');">삭제</button>
 	          </div>	
           </div>	
         </form>
       </div>
     </div>
   </main>
+
+<% 
+	}
+%>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1"></p>
