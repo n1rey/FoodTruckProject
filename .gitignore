@@ -2,6 +2,10 @@
 # Compiled class file
 *.class
 
+src/util/ConnectionPool.java
+WebContent/META-INF/context.xml
+build/FoodTruckProject
+
 # Log file
 *.log
 
@@ -25,6 +29,7 @@ hs_err_pid*
 replay_pid*
 
 foodtruck.iml
+WebContent/WEB-INF/web.xml
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -111,3 +116,13 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+WebContent/META-INF/context.xml
+src/util/ConnectionPool.java
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/notiDTO.class
+build/classes/jdbc/foodDTO.class
+build/classes/jdbc/questionDTO.class
+build/classes/jdbc/reviewDTO.class
+build/classes/jdbc/userDTO.class
+.classpath
