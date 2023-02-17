@@ -16,9 +16,11 @@
 
 <%
 	String id = request.getParameter("id"); 
+	String per = request.getParameter("per");
 	String password = request.getParameter("password"); 
 	String mail = request.getParameter("mail");
 	String name = request.getParameter("name");
+	
 	
 
 	if(userDAO.exist(id)){
@@ -54,7 +56,7 @@
 	
 	//디비에 넣기
 	
-	int result = userDAO.insert(id, password, mail, name);
+	int result = userDAO.insert(id,per,password,mail,name);
 	
 	if(result == 1){
 %>	

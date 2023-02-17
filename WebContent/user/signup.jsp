@@ -23,15 +23,7 @@
 
 <%@include file="/header.jsp" %>
 <link href="/css/sign-in.css" rel="stylesheet">
-<%
-request.setCharacterEncoding("utf-8");
 
-	String mname = request.getParameter("name");
-	String memail = request.getParameter("email");
-
-	
-	
-%>
     <div class="container">
 <form action="signupCheck.jsp">
 
@@ -42,6 +34,11 @@ request.setCharacterEncoding("utf-8");
     <img class="mb-4" src="" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">회원가입</h1>
 
+
+	  <input type="radio"  name="per" value="user" checked/>user
+ 	  <input type="radio"  name="per" value="ceo" />ceo
+
+	
     <div class="form-floating">
       <input type="text" name="id" class="form-control" id="floatingInput" placeholder="아이디를 입력하세요">
       <label for="floatingInput">아이디</label>

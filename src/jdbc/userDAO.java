@@ -21,20 +21,21 @@ import util.ConnectionPool;
 
 public class userDAO {
 	
-	public static int insert(String id, String password, String mail ,String name) throws NamingException, SQLException {
+	public static int insert(String id, String per, String password, String mail ,String name) throws NamingException, SQLException {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO user(id,password,mail,name) VALUES(?,?,?,?)";
+			String sql = "INSERT INTO user(id,per,password,mail,name) VALUES(?,?,?,?,?)";
 			
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
-				pstmt.setString(2, password);
-				pstmt.setString(3, mail);
-				pstmt.setString(4, name);
+				pstmt.setString(2, per);
+				pstmt.setString(3, password);
+				pstmt.setString(4, mail);
+				pstmt.setString(5, name);
 				
 			return	pstmt.executeUpdate(); //성공1, 실패0 을 가지고 나간다.
 			
