@@ -15,11 +15,6 @@
 </head>
 <body>
 <%@ include file="../header.jsp"%>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<% 
-	sid = (String) session.getAttribute("id");
-%>
 <!-- 리뷰목록 -->
 <div class="container">
 <table class="table table-hover">
@@ -38,7 +33,7 @@
 
 <!-- 리뷰등록 -->
 <div class="container">
-	<input id="id" type="hidden" value="<%=sid%>"><!-- 로그인 연결 안되어있어서 DB에 있는 아이디 값으로 임시로 지정할것 -->
+	<input id="id" type="hidden" value="min"><!-- 로그인 연결 안되어있어서 DB에 있는 아이디 값으로 임시로 지정할것 -->
 	<div class="mb-3">
 		<label class="form-check-label" for="inlineCheckbox1">[별점]</label>
 		<div></div>
@@ -100,13 +95,14 @@
 			dataType:"text",
 			
 			success:function(data) {
-				alert("data");
-				listFunction();
+				var rcontent = document.getElementById('rcontent');
+				rcontent.value = "";
+				reviewListFunction();
 			}
 		});
 	}
 
-	function listFunction() {
+	function reviewListFunction() {
  		
  		$.ajax({
  			type:'post',
@@ -129,7 +125,7 @@
  	}
 	
 	window.onload = function() {
-		listFunction();
+		reviewListFunction();
  	}
 	
 </script>
