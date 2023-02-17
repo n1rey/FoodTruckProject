@@ -28,12 +28,29 @@
 <form action="editProc.jsp" method="post">
 <h2> 회원 정보 수정 </h2>
 
-아이디: <input type="text" 	 id="id" 		name="id" 		value="<%=request.getParameter("id")%>" readonly><br>
-이름:	  <input type="text"  	 id="name" 		name="name" 	placeholder="<%=request.getParameter("name")%>" ><br>
-패스워드:<input type="password" id="password" 	name="password" placeholder="<%=request.getParameter("password")%>" ><br>
-메일:	  <input type="text" 	 id="mail" 		name="mail" 	placeholder="<%=request.getParameter("mail")%>" ><br>
+<div class="mb-3 row">
+	<div class="mb-3" style="margin-top:5%">
+	  <label for="id" class="form-label">회원 아이디</label>
+	  <input type="text" class="form-control" id="id" name="id" value="<%=request.getParameter("id")%>" readonly>
+	</div>
+	<div class="mb-3">
+	  <label for="name" class="form-label">회원 이름</label>
+	  <input type="text" class="form-control" id="name" name="name" value="<%=request.getParameter("name")%>" >
+	</div>
+	<div class="mb-3">
+	  <label for="mail" class="form-label">회원 메일</label>
+	  <input type="email" class="form-control" id="mail" name="mail" value="<%=request.getParameter("mail")%>" >
+	</div>
+	<div class="mb-3">
+	  <label for="password" class="form-label">비밀번호</label>
+	  <input type="password" class="form-control" id="password" name="password" value="<%=request.getParameter("password")%>" >
+	</div>
 
-<button type="submit">회원 정보 수정</button> <br>
+ </div>
+
+<div class="d-grid gap-2">
+	<button class="btn btn-primary" type="submit">회원 정보 수정</button>
+</div>
 </form>
 <hr>
 

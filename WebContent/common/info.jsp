@@ -23,44 +23,49 @@
 <body>
 
 
-<%
-sid ="1";                     // sid 나중에 받아오도록 변경해야한다.
+<%                   // sid 나중에 받아오도록 변경해야한다.
 
-String id = sid;
+//String id = "t1";
 
-userDTO userDTO = userDAO.info(id);
+userDTO userDTO = userDAO.info("t1");
 
 
-id = userDTO.getId();
+String id = userDTO.getId();
 String name = userDTO.getMname();
 String mail = userDTO.getMail();
 String password = userDTO.getPassword();
 %>
 
 <div class="container">
+<h3>내 정보 보기</h3>
 <form action="edit.jsp" method="post">
-<h2>ID:<%=id %></h2>
 
-아이디: <input type="text" 	 id="id" 		name="id" 		value="<%=id%>" ><br>
-이름:	  <input type="text"  	 id="name" 		name="name" 	value="<%=name%>" ><br>
-패스워드:<input type="password" id="password" 	name="password" value="<%=password%>" ><br>
-메일:	  <input type="text" 	 id="mail" 		name="mail" 	value="<%=mail%>" ><br>
+ <div class="mb-3 row">
+	<div class="mb-3" style="margin-top:5%">
+	  <label for="id" class="form-label">회원 아이디</label>
+	  <input type="text" class="form-control" id="id" name="id" value="<%=id %>" readonly>
+	</div>
+	<div class="mb-3">
+	  <label for="name" class="form-label">회원 이름</label>
+	  <input type="text" class="form-control" id="name" name="name" value="<%=name %>" readonly>
+	</div>
+	<div class="mb-3">
+	  <label for="mail" class="form-label">회원 메일</label>
+	  <input type="email" class="form-control" id="mail"name="mail" value="<%=mail %>" readonly>
+	</div>
 
+	<input type="hidden" id="password" 	name="password" value="<%=password %>" ><br>
+ </div>
 
-<input type="submit" value="회원 정보 수정"> <br>
-<input type="submit" formaction="delete.jsp" value="탈퇴" >
+<div class="d-grid gap-2">
+  <input  class="btn btn-info"    type="submit" value="회원 정보 수정">
+  <button class="btn btn-primary" type="button">리뷰보기</button>
+  <button class="btn btn-primary" type="button">주문내역</button>
+  <button class="btn btn-primary" type="button">문의하기</button>
+  <input  class="btn btn-danger"  type="submit" value="탈퇴" formaction="delete.jsp" >
+</div>
 
 </form>
-<hr>
-<div><h3>리뷰 관련 정보 표시구역</h3></div>
-
-<a href="#">리뷰보기</a> <br>
-<a href="#">주문내역</a> <br>
-<a href="#">문의하기</a> <br>
-
-
-
-</div>
 
 </body>
 </html>
