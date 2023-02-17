@@ -18,11 +18,13 @@ import java.sql.SQLException;
 
 public class notiDAO {
 
+
+
     public static String notiList(int page) throws SQLException {
         String sql = "SELECT * " +
-                    "FROM noti " +
-                    "ORDER BY nno DESC " +
-                    "LIMIT ?, 10";
+                "FROM noti " +
+                "ORDER BY nno DESC " +
+                "LIMIT ?, 10";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -97,5 +99,4 @@ public class notiDAO {
         }
         return totalPage;
     }
-
 }

@@ -1,3 +1,11 @@
+<!-- 
+최초작성자 : 강남욱 (redsky6301@naver.com)
+최초작성일 : 2023/02/15
+
+버전  기록 : 0.1(시작 23/02/16) 
+              0.5(기본작업 23/02/16) 
+             
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,15 +23,7 @@
 
 <%@include file="/header.jsp" %>
 <link href="/css/sign-in.css" rel="stylesheet">
-<%
-request.setCharacterEncoding("utf-8");
 
-	String mname = request.getParameter("name");
-	String memail = request.getParameter("email");
-
-	
-	
-%>
     <div class="container">
 <form action="signupCheck.jsp">
 
@@ -34,6 +34,11 @@ request.setCharacterEncoding("utf-8");
     <img class="mb-4" src="" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">회원가입</h1>
 
+
+	  <input type="radio"  name="per" value="user" checked/>user
+ 	  <input type="radio"  name="per" value="ceo" />ceo
+
+	
     <div class="form-floating">
       <input type="text" name="id" class="form-control" id="floatingInput" placeholder="아이디를 입력하세요">
       <label for="floatingInput">아이디</label>
@@ -63,7 +68,7 @@ request.setCharacterEncoding("utf-8");
 </form>
     </div>
 
-
+<%@ include file ="/footer.jsp" %>	
 
 </body>
 

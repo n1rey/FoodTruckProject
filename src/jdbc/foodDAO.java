@@ -1,9 +1,12 @@
+// 작성자 : 변예린
+
 package jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
@@ -15,13 +18,13 @@ import util.ConnectionPool;
 public class foodDAO {
 	//가게 등록
 	public static int inserttemp(String fname, String fphoto, String flocation, String ftime,
-						         String fmenu, String fprice) throws SQLException, NamingException {
+						         String fmenu, String fprice, String id) throws SQLException, NamingException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO food(fname, fphoto, flocation, ftime, fmenu, fprice, fpro) "
-						+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO food(fname, fphoto, flocation, ftime, fmenu, fprice, fpro, id) "
+						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, fname);
@@ -31,6 +34,7 @@ public class foodDAO {
 				pstmt.setString(5, fmenu);
 				pstmt.setString(6, fprice);
 				pstmt.setString(7, "0");
+				pstmt.setString(8, id);
 				
 			return pstmt.executeUpdate();	//성공하면 1, 실패하면 0을 가지고 나감
 			
@@ -123,38 +127,74 @@ public class foodDAO {
 			if(conn != null) pstmt.close();
 		}
 	}
-
-
+	
 	//가게 이름 가져오기
-	public static String getName(int fno) throws SQLException {
-		String sql = "SELECT fname FROM food WHERE fno = ?";
+	   public static String getName(int fno) throws SQLException {
+	      String sql = "SELECT fname FROM food WHERE fno = ?";
 
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+
+	      String name = null;
+
+	      try {
+
+	         conn = ConnectionPool.get();
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, fno);
+
+	         rs = pstmt.executeQuery();
+
+	         while(rs.next()) {
+	            name = rs.getString(1);
+	         }
+
+	         return name;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         return name;
+	      } finally {
+	         if (rs != null) pstmt.close();
+	         if (pstmt != null) pstmt.close();
+	         if (conn != null) conn.close();
+	      }
+	   }
+	
+	//자신의 푸드 트럭 가게 보기
+	public static ArrayList<foodDTO> getList(String id) throws NamingException, SQLException{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
-		String name = null;
-
 		try {
-
+			String sql = "SELECT * FROM food WHERE id = ?";
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, fno);
-
+				pstmt.setString(1, id);
+				
 			rs = pstmt.executeQuery();
-
+			
+			ArrayList<foodDTO> foods = new ArrayList<foodDTO>();
+			
 			while(rs.next()) {
-				name = rs.getString(1);
+				foods.add(new foodDTO(rs.getString(1),
+									  rs.getString(2),
+									  rs.getString(3),
+									  rs.getString(4),
+									  rs.getString(5),
+									  rs.getString(6),
+									  rs.getString(7),
+									  rs.getString(8),
+									  rs.getString(9))
+						);
 			}
-
-			return name;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return name;
+			
+			return foods;
 		} finally {
-			if (rs != null) pstmt.close();
-			if (pstmt != null) pstmt.close();
-			if (conn != null) conn.close();
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
 		}
-	}
+	}	
+
 }

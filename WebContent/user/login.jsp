@@ -1,10 +1,18 @@
+<!-- 
+최초작성자 : 강남욱 (redsky6301@naver.com)
+최초작성일 : 2023/02/15
+
+버전  기록 : 0.1(시작 23/02/15) 
+              0.5(기본작업 23/02/16) 
+             
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인 폼페이지</title>
   <!-- Custom styles for this template -->
   
    <style>
@@ -77,11 +85,16 @@
       <label for="floatingInput">아이디</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder="암호를 입력하세요">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="암호를 입력하세요">
       <label for="floatingPassword">암호</label>
     </div>
-
+    
+     <div class="links">
+            <a href="findid.jsp"> 아이디 찾기</a> | <a href="findpass.jsp">비밀번호 찾기</a>
+	<br>
     <input type="submit" value="로그인">
+
+        </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
   
