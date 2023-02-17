@@ -2,7 +2,7 @@
 최초작성자 : 변예린 (n1rey009@gmail.com)
 최초작성일 : 2023/02/15
 
-버전  기록 : 0.1(시작 23/02/15) 
+버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/17)
           1.0(1차 완성 23/02/)
@@ -13,8 +13,6 @@
 <%@page import="java.util.*"%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.Enumeration"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="org.apache.commons.fileupload.*"%>
 <%@page import="org.apache.commons.fileupload.disk.*"%>
 <%@page import="org.apache.commons.fileupload.servlet.*"%>
@@ -43,7 +41,7 @@
 	String time4 = "";
 	String fmenu = "";	
 	String fprice = ""; 
-	String id = ""; 
+	String fno = ""; 
 	
 	ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
 	
@@ -64,7 +62,7 @@
 			else if(name.equals("time4")) time4 = value;
 			else if(name.equals("fmenu")) fmenu = value;
 			else if(name.equals("fprice")) fprice = value;
-			else if(name.equals("id")) id = value;
+			else if(name.equals("fno")) fno = value;
 			ftime = time1 + time2 + "&" + time3 + time4;
 		} else {
 			if(name.equals("fphoto")){
@@ -77,7 +75,7 @@
 		
 	}
 	
- 	if((foodDAO.inserttemp(fname, fphoto, flocation, ftime, fmenu, fprice, id) == 1) ? true : false) {
+ 	if((foodDAO.updatefood(fname, fphoto, flocation, ftime, fmenu, fprice, fno) == 1) ? true : false) {
 		%>
 
 		<!-- Modal -->
@@ -85,12 +83,12 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 등록 성공</h1>
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 수정 성공</h1>
 		        <button type="button" onclick="location.href=''" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		        푸드 트럭 등록에 성공했습니다. <br>
-		    24시간 이내에 승인 혹은 거부 처리됩니다.
+		        푸드 트럭 정보 수정에 성공했습니다. <br>
+		    메인 페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
 			        <button onclick="location.href=''" class="btn btn-primary">메인으로 이동</button>
@@ -107,18 +105,18 @@
 		</script>	
 	<% 		
 		
-	} else {
+ 	} else {
 			%>
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 등록 실패</h1>
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 수정 실패</h1>
 			        <button type="button" onclick="location.href='foodAdd.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-				        푸드 트럭 등록에 실패했습니다. <br> 
+				        푸드 트럭 정보 수정에 실패했습니다. <br> 
 				        다시 시도해 주세요.
 			      </div>
 			      <div class="modal-footer">
@@ -136,7 +134,7 @@
 			</script>	
 			
 	<% 		
-	}
+ 	}
 
 	%>
 

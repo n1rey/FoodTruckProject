@@ -7,7 +7,7 @@
           0.7(추가 디자인 23/02/16)
           1.0(1차 완성 23/02/)
  -->
-<!-- 메뉴, 가격 데이터 보내기 처리해야 함 -->
+<!-- menu json 처리 --> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!doctype html>
@@ -22,9 +22,19 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
 
+    
+
+    
+
 <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#712cf9">
 
 
@@ -108,41 +118,20 @@
 				$(this).remove();
 			});
 	}
-	
-	$(function() {
-		
-		// 리스트 생성
-		var testList = new Array() ;
 
-		for(var i=1; i<=2; i++){
-			// 객체 생성
-			var data = new Object() ;
-			
-			data.number = i ;
-			data.name = "Tester #" + i ;
-			
-			// 리스트에 생성된 객체 삽입
-			testList.push(data) ;
-		}
-		
-		// String 형태로 변환
-		var jsonData = JSON.stringify(testList) ;
-		
-		alert(jsonData) ;
-	});
 </script>  
 <%@ include file = "/header.jsp" %>   
 <div class="container"> 
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="" alt="" width="72" height="57">
+      <img class="d-block mx-auto mb-4" src="../etc/car3.png" alt="" width="72" height="57">
       <h2>푸드 트럭 등록</h2>
     </div>
 
     <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3 text-center">푸드 트럭 정보 입력</h4><br>
-        <form class="needs-validation" action="foodAddCheck.jsp" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" action="realUpload.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
@@ -154,7 +143,7 @@
             <div class="col-12">
               <label class="form-label">사진</label>
               <div class="input-group has-validation">
-                <input type="file" class="form-control" name="fphoto" required>
+                <input type="file" class="form-control" name="fphoto">
               </div>
             </div>
             

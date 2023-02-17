@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
@@ -204,5 +205,41 @@ public class foodDAO {
 			if (conn != null) conn.close();
 		}
 	}
+	
+	//자신의 푸드 트럭 가게 보기
+	public static ArrayList<foodDTO> getList(String id) throws NamingException, SQLException{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT * FROM food WHERE id = ?";
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				
+			rs = pstmt.executeQuery();
+			
+			ArrayList<foodDTO> foods = new ArrayList<foodDTO>();
+			
+			while(rs.next()) {
+				foods.add(new foodDTO(rs.getString(1),
+									  rs.getString(2),
+									  rs.getString(3),
+									  rs.getString(4),
+									  rs.getString(5),
+									  rs.getString(6),
+									  rs.getString(7),
+									  rs.getString(8),
+									  rs.getString(9))
+						);
+			}
+			
+			return foods;
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+	}	
 
 }
