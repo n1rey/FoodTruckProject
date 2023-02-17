@@ -10,7 +10,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="jdbc.*" %>
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +23,10 @@
 </head>
 <body>
 
-
+<%@ page import="jdbc.userDAO" %>
+<%@ page import="jdbc.userDTO" %>
 <%                   // sid 나중에 받아오도록 변경해야한다.
-
-
+request.setCharacterEncoding("utf-8");
 
 userDTO userDTO = userDAO.info("t1");
 
