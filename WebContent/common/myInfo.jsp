@@ -25,7 +25,7 @@
 
 <%                   // sid 나중에 받아오도록 변경해야한다.
 
-//String id = "t1";
+
 
 userDTO userDTO = userDAO.info("t1");
 
@@ -66,6 +66,6 @@ String password = userDTO.getPassword();
 </div>
 
 </form>
-
+</div>
 </body>
 </html>
