@@ -1,3 +1,9 @@
+<!-- 
+	최초작성자 : 김형준(bright32123@mail.com)
+	최초작성일 : 2023/02/15
+	버전 기록   : 0.1(시작 23/02/15) 
+	
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="jdbc.notiDAO" %>
@@ -8,7 +14,9 @@
 	if(id == null || !id.equals("admin")){
 	/* response.sendRedirect("login.jsp"); */
 }
-	List<userDTO> userList = (List<userDTO>)request.getAttribute("userList");
+	userDAO dao = new userDAO();
+	dao.getAllList();
+	ArrayList allList = dao.getAllList();
 	
 %> 
 <!-- CSS only -->
@@ -39,17 +47,17 @@
       		</table>
       		<br>
       		<% 
-      		for(int i=0; i<userList.size(); i++ ){
-      			
+      		for(int i=0; i<allList.size(); i++ ){
+      			userDTO dto = (userDTO) allList.get(i);
       		}
       		%>
       		<table>
       		<tr height="50">
-      		<td width="150" align="center"></td>
-      		<td width="150" align="center"></td>
-      		<td width="150" align="center"></td>
-      		<td width="150" align="center"></td>
-      		
+      		<%-- <td width="150" align="center"><%= dto.getId() %></td>
+      		<td width="150" align="center"><%= dto.getMname() %></td>
+      		<td width="150" align="center"><%= dto.getMail() %></td>
+      		<td width="150" align="center"><%= dto.getId() %></td>
+      		 --%>
       		<tr>
       		</table>
       		</div>

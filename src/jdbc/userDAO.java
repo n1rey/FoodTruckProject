@@ -1,3 +1,7 @@
+/*최초작성자 : 강남욱 (redsky6301@naver.com)
+최초작성일 : 2023/02/15
+
+*/
 package jdbc;
 
 import java.sql.Connection;
@@ -16,6 +20,156 @@ import util.ConnectionPool;
 //import org.apache.tomcat.jdbc.pool.ConnectionPool;
 
 public class userDAO {
+	
+	public static int insert(String id, String per, String password, String mail ,String name) throws NamingException, SQLException {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "INSERT INTO user(id,per,password,mail,name) VALUES(?,?,?,?,?)";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, per);
+				pstmt.setString(3, password);
+				pstmt.setString(4, mail);
+				pstmt.setString(5, name);
+				
+			return	pstmt.executeUpdate(); //성공1, 실패0 을 가지고 나간다.
+			
+		}finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}	
+	}
+
+public static int login(String id, String password) throws NamingException, SQLException {
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	try {
+		String sql = "SELECT id, password FROM user WHERE id = ?";
+		
+		conn = ConnectionPool.get();
+		pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+		rs = pstmt.executeQuery();
+		
+		if(!rs.next()) return 1; //1 아이디가 존재하지 않는 경우
+		if(!password.equals(rs.getString("password"))) return 2;//아이디는 존재하지만 비번이 일치하지 않는 경우
+		return 0;
+		
+	}finally {
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(conn != null) conn.close();
+	}
+	
+	}
+
+public static boolean exist(String id) throws NamingException, SQLException {
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+	try {
+		String sql = "SELECT id FROM user WHERE id = ?";
+		
+		conn = ConnectionPool.get();
+		pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+	
+		rs = pstmt.executeQuery(); 
+		
+		return rs.next(); //조회한 아이디가 DB에 존재하면 true 없으면 false
+		
+	}finally {
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(conn != null) conn.close();
+	}	
+}
+
+public static String findid(String name, String mail) throws NamingException, SQLException {
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+		
+	try {
+		
+		String sql = "SELECT id FROM user WHERE mail = ? AND NAME = ?";
+		
+		conn = ConnectionPool.get();
+		pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mail);
+			pstmt.setString(2, name);
+	
+		rs = pstmt.executeQuery(); 
+		
+		String uid = null;
+		
+		if(rs.next()) {
+			
+			uid = rs.getString(1);
+		}
+		
+		return uid; //조회한 아이디가 DB에 존재하면 true 없으면 false
+		
+	}finally {
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(conn != null) conn.close();
+	}	
+}
+
+public static String findpass(String id, String name, String mail) throws NamingException, SQLException {
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+		
+	try {
+		
+		String sql = "SELECT password FROM user WHERE id = ? AND NAME = ? AND mail = ?";
+		
+		conn = ConnectionPool.get();
+		pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, mail);
+			
+		rs = pstmt.executeQuery(); 
+		
+		String upass = null;
+		
+		if(rs.next()) {
+			
+			upass = rs.getString(1);
+		}
+		
+		return upass; //조회한 아이디가 DB에 존재하면 true 없으면 false
+		
+	}finally {
+		if(rs != null) rs.close();
+		if(pstmt != null) pstmt.close();
+		if(conn != null) conn.close();
+	}	
+}
+
+
+
 	userDAO dao = new userDAO();
 	List<userDTO> userList = dao.userList();
 	private List<userDTO> userList() {

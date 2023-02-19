@@ -1,7 +1,15 @@
 package jdbc;
 
 public class questionDTO {
-	private String id, qtitle, mail, qcon, qpro;
+	private String qno, id, qtitle, mail, qcon, qpro;
+
+	public String getQno() {
+		return qno;
+	}
+
+	public void setQno(String qno) {
+		this.qno = qno;
+	}
 
 	public String getId() {
 		return id;
@@ -43,14 +51,15 @@ public class questionDTO {
 		this.qpro = qpro;
 	}
 
-	public questionDTO(String id, String qtitle, String mail, String qcon, String qpro) {
-		super();
+	public questionDTO(String qno, String id, String qtitle, String mail, String qcon, String qpro) {
+		this.qno = qno;
 		this.id = id;
 		this.qtitle = qtitle;
 		this.mail = mail;
 		this.qcon = qcon;
 		this.qpro = qpro;
 	}
+
 	public questionDTO() {
 		
 	}
