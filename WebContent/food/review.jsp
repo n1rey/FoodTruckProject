@@ -15,6 +15,11 @@
 </head>
 <body>
 <%@ include file="../header.jsp"%>
+<% 
+	String fno = request.getParameter("fno");
+	//sid = (String) session.getAttribute("id");
+	sid = "min";//임시
+%>
 <!-- 리뷰목록 -->
 <div class="container">
 <table class="table table-hover">
@@ -33,7 +38,8 @@
 
 <!-- 리뷰등록 -->
 <div class="container">
-	<input id="id" type="hidden" value="min"><!-- 로그인 연결 안되어있어서 DB에 있는 아이디 값으로 임시로 지정할것 -->
+	<input id="id" type="hidden" value="<%=sid %>">
+	<input id="fno" type="hidden" value="<%=fno %>">
 	<div class="mb-3">
 		<label class="form-check-label" for="inlineCheckbox1">[별점]</label>
 		<div></div>
@@ -86,8 +92,9 @@
 		}
 		$.ajax({
 			type:"post",
-			url: "reviewadd.jsp",
-			data : {id:document.getElementById('id').value,
+			url: "reviewAdd.jsp",
+			data : {fno:document.getElementById('fno').value,
+					id:document.getElementById('id').value,
 				    point:rate_value,
 				    rcontent:document.getElementById('rcontent').value
 				},
@@ -106,7 +113,7 @@
  		
  		$.ajax({
  			type:'post',
- 			url:'reviewall.jsp',
+ 			url:'reviewAll.jsp?fno='+document.getElementById('fno').value,
  			success:function(data){
  				var reviews = JSON.parse(data.trim());
  				
