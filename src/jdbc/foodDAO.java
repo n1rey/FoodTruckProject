@@ -195,6 +195,46 @@ public class foodDAO {
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}
-	}	
+	}
+	
+	//가게하나상세보기
+	public static String oneStoreInfoList(String fno) throws NamingException, SQLException {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int fno2 = Integer.parseInt(fno);//디비에 int로 넣어야해서 타입 변경
+		
+		try {
+			String sql = "SELECT * FROM food WHERE fno=?";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, fno2);
+
+			rs = pstmt.executeQuery();
+			
+			JSONArray infos = new JSONArray();
+			
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("fno", rs.getString(1));
+				obj.put("fname", rs.getString(2));
+				obj.put("flocation", rs.getString(4));
+				obj.put("ftime", rs.getString(7));
+				obj.put("fmenu", rs.getString(8));
+				obj.put("fprice", rs.getString(9));
+			
+				infos.add(obj);
+			}
+				
+			return infos.toJSONString();
+			
+		} finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+		
+	}
 
 }
