@@ -94,3 +94,4 @@ function getOrderInfo(order) {
 </div>
 
 </body>
+</html>
