@@ -4,10 +4,12 @@
 
 버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
-          0.7(추가 디자인 23/02/17)
-          1.0(1차 완성 23/02/)
+          1.0(1차 완성 23/02/20)
  -->
+<!-- location.href 수정 -->
 
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="util.FileUtil"%>
 <%@page import="jdbc.*"%>
 <%@page import="java.util.*"%>
@@ -41,41 +43,29 @@
 	String time4 = "";
 	String fmenu = "";	
 	String fprice = ""; 
+	String flat = "";
+	String flon = "";
 	String fno = ""; 
 	
-	ServletFileUpload sfu = new ServletFileUpload(new DiskFileItemFactory());
+	String path = application.getRealPath(java.io.File.separator);
+	MultipartRequest multipartRequest = new MultipartRequest(request,path,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
 	
-	List items = sfu.parseRequest(request);
+	fname 	  = multipartRequest.getParameter("fname");
+	flocation = multipartRequest.getParameter("flocation");
+	time1 	  = multipartRequest.getParameter("time1");
+	time2 	  = multipartRequest.getParameter("time2");
+	time3  	  = multipartRequest.getParameter("time3");
+	time4 	  = multipartRequest.getParameter("time4");
+	fmenu 	  = Arrays.toString(multipartRequest.getParameterValues("fmenu"));
+	fprice 	  = Arrays.toString(multipartRequest.getParameterValues("fprice"));
+	flat 	  = multipartRequest.getParameter("flat");
+	flon 	  = multipartRequest.getParameter("flon");
+	fno 	  = multipartRequest.getParameter("fno");
+	fphoto    = multipartRequest.getOriginalFileName("fphoto");
 	
-	Iterator iter = items.iterator(); //for문과 while문 돌릴 수 있도록 순서화시킴
+	ftime = time1 + time2 + "&" + time3 + time4;
 	
-	while(iter.hasNext()){
-		FileItem item = (FileItem) iter.next();
-		String name = item.getFieldName(); //키값 속성 추출
-		if(item.isFormField()) {		   //키값 밸류값 형태의 데이터 추출
-			String value = item.getString("UTF-8");
-			if(name.equals("fname")) fname = value;
-			else if(name.equals("flocation")) flocation = value;
-			else if(name.equals("time1")) time1 = value;
-			else if(name.equals("time2")) time2 = value;
-			else if(name.equals("time3")) time3 = value;
-			else if(name.equals("time4")) time4 = value;
-			else if(name.equals("fmenu")) fmenu = value;
-			else if(name.equals("fprice")) fprice = value;
-			else if(name.equals("fno")) fno = value;
-			ftime = time1 + time2 + "&" + time3 + time4;
-		} else {
-			if(name.equals("fphoto")){
-				fphoto = item.getName();
-				fbu = item.get();
-				String root = application.getRealPath(java.io.File.separator);
-				FileUtil.saveImage(root, fphoto, fbu);			
-			}
-		}
-		
-	}
-	
- 	if((foodDAO.updatefood(fname, fphoto, flocation, ftime, fmenu, fprice, fno) == 1) ? true : false) {
+ 	if((foodDAO.updatefood(fname, fphoto, flocation, ftime, fmenu, fprice, flat, flon, fno) == 1) ? true : false) {
 		%>
 
 		<!-- Modal -->
@@ -84,14 +74,14 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 수정 성공</h1>
-		        <button type="button" onclick="location.href=''" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		        <button type="button" onclick="location.href='foodUpdate.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        푸드 트럭 정보 수정에 성공했습니다. <br>
 		    메인 페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
-			        <button onclick="location.href=''" class="btn btn-primary">메인으로 이동</button>
+			        <button onclick="location.href='foodUpdate.jsp'" class="btn btn-primary">메인으로 이동</button>
 
 		      </div>
 		    </div>
@@ -113,14 +103,14 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 수정 실패</h1>
-			        <button type="button" onclick="location.href='foodAdd.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			        <button type="button" onclick="location.href='foodUpdate.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
 				        푸드 트럭 정보 수정에 실패했습니다. <br> 
 				        다시 시도해 주세요.
 			      </div>
 			      <div class="modal-footer">
-			        <button onclick="location.href='foodAdd.jsp'" class="btn btn-primary">이전 페이지로 이동</button>
+			        <button onclick="location.href='foodUpdate.jsp'" class="btn btn-primary">이전 페이지로 이동</button>
 
 			      </div>
 			    </div>

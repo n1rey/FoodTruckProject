@@ -45,12 +45,12 @@ public class userDTO {
 	}
 
 
-	public String getname() {
+	public String getName() {
 		return name;
 	}
 
 
-	public void setMname(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
