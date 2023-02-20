@@ -8,6 +8,6 @@
     pageEncoding="UTF-8"%>
 <%@ page import="jdbc.*"%>
 <%
-	String fno = "3";//임시 
+	String fno = request.getParameter("fno");
 	out.print(orderDAO.getMenuList(fno));
 %>
