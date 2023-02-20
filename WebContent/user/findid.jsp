@@ -3,7 +3,7 @@
 최초작성일 : 2023/02/15
 
 버전  기록 : 0.1(시작 23/02/16) 
-              0.5(기본작업 23/02/17) 
+              0.5(기본작업 23/02/16) 
              
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -38,7 +38,7 @@
   		
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="email" name="mail" id="mail" class="form-control" placeholder="이메일" required><br>
-        	<p class="check" id="check">${check}</p><br/>
+        	<p class="check" id="check2">${check2}</p><br/>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
       
       </form>
@@ -58,20 +58,20 @@
   		$("#name").focusout(function(){
   			
 	     if($('#name').val() == ""){
-	   		$('#check').text('이름을 입력해주세요.');
-	   	  	$('#check').css('color', 'red');
+	   		$('#check2').text('이름을 입력해주세요.');
+	   	  	$('#check2').css('color', 'red');
 	   
 	     }else{
-	    	 $('#check').hide();
+	    	 $('#check2').hide();
 	     }
 	     });
 	     
   		$("#mail").focusout(function(){
 	     if($('#mail').val() == ""){
-	   		$('#check').text('이메일을 입력해주세요');
-	   	  	$('#check').css('color', 'red');
+	   		$('#check2').text('이메일을 입력해주세요');
+	   	  	$('#check2').css('color', 'red');
 	     }else{
-	    	 $('#check').hide();
+	    	 $('#check2').hide();
 	     }
 	     });
   
