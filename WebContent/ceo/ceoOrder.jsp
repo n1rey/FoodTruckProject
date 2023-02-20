@@ -33,7 +33,6 @@
         .cancelOrder {
             margin-right: 10px;
         }
-
     </style>
 
     <script>
@@ -104,16 +103,14 @@
 
                     var str = "";
                     var pageStr = "";
-                    var totalPrice = 0;
 
                     for(var i = 0; i < orders.length; i++){
-                        var menu = JSON.parse(orders[i].menu);
-                        var keys = Object.keys(menu);
-
-                        menu[keys]
+                        var totalPrice = 0;
+                        var totalCnt = 0;
+                        var menu = JSON.parse(orders[i].menu.trim());
 
                         str += "<div class='row mb-3 text-center'>"
-                        str += "<div class='col-4 themed-grid-col' onclick='detailOrder(" + orders[i].ono +")'>" + keys[0] + "</div>"
+                        str += "<div class='col-4 themed-grid-col' onclick='detailOrder(" + orders[i].ono +")'>" + menu[0]["menu"] + "</div>"
                         if (orders[i].opro == 0) {
                             str += "<div class='col-3 themed-grid-col text-danger'>진행중</div>";
                         } else {
@@ -125,12 +122,15 @@
                         str += "<div class='col-12 themed-grid-col text-center' id='odetail" + orders[i].ono + "' style='display: none'>";
                         str += "<div class='box shadow'>";
                         str += "<div class='oheader'><div class='id fs-6 fw-bold'>" + orders[i].id + "</div></div>";
-                        for (var j = 0; j < keys.length; j++) {
-                            str += "<div>" +  keys[j] + " : "; //메뉴 이름
-                            str += menu[keys[j]] + "원</div>"; //가격
-                            totalPrice += menu[keys[j]];
+                        for (var j = 0; j < menu.length; j++) {
+                            str += "<div class='row'><div class='col'>" +  menu[j]["menu"] + "</div>"; //메뉴 이름
+                            str += "<div class='col'>" + menu[j]["cnt"] + "개</div>"; // 수량
+                            str += "<div class='col'>" + menu[j]["price"] + "원</div></div>"; //가격
+                            totalCnt += menu[j]["cnt"];
+                            totalPrice += menu[j]["cnt"] * menu[j]["price"];
                         }
-                        str += "<hr><div class='total price'>총합 : " + totalPrice + "원</div></div></div></div></div>"; //총 가격 class이름도 바꿀것
+                        str += "<hr><div class='row'><div class='col'>총합</div><div class='col'>" + totalCnt.toString().replace(/(^0+)/, "") + "개</div>";
+                        str += "<div class='col'>" + totalPrice + "원</div></div></div></div></div></div>";
                     }
                     $("a.next").attr("href",'?page=' + (Math.floor((page-1)/5) * 5 + 6));
                     if (page > 5) {
