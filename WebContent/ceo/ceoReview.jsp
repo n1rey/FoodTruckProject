@@ -11,8 +11,6 @@
 <html lang="ko">
 <head>
     <title>내 가게 리뷰</title>
-    <!-- 평점의 별 ICON을 위한 FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .box {
             margin-top: 30px;
