@@ -21,8 +21,9 @@
 	sid = "min";//임시
 %>
 
-<!-- 메뉴, 가격 목록 -->
+<!-- 메뉴, 담기 -->
 <div class="container">
+<form action='orderCart.jsp'>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -34,16 +35,11 @@
 	<tbody id="ajaxTable">
     </tbody>
 </table>
+<input id="fno" name="fno" type="hidden" value="<%=fno %>">
+<input id="id" name="id" type="hidden" value="<%=sid %>">
+<input type='submit' class='form-control btn btn-outline-secondary' value='포장하기'>
+</form>
 </div>
-
-
-
-<!-- 수량 선택, 담기 -->
-<input id="fno" type="hidden" value="<%=fno %>">
-
-
-
-
 
 <!-- 함수 -->
 <script>
@@ -55,7 +51,7 @@
  			success:function(data){
  				var infos = JSON.parse(data.trim());
  				var str = "";
- 				
+
  				for(var i = 0; i < infos.length; i++){
  					var fmenu = infos[i].fmenu.replace("[","").replace("]","");
  					var fprice = infos[i].fprice.replace("[","").replace("]","");
@@ -64,11 +60,11 @@
  					var keys1 = Object.keys(menu);
  					for (var i=0; i<keys1.length; i++) {
  				    	var key = keys1[i];
- 						str += "<tr><td>" + menu[key] + "</td>";
- 						str += "<td>" + price[key] + "</td>";
- 						str += "<td><input type='number' id='cnt"+[i]+"' min='0' max='10' value='0'></td></tr>";
+ 						str += "<tr><td>" + menu[key] + "<input type='hidden' name='menu"+i+"' value='"+ menu[key] +"'></td>";
+ 						str += "<td>" + price[key] + "<input type='hidden' name='price"+i+"' value='"+ price[key] +"'></td>";
+ 						str += "<td><input type='number' name='cnt"+i+"' min='0' max='10' value='0'></td></tr>";
  				    }
- 					str += "<tr><td><input type='submit' class='form-control btn btn-outline-secondary' value='포장하기'></form></td></tr>";
+ 					str += "<input type='hidden' name='totalMenuCnt' value='"+keys1.length+"'>";
  				}
  				$("#ajaxTable").html(str);
  			}
