@@ -15,19 +15,13 @@
 </head>
 <body>
 <%@ include file="../header.jsp"%>
-<% 
-	String fno = request.getParameter("fno");
-	//sid = (String) session.getAttribute("id");
-	sid = "min";//임시
-%>
 
-<!-- 메뉴, 가격 목록 -->
+<!-- 메뉴+가격 목록 -->
 <div class="container">
 <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="row">메뉴</th>
-        <th scope="row">가격</th>
+        <th scope="col">메뉴</th>
       </tr>
     </thead>
 	<tbody id="ajaxTable">
@@ -35,41 +29,28 @@
 </table>
 </div>
 
-
-
-<!-- 수량 선택, 담기 -->
-<input id="fno" type="hidden" value="<%=fno %>">
-
-
-
-
+<!-- 수량 선택 -->
 
 <!-- 함수 -->
 <script>
 	function menuListFunction() {
 			
-		$.ajax({
- 			type:'post',
- 			url:'oneStoreInfoAll.jsp?fno='+document.getElementById('fno').value,
- 			success:function(data){
- 				var infos = JSON.parse(data.trim());
- 				var str = "";
- 				
- 				for(var i = 0; i < infos.length; i++){
- 					
- 					var json = JSON.parse(infos[i].fmenu);
- 					var keys = Object.keys(json);
- 					for (var i=0; i<keys.length; i++) {
- 				    	var key = keys[i];
- 						str += "<tr><td>" + key + "</td>";
- 						str += "<td>" + json[key] + " 원</td></tr>";
- 				    }
- 				    
- 				} 
- 				$("#ajaxTable").html(str);
- 			}
- 		});
-	}
+			$.ajax({
+				type:'post',
+				url:'orderMenuList.jsp',
+				success:function(data){
+					var menus = JSON.parse(data.trim());
+					
+					var str = "";
+					for(var i = 0; i < menus.length; i++){
+						
+						str += "<tr><td>" + menus[i].menuList + "</td></tr>";
+					    
+					    
+					} $("#ajaxTable").html(str);
+				}
+			});
+		}
 	
 	window.onload = function() {
 		menuListFunction();

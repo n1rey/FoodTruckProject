@@ -51,7 +51,7 @@
 		
 		$.ajax({
 			type:"post",
-			url: "infoEditProc.jsp",
+			url: "infoeditproc.jsp",
 			data : {ino:document.getElementById('ino').value,
 					ilocation:document.getElementById('ilocation').value,
 					icontent:document.getElementById('icontent').value

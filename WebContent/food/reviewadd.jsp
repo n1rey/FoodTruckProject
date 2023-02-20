@@ -11,11 +11,10 @@
 	
 	request.setCharacterEncoding("utf-8");
 
-	String fno = request.getParameter("fno");
 	String id = request.getParameter("id");
 	String point = request.getParameter("point");
 	String rcontent = request.getParameter("rcontent");
 	
-	out.print(reviewDAO.insert(fno, id, point, rcontent));  
+	out.print(reviewDAO.insert(id, point, rcontent));  
 
 %>

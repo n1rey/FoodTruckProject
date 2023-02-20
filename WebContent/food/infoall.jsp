@@ -8,5 +8,5 @@
     pageEncoding="UTF-8"%>
 <%@ page import="jdbc.*"%>
 <%
-	out.print(infoDAO.getinfolist());
+	out.print(infoDAO.getlist());
 %>
