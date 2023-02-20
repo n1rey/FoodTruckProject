@@ -4,7 +4,7 @@
 
 버전  기록 : 0.1(시작 23/02/15) 
               0.5(기본작업 23/02/17) 
-             
+              1.0(작업 23/02/20)
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
