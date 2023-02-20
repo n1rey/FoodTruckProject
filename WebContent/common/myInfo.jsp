@@ -24,7 +24,7 @@
 <body>
 
 <%@ page import="jdbc.userDAO" %>
-<%@ page import="jdbc.userDTO" %>
+<%@ page import="jdbc.*" %>
 <%                   // sid 나중에 받아오도록 변경해야한다.
 request.setCharacterEncoding("utf-8");
 
@@ -32,7 +32,7 @@ userDTO userDTO = userDAO.info("t1");
 
 
 String id = userDTO.getId();
-String name = userDTO.getMname();
+String name = userDTO.getName();
 String mail = userDTO.getMail();
 String password = userDTO.getPassword();
 %>

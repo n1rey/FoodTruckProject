@@ -4,41 +4,66 @@
 	버전 기록   : 0.1(시작 23/02/15) 
 	
  -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% 
-   String sid = (String) session.getAttribute("id"); 
-%> 
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> 
- <head>
- <style>
- table{border-style : ridge;}
- td{border-style : ridge;}
- </style>
- </head>
- <body>
-<%--  <%@ include file="/header.jsp" %> --%>
-<tr>
-<br><br><br>
- 	<div class="container 12">
-      	<div class="grid_9">
-      		<h1>공지사항 상세보기</h1>
-      		<br><br><br>
-      		<table>
-      		<h2>제목</h2>
-      		<input type="text" name="ntitle" id="ntitle"  style="width:500px; height:50px;"></td>
-      		<h2>내용</h2>
-      		<input type="text" name="ncontent" id="ncontent" style="width:500px; height:500px;"></td>
-      		</tr>
-      		</table>
-      		<input type="submit" class = "btn-btn-primary puu-right" value="수정" onClick="if(!confirm('수정하시겠습니까?')){return false;}"/>
-      		<input type="submit" value="삭제" onClick="if(!confirm('삭제하시겠습니까?')){return false;}"/>
-      		
-      		</div>
-      	</div>
-      </div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="jdbc.questionDAO" %>
+<html>
+<head>
+    <title>공지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<%@ include file="/header.jsp" %>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid">
+        <h1 class="display-5 fw-bold">공지 사항</h1>
+    </div>
+</div>
+<div class="container">
+ <!--    <form id="requestForm" action="../common.notice.jsp" method="post"> -->
+        <h3 class="text-center fw-bold">공지사항</h3>
+        <hr>
+        <div class="row mb-3">
+            <strong  class="col-sm-2 col-form-label">
+                <label for="title">제목</label>
+            </strong>
+            <div class="col-sm-10">
+                <input type="text" id="title" name="qtitle" class="form-control" placeholder="제목을 입력해주세요">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <strong  class="col-sm-2 col-form-label">
+                <label for="summernote">공지 내용</label>
+            </strong>
+            <div class="col-sm-10">
+                <textarea id="summernote" name="qcontent" class="form-control"></textarea>
+            </div>
+        </div>
+        <hr>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">등록</button>
+            <button type="delete" class="btn btn-primary">삭제</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    
+    $('#summernote').summernote({
+        placeholder: '공지 사항을 작성해주세요.',
+        height: 300,
+        maximumImageFileSize: 5* 1024 *1024,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
 </body>
-      
+</html>

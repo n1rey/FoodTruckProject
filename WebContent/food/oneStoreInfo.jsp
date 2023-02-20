@@ -17,7 +17,7 @@
 <%@ include file="../header.jsp"%>
 <% 
 	//String fno = request.getParameter("fno");
-	String fno = "2";//임시 
+	String fno = "1";//임시 
 	//sid = (String) session.getAttribute("id");
 	sid = "min";//임시
 %>
@@ -82,16 +82,17 @@
  				var str = "";
  				
  				for(var i = 0; i < infos.length; i++){
- 					
- 					var json = JSON.parse(infos[i].fmenu);
- 					var keys = Object.keys(json);
- 					for (var i=0; i<keys.length; i++) {
- 				    	var key = keys[i];
- 						str += "<tr><td>" + key + "</td>";
- 						str += "<td>" + json[key] + " 원</td></tr>";
+ 					var fmenu = infos[i].fmenu.replace("[","").replace("]","");
+ 					var fprice = infos[i].fprice.replace("[","").replace("]","");
+ 					var menu = fmenu.split(",");
+ 					var price = fprice.split(",");
+ 					var keys1 = Object.keys(menu);
+ 					for (var i=0; i<keys1.length; i++) {
+ 				    	var key = keys1[i];
+ 						str += "<tr><td>" + menu[key] + "</td>";
+ 						str += "<td>" + price[key] + "</td></tr>";
  				    }
- 				    
- 				} 
+ 				}
  				$("#ajaxTable2").html(str);
  			}
  		});

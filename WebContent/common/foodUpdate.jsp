@@ -1,13 +1,13 @@
 <!-- 
 최초작성자 : 변예린 (n1rey009@gmail.com)
-최초작성일 : 2023/02/15
+최초작성일 : 2023/02/16
 
 버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/17)
-          1.0(1차 완성 23/02/)
+          1.0(1차 완성 23/02/20)
  -->
-<!-- menu json으로 성공하면 수정 / 로그인 되면 sid로 변경 / 삭제 버튼 누르면 foodUpdateCheck로 가는 문제 해결 -->
+<!-- 로그인 되면 sid로 변경 / 처음에 삭제 버튼 안 눌리는 것 해결-->
 <%@page import="jdbc.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,7 +23,6 @@
     <title>푸드 트럭 등록</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
-<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <style>
       .bd-placeholder-img {
@@ -82,9 +81,6 @@
       }
     </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
   </head>
   <body class="bg-light">
 <script>
@@ -106,6 +102,7 @@
 			});
 	}
 	
+	
 	function del(fno){
 		$.ajax({
  			type:"post",
@@ -116,30 +113,44 @@
  			dataType:"text",
  			
  			success:function(data) {
- 				
+ 				location.replace("foodDelSuccess.jsp");
+ 			},
+ 			
+ 			error : function(request, status, error){
+ 				location.replace("foodDelFail.jsp");
  			}
  		});
+	}
+	
+	window.onload = function(){
 	}
 	
 	
 </script>  
 <%@ include file = "/header.jsp" %>   
 <%
-	String id = "3";
+	String id = "44";
 
 	ArrayList<foodDTO> foods = foodDAO.getList(id);
 	
 	for (foodDTO food : foods) {
 		
-		String menu = food.getFmenu();
-		String price = food.getFprice();
+		String fmenu = food.getFmenu().replace("[", "").replace("]", "");
+		String menu[] = fmenu.split(",");
+		
+		String fprice = food.getFprice().replace("[", "").replace("]", "");
+		String price[] = fprice.split(",");
 		String menus = "";
-		if(menu != null) {
+		
+		for(int i=0; i < menu.length ; i++) {
 			menus += "<div class='input-group has-validation'>";
-			menus += "<input type='text' class='form-control' value='" + menu + "' name='fmenu' id='menu' placeholder='메뉴'>";
-			menus += "<input type='text' class='form-control' value='" + price + "' name='fprice' id='price' placeholder='가격'>";
-			menus += "<button type='button' class='btn btn-danger' onclick='add();'>추가</button></div>";
-			
+			menus += "<input type='text' class='form-control' value='" + menu[i].trim() + "' name='fmenu' id='menu' placeholder='메뉴'>";
+			menus += "<input type='text' class='form-control' value='" + price[i].trim() + "' name='fprice' id='price' placeholder='가격'>";
+			if(i == 0) {
+				menus += "<button type='button' class='btn btn-primary' onclick='add();'>추가</button></div>";
+			} else {
+				menus += "<button type='button' class='btn btn-danger btnRemove'>삭제</button></div>";
+			}
 		}
 		
 		String time[] = food.getFtime().split("&");
@@ -169,7 +180,7 @@
             <div class="col-8">
               <label class="form-label">사진</label>
               <div class="input-group has-validation">
-                <input type="file" class="form-control" name="fphoto" value="">
+                <input type="file" class="form-control" name="fphoto" required>
               </div>
             </div>
             
@@ -180,6 +191,20 @@
               </div>
               <div class="invalid-feedback">
                 Please enter your shipping address.
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <label class="form-label">위도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flat" value="<%=food.getFlat()%>" required>
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <label class="form-label">경도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flon" value="<%=food.getFlon()%>" required>
               </div>
             </div>
 
@@ -259,7 +284,7 @@
 	          	<button class="w-100 btn btn-primary btn-lg" type="submit">수정</button>
 	          </div>	
 	          <div class="col-3">
-	          	<button class="w-100 btn btn-danger btn-lg" onclick="del('<%=food.getFno() %>');">삭제</button>
+	          	<input type="button" class="w-100 btn btn-danger btn-lg" onclick="del('<%=food.getFno() %>');" value="삭제">
 	          </div>	
           </div>	
         </form>
