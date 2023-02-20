@@ -1,5 +1,3 @@
-// 작성자 : 변예린
-
 package jdbc;
 
 import java.sql.Connection;
@@ -17,24 +15,26 @@ import util.ConnectionPool;
 
 public class foodDAO {
 	//가게 등록
-	public static int inserttemp(String fname, String fphoto, String flocation, String ftime,
-						         String fmenu, String fprice, String id) throws SQLException, NamingException {
+	public static int inserttemp(String fname, String id, String fphoto, String flocation, String ftime,
+						         String fmenu, String fprice, String flat, String flon) throws SQLException, NamingException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "INSERT INTO food(fname, fphoto, flocation, ftime, fmenu, fprice, fpro, id) "
-						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO food(fname, id, fphoto, flocation, ftime, fmenu, fprice, fpro, flat, flon) "
+						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, fname);
-				pstmt.setString(2, fphoto);
-				pstmt.setString(3, flocation);
-				pstmt.setString(4, ftime);
-				pstmt.setString(5, fmenu);
-				pstmt.setString(6, fprice);
-				pstmt.setString(7, "0");
-				pstmt.setString(8, id);
+				pstmt.setString(2, id);
+				pstmt.setString(3, fphoto);
+				pstmt.setString(4, flocation);
+				pstmt.setString(5, ftime);
+				pstmt.setString(6, fmenu);
+				pstmt.setString(7, fprice);
+				pstmt.setString(8, "0");
+				pstmt.setString(9, flat);
+				pstmt.setString(10, flon);
 				
 			return pstmt.executeUpdate();	//성공하면 1, 실패하면 0을 가지고 나감
 			
@@ -47,13 +47,13 @@ public class foodDAO {
 	
 	//가게 정보 수정
 	public static int updatefood(String fname, String fphoto, String flocation, String ftime, String fmenu,
-								 String fprice, String fno) throws NamingException, SQLException {
+								 String fprice, String flat, String flon, String fno) throws NamingException, SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			String sql = "UPDATE food SET fname = ?, fphoto = ?, flocation = ?, ftime = ?, "
-					+ "fmenu = ?, fprice = ? WHERE fno = ?";
+					+ "fmenu = ?, fprice = ?, flat = ?, flon = ? WHERE fno = ?";
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, fname);
@@ -62,6 +62,9 @@ public class foodDAO {
 				pstmt.setString(4, ftime);
 				pstmt.setString(5, fmenu);
 				pstmt.setString(6, fprice);
+				pstmt.setString(7, flat);
+				pstmt.setString(8, flon);
+				pstmt.setString(9, fno);
 				
 			return pstmt.executeUpdate();	//성공하면 1, 실패하면 0을 가지고 나감
 		} finally {
@@ -109,24 +112,24 @@ public class foodDAO {
 			
 		}
 		
-	//가게 승인 거부 절차
-	public static int deleteadmin(String fno) throws NamingException, SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			String sql = "DELETE FROM food WHERE fno = ?";
-			conn = ConnectionPool.get();
-			pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, fno);
-			
-			return pstmt.executeUpdate();	//성공하면 1, 실패하면 0을 가지고 나감
-					
-		} finally {
-			if(pstmt != null) pstmt.close();
-			if(conn != null) pstmt.close();
-		}
-	}
+//	//가게 승인 거부 절차
+//	public static int deleteadmin(String fno) throws NamingException, SQLException {
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		
+//		try {
+//			String sql = "DELETE FROM food WHERE fno = ?";
+//			conn = ConnectionPool.get();
+//			pstmt = conn.prepareStatement(sql);
+//				pstmt.setString(1, fno);
+//			
+//			return pstmt.executeUpdate();	//성공하면 1, 실패하면 0을 가지고 나감
+//					
+//		} finally {
+//			if(pstmt != null) pstmt.close();
+//			if(conn != null) pstmt.close();
+//		}
+//	}
 	
 	//가게 이름 가져오기
 	   public static String getName(int fno) throws SQLException {
@@ -185,7 +188,9 @@ public class foodDAO {
 									  rs.getString(6),
 									  rs.getString(7),
 									  rs.getString(8),
-									  rs.getString(9))
+									  rs.getString(9),
+									  rs.getString(10),
+									  rs.getString(11))
 						);
 			}
 			
@@ -195,6 +200,59 @@ public class foodDAO {
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}
-	}	
+	}
+	
+	//임시 푸드 트럭 목록 보기
+	public static String gettemp() throws NamingException, SQLException {
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM food WHERE fpro = 0  ORDER BY fno ASC";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
 
+			rs = pstmt.executeQuery();
+			
+			JSONArray foods = new JSONArray();
+			
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("fno", rs.getString(1));
+				obj.put("id", rs.getString(2));
+				obj.put("fname", rs.getString(3));
+				obj.put("fphoto", rs.getString(4));
+				obj.put("flocation", rs.getString(5));
+				obj.put("ftime", rs.getString(6));
+				obj.put("fmenu", rs.getString(7));
+				obj.put("fprice", rs.getString(8));
+				obj.put("fpro", rs.getString(9));
+				obj.put("flat", rs.getString(10));
+				obj.put("flon", rs.getString(11));
+				
+				foods.add(obj);
+			}
+			
+			return foods.toJSONString();
+			
+		}finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

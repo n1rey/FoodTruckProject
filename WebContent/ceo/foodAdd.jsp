@@ -5,7 +5,7 @@
 버전  기록 : 0.1(시작 23/02/15) 
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/16)
-          1.0(1차 완성 23/02/)
+          1.0(1차 완성 23/02/20)
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -118,6 +118,25 @@
 			});
 	}
 	
+	function addCheck () {
+		let frm = document.getElementById("frm");
+		
+		/* let fmenuArr = $('input[name=fmenu]');
+		let fmenus = new Array();
+		fmenuArr.each(function(e,data){ //
+		    fmenus[e] = data.value;  
+		});
+		frm.fmenu.value = fmenus;
+		
+		let fpriceArr = $('input[name=fprice]');
+		let fprices = new Array();
+	    fpriceArr.each(function(e,data){
+		    fprices[e] = data.value;  
+		});
+	    frm.fprice.value = fprices; */
+		
+	    frm.submit();
+	}
 
 </script>  
 <%@ include file = "/header.jsp" %>   
@@ -131,7 +150,7 @@
     <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3 text-center">푸드 트럭 정보 입력</h4><br>
-        <form class="needs-validation" action="foodAddCheck.jsp" method="post" enctype="multipart/form-data">
+        <form name="frm" id="frm" class="needs-validation" enctype="multipart/form-data" method="post" action="foodAddCheck.jsp">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
@@ -156,6 +175,27 @@
                 Please enter your shipping address.
               </div>
             </div>
+            
+           <div class="col-12">
+              <label class="form-label">위도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flat" required>
+              </div>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            
+           <div class="col-12">
+              <label class="form-label">경도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flon" required>
+              </div>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            
 
             <div class="col-12">
               <label class="form-label">영업 시간</label>
@@ -227,10 +267,10 @@
                 Please enter your shipping address.
               </div>
             </div>
-
+            
           <hr class="my-4"> 
 		  <input type="hidden" name="id" value="<%=sid%>">
-		  <input type="submit" class="w-100 btn btn-primary btn-lg" value="등록">
+		  <input type="button" class="w-100 btn btn-primary btn-lg" value="등록" onclick="addCheck();">
         </form>
       </div>
     </div>
