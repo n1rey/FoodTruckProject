@@ -28,6 +28,7 @@
       <tr>
         <th scope="row">메뉴</th>
         <th scope="row">가격</th>
+        <th scope="row">수량(최대10개)</th>
       </tr>
     </thead>
 	<tbody id="ajaxTable">
@@ -56,16 +57,19 @@
  				var str = "";
  				
  				for(var i = 0; i < infos.length; i++){
- 					
- 					var json = JSON.parse(infos[i].fmenu);
- 					var keys = Object.keys(json);
- 					for (var i=0; i<keys.length; i++) {
- 				    	var key = keys[i];
- 						str += "<tr><td>" + key + "</td>";
- 						str += "<td>" + json[key] + " 원</td></tr>";
+ 					var fmenu = infos[i].fmenu.replace("[","").replace("]","");
+ 					var fprice = infos[i].fprice.replace("[","").replace("]","");
+ 					var menu = fmenu.split(",");
+ 					var price = fprice.split(",");
+ 					var keys1 = Object.keys(menu);
+ 					for (var i=0; i<keys1.length; i++) {
+ 				    	var key = keys1[i];
+ 						str += "<tr><td>" + menu[key] + "</td>";
+ 						str += "<td>" + price[key] + "</td>";
+ 						str += "<td><input type='number' id='cnt"+[i]+"' min='0' max='10' value='0'></td></tr>";
  				    }
- 				    
- 				} 
+ 					str += "<tr><td><input type='submit' class='form-control btn btn-outline-secondary' value='포장하기'></form></td></tr>";
+ 				}
  				$("#ajaxTable").html(str);
  			}
  		});

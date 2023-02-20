@@ -94,5 +94,134 @@ public class orderDAO {
 		}
 	}
 
-	
+	//가게 주문 페이지 최대값 계산
+	public static int ceoOrderPaging(int fno) throws SQLException {
+		String sql = "SELECT count(*) FROM `order` WHERE fno = ?";
+		int totalContent = 0;
+		int totalPage = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, fno);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				totalContent += rs.getInt(1);
+			}
+			totalPage = totalContent / 5; // 최종 전체 페이지 갯수 (5개 단위로 나눈다)
+			if (totalContent % 5 > 0) {
+				totalPage++;	// 나머지가 있다면 1을 더해줌
+			}
+			if(totalPage == 0 ){
+				totalPage = 1; //최소 1페이지
+			}
+
+			return totalPage;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return 1;
+		} finally {
+			if (rs != null) pstmt.close();
+			if (pstmt != null) pstmt.close();
+			if (conn != null) conn.close();
+		}
+	}
+
+	//가게에 해당하는 주문 목록
+	public static String getCeoOrderList(int fno, int page) throws SQLException {
+		String sql = "SELECT * FROM `order` WHERE fno = ? LIMIT ?, 5";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, fno);
+			pstmt.setInt(2,  (page-1) * 5);
+
+			rs = pstmt.executeQuery();
+
+			JSONArray orders = new JSONArray();
+
+			while (rs.next()) {
+				JSONObject obj = new JSONObject();
+
+				obj.put("ono", rs.getString(1));
+				obj.put("id", rs.getString(3));
+				obj.put("menu", rs.getString(4));
+				obj.put("opro", rs.getString(5));
+
+				orders.add(obj);
+			}
+
+			return orders.toJSONString();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null) pstmt.close();
+			if (pstmt != null) pstmt.close();
+			if (conn != null) conn.close();
+		}
+	}
+
+	//가게에 해당하는 주문 취소
+	public static int cancelCeoOrder(int ono) throws SQLException {
+		String sql = "DELETE FROM `order` WHERE ono = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ono);
+
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			if (pstmt != null) pstmt.close();
+			if (conn != null) conn.close();
+		}
+	}
+
+	//가게에 해당하는 주문 완료 처리
+	public static int successCeoOrder(int ono) throws SQLException {
+		String sql = "UPDATE `order` SET opro=1 WHERE ono =?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ono);
+
+			return pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			if (pstmt != null) pstmt.close();
+			if (conn != null) conn.close();
+		}
+	}
+
 }
