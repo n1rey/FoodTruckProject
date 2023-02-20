@@ -21,8 +21,8 @@
     </div>
 </div>
 <div class="container">
-    <form id="requestForm" action="../common.notice.jsp" method="post">
-        <h3 class="text-center fw-bold">문의하기</h3>
+ <!--    <form id="requestForm" action="../common.notice.jsp" method="post"> -->
+        <h3 class="text-center fw-bold">공지사항</h3>
         <hr>
         <div class="row mb-3">
             <strong  class="col-sm-2 col-form-label">
