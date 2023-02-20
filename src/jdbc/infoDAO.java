@@ -45,7 +45,7 @@ public class infoDAO {
 	}
 
 	//제보목록
-	public static String getlist() throws NamingException, SQLException {
+	public static String getinfolist() throws NamingException, SQLException {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

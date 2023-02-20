@@ -14,17 +14,18 @@ import util.ConnectionPool;
 public class reviewDAO {
 	
 	//리뷰 등록 
-	public static int insert(String id, String point, String rcontent) throws NamingException, SQLException {
+	public static int insert(String fno, String id, String point, String rcontent) throws NamingException, SQLException {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		int fno2 = Integer.parseInt(fno);//디비에 int로 넣어야해서 타입 변경
 		int point2 = Integer.parseInt(point);//디비에 int로 넣어야해서 타입 변경
 		try {
 			String sql = "INSERT INTO review (fno, id, point, rcontent) VALUES(?,?,?,?)";
 			
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, 1);//가게 택한 후에 리뷰 작성이라 fno 받아올건데 현재 가게목록부분이 연결안되어 있어서 임시로 1
+				pstmt.setInt(1, fno2);
 				pstmt.setString(2, id);
 				pstmt.setInt(3, point2);
 				pstmt.setString(4, rcontent);
@@ -39,17 +40,19 @@ public class reviewDAO {
 	}
 
 	//리뷰목록
-	public static String getlist() throws NamingException, SQLException {
+	public static String getlist(String fno) throws NamingException, SQLException {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int fno2 = Integer.parseInt(fno);//디비에 int로 넣어야해서 타입 변경
 		
 		try {
-			String sql = "SELECT * FROM review ORDER BY rregtime DESC";
+			String sql = "SELECT * FROM review WHERE fno=? ORDER BY rregtime DESC";
 			
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, fno2);
 
 			rs = pstmt.executeQuery();
 			
