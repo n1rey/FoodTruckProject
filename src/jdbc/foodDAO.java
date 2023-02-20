@@ -287,7 +287,50 @@ public class foodDAO {
 	}
 	
 	
-	
+	public static String findloc() 
+			throws NamingException, SQLException {
+		
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM food";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			JSONArray loc =new JSONArray();
+				
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("fno",rs.getString(1));
+				obj.put("id",rs.getString(2));
+				obj.put("fname",rs.getString(3));
+				obj.put("fphoto",rs.getString(4));
+				obj.put("flocation",rs.getString(5));
+				obj.put("ftime",rs.getString(6));
+				obj.put("fmeun",rs.getString(7));
+				obj.put("fprice",rs.getString(8));
+				obj.put("fpro",rs.getString(9));
+				obj.put("flat",rs.getString(10));
+				obj.put("flon",rs.getString(11));
+			
+				loc.add(obj);
+			}
+				
+			return loc.toJSONString();
+			
+		}finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+		
+	}
 	
 	
 	
