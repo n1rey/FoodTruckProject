@@ -27,10 +27,12 @@
   <button type="submit" class="btn btn-secondary btn-lg">로그인</button>
   </form>
   	<br>
-
+	
+	
 	 <a id="custom-login-btn" href="javascript:kakaoLogin()" class="d-flex justify-content-center">
 	<img src="../img/kakao_login_medium_wide.png">
 	</a>
+	 
   	<br>
   
    <form action="signup.jsp">
