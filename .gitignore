@@ -127,3 +127,4 @@ build/classes/jdbc/reviewDTO.class
 build/classes/jdbc/userDTO.class
 .classpath
 build/classes/util/ConnectionPool.class
+.settings/org.eclipse.wst.common.project.facet.core.xml

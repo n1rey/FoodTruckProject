@@ -34,7 +34,7 @@ userDTO userDTO = userDAO.info(id);
 
 
 id = userDTO.getId();
-String name = userDTO.getMname();
+String name = userDTO.getName();
 String mail = userDTO.getMail();
 String password = userDTO.getPassword();
 %>
