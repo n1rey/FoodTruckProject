@@ -8,7 +8,7 @@
 <%@ page import="jdbc.orderDAO" %>
 <%
     int fno = Integer.parseInt(request.getParameter("fno"));
-    int pg = Integer.parseInt(request.getParameter("pg"));
+    int pg = Integer.parseInt(request.getParameter("page"));
 
     out.print(orderDAO.getCeoOrderList(fno, pg));
 %>
