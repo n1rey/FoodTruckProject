@@ -3,12 +3,13 @@
 //최초작성일 : 2023/2/15
 
 //버전 기록 : 0.1(시작 23/02/15)
+//			0.1(수정 23/02/21)
+//			0.1(종료 23/02/21)
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="jdbc.*"%>
 <%
-	
 	request.setCharacterEncoding("utf-8");
 
 	String fno = request.getParameter("fno");
@@ -17,5 +18,4 @@
 	String rcontent = request.getParameter("rcontent");
 	
 	out.print(reviewDAO.insert(fno, id, point, rcontent));  
-
 %>

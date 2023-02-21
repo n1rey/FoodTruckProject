@@ -3,6 +3,8 @@
 최초작성일 : 2023/2/15
 
 버전 기록 : 0.1(시작 23/02/15)
+		  0.1(수정 23/02/21)
+		  0.1(종료 23/02/21)
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,9 +19,40 @@
 <%@ include file="../header.jsp"%>
 <% 
 	String fno = request.getParameter("fno");
-	//sid = (String) session.getAttribute("id");
-	sid = "min";//임시
 %>
+<!-- 로그인 여부 체크 -->
+<% 
+if (sid == null){
+%>		
+<!-- Modal -->
+<div class="modal fade" id="loginCheck" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">회원 전용 메뉴</h1>
+				<!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/user/login.jsp'"></button> -->
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='searchFoodtruck.jsp'"></button>
+			</div>
+			<div class="modal-body">
+				로그인을 한 회원만 사용 가능한 메뉴입니다.
+			</div>
+			<div class="modal-footer">
+				<button onclick="location.href='searchFoodtruck.jsp'" class="btn btn-outline-secondary">로그인 이동</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$("#loginCheck").modal("show");
+	});
+</script>	
+		
+<%} else {
+	session.setAttribute("id", sid);
+}%>
+
 <!-- 리뷰목록 -->
 <div class="container">
 <table class="table table-hover">
@@ -41,7 +74,7 @@
 	<input id="id" type="hidden" value="<%=sid %>">
 	<input id="fno" type="hidden" value="<%=fno %>">
 	<div class="mb-3">
-		<label class="form-check-label" for="inlineCheckbox1">[별점]</label>
+		<label class="form-check-label">[별점]</label>
 		<div></div>
 		<div class="form-check form-check-inline">
 		  <input class="form-check-input" type="radio" name="point" value="1">
@@ -65,7 +98,7 @@
 		</div>
 	</div>
 	<div class="mb-3">
-	<label for="exampleInputEmail1" class="form-label">[내용]</label>
+	<label class="form-label">[내용]</label>
 	<input type="text" class="form-control" name="rcontent" id="rcontent" required> 
 	</div>
 	<div class="mb-3">
@@ -74,7 +107,7 @@
 				<button type="button" class="form-control btn btn-outline-secondary" onclick="addReview()">등록하기</button>
 			</div>
 			<div class="col">
-				<button type="submit" class="form-control btn btn-outline-secondary">취소하기</button>
+				<button type="submit" class="form-control btn btn-outline-secondary" onclick="location.href='searchFoodtruck.jsp'">취소하기</button>
 			</div>
 		</div>
 	</div>

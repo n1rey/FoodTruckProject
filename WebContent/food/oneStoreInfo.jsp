@@ -3,6 +3,8 @@
 최초작성일 : 2023/2/17
 
 버전 기록 : 0.1(시작 23/02/17)
+		  0.1(수정 23/02/21)
+		  0.1(종료 23/02/21)
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,37 +13,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 목록과 리뷰 등록</title>
+<title>가게 상세보기</title>
 </head>
 <body>
 <%@ include file="../header.jsp"%>
 <% 
-	//String fno = request.getParameter("fno");
-	String fno = "1";//임시 
+	String fno = request.getParameter("fno");
+	//String fno = "1";//임시 
 	//sid = (String) session.getAttribute("id");
 	sid = "min";//임시
 %>
 <!-- 정보 -->
 <div class="container">
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="row">상호명</th>
-        <th scope="row">위치</th>
-        <th scope="row">영업시간</th>
-      </tr>
-    </thead>
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	        <th scope="row">가게명</th>
+	        <th scope="row">위치</th>
+	        <th scope="row">영업시간</th>
+	      </tr>
+	    </thead>
 		<tbody id="ajaxTable1">
 	    </tbody>
-    <thead>
-      <tr>
-        <th scope="row">메뉴</th>
-        <th scope="row">가격</th>
-      </tr>
-    </thead>
-	<tbody id="ajaxTable2">
-    </tbody>
-</table>
+	</table>
+	<br>
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	        <th scope="row">메뉴</th>
+	        <th scope="row">가격</th>
+	      </tr>
+	    </thead>
+		<tbody id="ajaxTable2">
+	    </tbody>
+	</table>
 </div>
 
 <input id="fno" type="hidden" value="<%=fno %>">
