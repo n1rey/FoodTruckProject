@@ -5,6 +5,7 @@
 버전  기록 : 0.1(시작 23/02/15) 
               0.5(기본작업 23/02/17) 
               1.0(작업 23/02/20)
+              1.5(작업 23/02/21)
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -116,14 +117,16 @@
 		if (navigator.geolocation) {
 		    
 		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		    navigator.geolocation.getCurrentPosition(function(position) {
+		    navigator.geolocation.getCurrentPosition(function(position, content) {
 		        
 		        var lat = position.coords.latitude, // 위도
 		            lon = position.coords.longitude; // 경도
 		        
-		        var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+		        var locPosition =  new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 		            message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
-		        
+		        	
+		         
+		            
 		        // 마커와 인포윈도우를 표시합니다
 		        displayMarker(locPosition, message);
 		            
@@ -134,6 +137,7 @@
 		    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
 		   		 message = 'geolocation을 사용할수 없어요..'
 		
+		   		 
 		    displayMarker(locPosition, message);
 		}
 		
@@ -142,8 +146,7 @@
 		
 		
 		
-		function displayMarker(locPosition, message) {
-
+		function displayMarker(locPosition, message) {		
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({  
 		        map: map, 
@@ -164,21 +167,55 @@
 	    infowindow.open(map, marker);
 		    
 		    // 지도 중심좌표를 접속위치로 변경합니다
-		    map.setCenter(locPosition);      
-		}    
+		    map.setCenter(locPosition); 
+
+			
+			   
+			
+	
+			}
 		
 		
-	function mapmaker(flat,flon) {
+		
+	function mapmaker(flat, flon, fname) {
 		
 
 		// 마커가 표시될 위치입니다 
 		var markerPosition  = new kakao.maps.LatLng(flat, flon); 
 
+		
+		
+		
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
 		    position: markerPosition
+		    
+		    
 		});
-
+		
+		
+		
+	    var infowindow = new kakao.maps.InfoWindow({
+	        content: fname// 인포윈도우에 표시할 내용
+	    });
+	
+	    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+	    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+	    (function(marker, infowindow) {
+	
+	        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+	        kakao.maps.event.addListener(marker, 'mouseover', function() {
+	          
+	        	infowindow.open(map, marker);
+	            
+	        });
+	
+	        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+	        kakao.maps.event.addListener(marker, 'mouseout', function() {
+	            infowindow.close();
+	        });
+	    })(marker, infowindow);
+		
 		// 마커가 지도 위에 표시되도록 설정합니다
 		marker.setMap(map);
 
@@ -186,6 +223,7 @@
 		// marker.setMap(null);    
 	}
 		
+	
 	function searchFunction() {
 
  		$.ajax({
@@ -199,14 +237,15 @@
  				for(var i = 0; i < loc.length; i++){
  			
  					if(loc[i].fphoto != null && loc[i].fphoto != ""){
- 						str += "<tr><td><div><img src='../img/"+ loc[i].fphoto +"'></div></td>";
+ 						str += "<tr onclick='detailInfo("+loc[i].fno+")'><td><div><img src='../img/"+ loc[i].fphoto +"'></div></td>";
  					}
  					str += "<td>&nbsp;&nbsp;" + loc[i].fname + "&nbsp; : &nbsp;</td>";	
  					str += "<td>" + loc[i].flocation + "</td></tr>";
  				
  					
+
  					
- 					mapmaker(loc[i].flat, loc[i].flon);
+ 					mapmaker(loc[i].flat, loc[i].flon, loc[i].fname);
  				} 
  				
  				$("#foodlist").html(str);
@@ -217,11 +256,24 @@
  	window.onload = function() {
  		searchFunction();
  	}	
+ 	
+ 	function detailInfo(fno){
+ 		$("#fno").val(fno);
+ 		$("#infoButton").click();
+ 	}
  	</script>	
+		
+		
 		
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	
+<form action="oneStoreInfo.jsp" method="POST">
+<input id="fno" name="fno" type="hidden" value="">
+<button id="infoButton" style="display:none" type="submit"></button>
+</form>	
 	
-	
+ <form action="/food/info.jsp">
+  <button type="submit" class="btn btn-secondary btn-lg">제보하기</button>
+  </form>
 </body>
 </html>
