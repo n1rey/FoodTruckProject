@@ -83,55 +83,11 @@
 
   </head>
   <body class="bg-light">
-<script>
-	function add(){
-		let tmp = '';
-		tmp += '<div class="input-group has-validation">';
-		tmp += '<input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴">';
-		tmp += '<input type="text" class="form-control" name="fprice" id="price" placeholder="가격">';
-		tmp += '<button type="button" class="btn btn-danger btnRemove">삭제</button></div>';
-		$('.addInput').append(
-				tmp
-				
-			);
-			$('.btnRemove').on('click', function(){
-				$(this).prev().remove();
-				$(this).prev().remove();
-				$(this).next().remove();
-				$(this).remove();
-			});
-	}
-	
-	
-	function del(fno){
-		$.ajax({
- 			type:"post",
- 			url: "foodDelete.jsp",
- 			data : {fno:fno
- 				
- 			},
- 			dataType:"text",
- 			
- 			success:function(data) {
- 				location.replace("foodDelSuccess.jsp");
- 			},
- 			
- 			error : function(request, status, error){
- 				location.replace("foodDelFail.jsp");
- 			}
- 		});
-	}
-	
-	window.onload = function(){
-	}
-	
-	
-</script>  
 <%@ include file = "/header.jsp" %>   
 <%
-	String id = "44";
+	String fno = request.getParameter("fno");
 
-	ArrayList<foodDTO> foods = foodDAO.getList(id);
+	ArrayList<foodDTO> foods = foodDAO.getDetail(fno);
 	
 	for (foodDTO food : foods) {
 		
@@ -158,7 +114,7 @@
 		
 		
 %>
-<div class="container"> 
+<div class="container">
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="../etc/car3.png" alt="" width="72" height="57">
@@ -307,5 +263,49 @@
     <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
       <script src="form-validation.js"></script>
+      
+      
+<script>
+	function add(){
+		let tmp = '';
+		tmp += '<div class="input-group has-validation">';
+		tmp += '<input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴">';
+		tmp += '<input type="text" class="form-control" name="fprice" id="price" placeholder="가격">';
+		tmp += '<button type="button" class="btn btn-danger btnRemove">삭제</button></div>';
+		$('.addInput').append(
+				tmp
+				
+			);
+			$('.btnRemove').on('click', function(){
+				$(this).prev().remove();
+				$(this).prev().remove();
+				$(this).next().remove();
+				$(this).remove();
+			});
+	}
+
+	
+	function del(fno){
+		$.ajax({
+ 			type:"post",
+ 			url: "foodDelete.jsp",
+ 			data : {fno:fno
+ 				
+ 			},
+ 			dataType:"text",
+ 			
+ 			success:function(data) {
+ 				location.replace("foodDelSuccess.jsp");
+ 			},
+ 			
+ 			error : function(request, status, error){
+ 				location.replace("foodDelFail.jsp");
+ 			}
+ 		});
+	}
+	
+	
+	
+</script>       
   </body>
 </html>

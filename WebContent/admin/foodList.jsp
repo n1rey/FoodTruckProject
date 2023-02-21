@@ -111,7 +111,7 @@ body {
 					var str = "";
 					for(var i = 0; i < foods.length; i++) {
 						str += "<tr><td>" + foods[i].fno + "&nbsp;</td>";
-	 					str += "<td><a href='/common/foodUpdate.jsp?id="+ foods[i].id +"'><small>(" + foods[i].fname + ")</small></a></td>";		
+	 					str += "<td><a href='/common/foodUpdate.jsp?fno="+ foods[i].fno +"'><small>(" + foods[i].fname + ")</small></a></td>";		
 	 					str += "<td><small>&nbsp;(" + foods[i].flocation + ")</small></td></tr>";		
 	 					str += "<tr><td colspan=3 height=40><hr></td></tr>";
 					} $("#ajaxTable").html(str);

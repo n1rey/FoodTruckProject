@@ -11,7 +11,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ page errorPage="page_error_page.jsp" %>     --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,15 +68,7 @@ body {
     font-family: 'NanumSquareNeo-Variable';
 }
 </style>
-	<div class="container bg-warning shadow mx-auto p-5 w-75">
-	<!-- container 화면 전체를 차지하지 않는 고정 크기 컨테이너, 
-				      브라우저의 크기에 반응하여  자동으로 크기가 변동됨
-		 bg-warning bg는 배경 warning은 노란색		      
-		 shadow		입체감 있게 그림자 효과 추가
-		 mx-auto	m 바깥여백 x 가로로 auto 화면 가운데 정렬
-		 p			padding 안쪽 여백
-		 w			전체 너비
-    -->
+	<div class="container shadow mx-auto p-5 w-75">
     
     <script>
 	 	function addFood(fno) {
@@ -120,14 +111,14 @@ body {
 					var str = "";
 					for(var i = 0; i < foods.length; i++) {
 						str += "<tr><td>" + foods[i].fno + "&nbsp;</td>";
-	 					str += "<td><a href='foodDetail.jsp?fno="+ foods[i].id +"'><small>(" + foods[i].fname + ")</small></a></td>";		
+	 					str += "<td><a href='foodProDetail.jsp?fno="+ foods[i].fno +"'><small>(" + foods[i].fname + ")</small></a></td>";		
 	 					str += "<td><small>&nbsp;(" + foods[i].flocation + ")</small></td>";		
 	 					
  						str += "<td><div onclick='delFood(\"" + foods[i].fno + "\")'><span class='btn btn-danger'>Reject</span></div></td>";
  						str += "<td><div onclick='addFood(\"" + foods[i].fno + "\")'><span class='btn btn-primary'>Accept</span></div></td>";
 	 					
 	 					str += "</tr>";
-	 					str += "<tr><td colspan=4 height=40><hr></td></tr>";
+	 					str += "<tr><td colspan=5 height=40><hr></td></tr>";
 					} $("#ajaxTable").html(str);
 					
 				}
