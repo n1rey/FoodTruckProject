@@ -43,7 +43,7 @@
 				<button type="button" class="form-control btn btn-danger" onclick="location.href='foodOneDel.jsp?fno='+<%=fno %>">승인 거절</button>
 			</div>
 			<div class="col">
-				<button type="submit" class="form-control btn btn-primary" onclick="location.href='foodOneAdd.jsp?fno='+<%=fno %>">승인 허락</button>
+				<button type="submit" class="form-control btn btn-warning" onclick="location.href='foodOneAdd.jsp?fno='+<%=fno %>">승인 허락</button>
 			</div>
 		</div>
 	</div>
