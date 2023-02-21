@@ -21,7 +21,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>푸드 트럭 삭제 성공</title>
 </head>
 <body>
 <%@ include file = "/header.jsp" %> 

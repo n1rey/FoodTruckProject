@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Group Talk</title>
+<title>푸드 트럭 목록</title>
 </head>
 <body>
 <%@ include file = "/header.jsp" %>

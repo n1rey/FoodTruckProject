@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>푸드 트럭 상세히 보기</title>
 </head>
 <body>
 <%@ include file="../header.jsp"%>
