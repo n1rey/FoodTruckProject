@@ -10,11 +10,9 @@
 <%
     request.setCharacterEncoding("UTF-8"); //한글 처리
 
-    sid = "aaaa";
     String mail = request.getParameter("mail");
     String qtitle = request.getParameter("qtitle");
     String qcontent = request.getParameter("qcontent");
-
 
     if (questionDAO.sendQuestion(mail, qtitle, qcontent)) {
         questionDAO.addQuestion(sid, qtitle, mail, qcontent);
