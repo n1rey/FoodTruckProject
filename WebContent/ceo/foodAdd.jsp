@@ -270,7 +270,7 @@
             
           <hr class="my-4"> 
 		  <input type="hidden" name="id" value="<%=sid%>">
-		  <input type="button" class="w-100 btn btn-primary btn-lg" value="등록" onclick="addCheck();">
+		  <input type="button" class="w-100 btn btn-warning btn-lg" value="등록" onclick="addCheck();">
         </form>
       </div>
     </div>

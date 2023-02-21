@@ -237,7 +237,7 @@
 		  <input type="hidden" name="fno" value="<%=food.getFno()%>">
 		  <div class="row justify-content-center">
 			  <div class="col-3">
-	          	<button class="w-100 btn btn-primary btn-lg" type="submit">수정</button>
+	          	<button class="w-100 btn btn-warning btn-lg" type="submit">수정</button>
 	          </div>	
 	          <div class="col-3">
 	          	<input type="button" class="w-100 btn btn-danger btn-lg" onclick="del('<%=food.getFno() %>');" value="삭제">

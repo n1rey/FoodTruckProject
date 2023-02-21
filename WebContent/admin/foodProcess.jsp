@@ -115,7 +115,7 @@ body {
 	 					str += "<td><small>&nbsp;(" + foods[i].flocation + ")</small></td>";		
 	 					
  						str += "<td><div onclick='delFood(\"" + foods[i].fno + "\")'><span class='btn btn-danger'>Reject</span></div></td>";
- 						str += "<td><div onclick='addFood(\"" + foods[i].fno + "\")'><span class='btn btn-primary'>Accept</span></div></td>";
+ 						str += "<td><div onclick='addFood(\"" + foods[i].fno + "\")'><span class='btn btn-warning'>Accept</span></div></td>";
 	 					
 	 					str += "</tr>";
 	 					str += "<tr><td colspan=5 height=40><hr></td></tr>";
