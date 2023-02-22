@@ -27,29 +27,33 @@ public class userDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			String sql = "SELECT per FROM user WHERE id=?";
-			
+
 			conn = ConnectionPool.get();
 			pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
+			pstmt.setString(1, id);
 
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				if(rs.getString("per").equals("ceo")) {
+
+			if (rs.next()) {
+				if (rs.getString("per").equals("ceo")) {
 					return 1;//ceo일 때 1 
-				} else if(rs.getString("per").equals("user")) {
+				} else if (rs.getString("per").equals("admin")) {
+					return 2; //admin일 때 2
+				} else {
 					return 0;//user일 때 0
 				}
 			}
-			
-		} finally {
+			return 0;
+		} catch (Exception e){
+			e.printStackTrace();
+			return 0;
+		}finally {
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
 		}
-		return 2;//admin
 	}
 
 	public static int insert(String id, String per, String password, String mail ,String name) throws NamingException, SQLException {

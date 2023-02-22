@@ -17,64 +17,6 @@
             align-items: center;
         }
     </style>
-    <script>
-        var page = <%= Integer.parseInt(request.getParameter("page")) %>;
-        var maxPage = <%= notiDAO.paging() %>
-
-        function searchFunction() {
-
-            $.ajax({
-                type:'post',
-                url:'/common/noticeSearch.jsp',
-                data:{ page : page },
-                success:function(data){
-                    var notices = JSON.parse(data.trim());
-
-                    var str = "";
-                    var pageStr = "";
-                    for(var i = 0; i < notices.length; i++){
-                        str += "<div class='row mb-3 text-center'>"
-                        str += "<div class='col-1 themed-grid-col'>" + notices[i].nno + "</div>"
-                        str += "<div class='col-8 themed-grid-col'>" + notices[i].ntitle + "</div>"
-                        if (notices[i].nupdatetime == null) {
-                            str += "<div class='col-3 themed-grid-col'>" + notices[i].nregtime + "</div>";
-                        } else {
-                            str += "<div class='col-3 themed-grid-col'>" + notices[i].nupdatetime + " (수정됨)</div>";
-                        }
-                        str += "</div>"
-                    }
-                    $("a.next").attr("href",'?page=' + (Math.floor((page-1)/5) * 5 + 6));
-                    if (page > 5) {
-                        $(".prev").css('display','inline-block');
-                        $("a.prev").attr("href",'?page=' + (Math.floor((page-1)/5) * 5));
-                    }
-                    if (page > (Math.floor((maxPage-1)/5) * 5)){
-                        $(".next").css('display','none');
-                    }
-
-                    for (var j = 1; j < 6; j++) {
-                        if ((Math.floor((page-1)/5) * 5 + j) == page) {
-                            pageStr += '<li class="page-item active" aria-current="page" style="display: inline-block"><a class="page-link" href="?page='+ (Math.floor((page-1)/5) * 5 + j) + '">' + (Math.floor((page-1)/5) * 5 + j) + '</a></li>'
-                        } else if ((Math.floor((page-1)/5) * 5 + j) > maxPage) {
-                            $(".next").css('display','none');
-                            break;
-                        } else {
-                            pageStr += '<li class="page-item" aria-current="page" style="display: inline-block"><a class="page-link" href="?page='+ (Math.floor((page-1)/5) * 5 + j) + '">' + (Math.floor((page-1)/5) * 5 + j) + '</a></li>'
-                        }
-                    }
-                    $("#notice").html(str);
-                    $("#pageNumber").html(pageStr);
-                },
-                error:function(request, status, error){
-                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                }
-            });
-        }
-
-        window.onload = function() {
-            searchFunction();
-        }
-    </script>
 </head>
 <body>
     <%@ include file="/header.jsp" %>
@@ -123,5 +65,76 @@
         </nav>
     </div>
     <%@ include file="/footer.jsp" %>
+
+    <script>
+        var page = <%= Integer.parseInt(request.getParameter("page")) %>;
+        var maxPage = <%= notiDAO.paging() %>
+
+            function searchFunction() {
+
+                $.ajax({
+                    type:'post',
+                    url:'/common/noticeSearch.jsp',
+                    data:{ page : page },
+                    success:function(data){
+                        var notices = JSON.parse(data.trim());
+
+                        var str = "";
+                        var pageStr = "";
+                        for(var i = 0; i < notices.length; i++){
+                            str += "<div class='row mb-3 text-center'>"
+                            str += "<div class='col-1 themed-grid-col'>" + notices[i].nno + "</div>"
+                            str += "<div class='col-8 themed-grid-col'>"
+                            <%
+                                if (userDAO.perCheck(sid) == 2) {
+                            %>
+                            str += "<a href='/admin/notiUpdate.jsp?nno=" + notices[i].nno + "'>" + notices[i].ntitle + "</a></div>"
+                            <%
+                                } else {
+                            %>
+                            str += notices[i].ntitle + "</div>"
+                            <%
+                                }
+                            %>
+
+                            if (notices[i].nupdatetime == null) {
+                                str += "<div class='col-3 themed-grid-col'>" + notices[i].nregtime + "</div>";
+                            } else {
+                                str += "<div class='col-3 themed-grid-col'>" + notices[i].nupdatetime + " (수정됨)</div>";
+                            }
+                            str += "</div>"
+                        }
+                        $("a.next").attr("href",'?page=' + (Math.floor((page-1)/5) * 5 + 6));
+                        if (page > 5) {
+                            $(".prev").css('display','inline-block');
+                            $("a.prev").attr("href",'?page=' + (Math.floor((page-1)/5) * 5));
+                        }
+                        if (page > (Math.floor((maxPage-1)/5) * 5)){
+                            $(".next").css('display','none');
+                        }
+
+                        for (var j = 1; j < 6; j++) {
+                            if ((Math.floor((page-1)/5) * 5 + j) == page) {
+                                pageStr += '<li class="page-item active" aria-current="page" style="display: inline-block"><a class="page-link" href="?page='+ (Math.floor((page-1)/5) * 5 + j) + '">' + (Math.floor((page-1)/5) * 5 + j) + '</a></li>'
+                            } else if ((Math.floor((page-1)/5) * 5 + j) > maxPage) {
+                                $(".next").css('display','none');
+                                break;
+                            } else {
+                                pageStr += '<li class="page-item" aria-current="page" style="display: inline-block"><a class="page-link" href="?page='+ (Math.floor((page-1)/5) * 5 + j) + '">' + (Math.floor((page-1)/5) * 5 + j) + '</a></li>'
+                            }
+                        }
+                        $("#notice").html(str);
+                        $("#pageNumber").html(pageStr);
+                    },
+                    error:function(request, status, error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+            }
+
+        window.onload = function() {
+            searchFunction();
+        }
+    </script>
 </body>
 </html>
