@@ -84,8 +84,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
                     <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Booking</li>
+                    <li class="breadcrumb-item"><a href="#">Community</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">공지사항</li>
                 </ol>
             </nav>
         </div>
