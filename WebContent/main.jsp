@@ -17,7 +17,7 @@
                         <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">검색</a>
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                        <img class="img-fluid" src="img/pizza.png" alt="">
+                        <img class="img-fluid" src="/resources/img/pizza.png" alt="">
                     </div>
                 </div>
             </div>

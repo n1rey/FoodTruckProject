@@ -6,5 +6,5 @@
 
 	String fno = request.getParameter("fno");
 	
-	foodDAO.deletefood(fno);
+	out.print(foodDAO.getMyList(fno));
 %>

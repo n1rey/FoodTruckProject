@@ -4,7 +4,7 @@
 <% 
 	String sid = (String) session.getAttribute("id");
 %>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -42,6 +42,7 @@
 		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- 추가 끝 -->
+
 		
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -65,19 +66,27 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="/main.jsp" class="nav-item nav-link active">Home</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Foodtruck</a>
-                            <div class="dropdown-menu m-0">
+                            <div class="dropdown-menu m-0 dropdown-first">
                                 <a href="booking.html" class="dropdown-item">가게목록</a>
                                 <a href="booking.html" class="dropdown-item">제보하기</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Community</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">공지사항</a>
-                                <a href="booking.html" class="dropdown-item">문의사항</a>
+                            <div class="dropdown-menu m-0 dropdown-first">
+                                <a href="/common/notice.jsp?page=1" class="dropdown-item">공지사항</a>
+                                <li class="dropdown-submenu">
+                                    <div class="dropend">
+                                        <a class="dropdown-item dropdown-toggle" href="#">문의 사항</a>
+                                    </div>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/user/myQuestion.jsp?page=1">내 문의</a></li>
+                                        <li><a class="dropdown-item" href="/user/questionAdd.jsp">문의하기</a></li>
+                                    </ul>
+                                </li>
                             </div>
                         </div>
                         
@@ -87,22 +96,21 @@
 						<%if (userDAO.perCheck(sid)!=2) {%>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mypage</a>
-                            <div class="dropdown-menu m-0">
+                            <div class="dropdown-menu m-0 dropdown-first">
                             	<!-- per : user -->
                             	<%if (userDAO.perCheck(sid)==0) {%>
                                 <a href="booking.html" class="dropdown-item">내주문</a>
                                 <a href="booking.html" class="dropdown-item">내리뷰목록</a>
                                 <!-- per : ceo -->
 								<%} else {%>
-                                <a href="booking.html" class="dropdown-item">주문내역</a>
-                                <a href="booking.html" class="dropdown-item">내가게리뷰목록</a>
+                                <a href="/ceo/ceoFoodList.jsp" class="dropdown-item">내 가게</a>
                         		<%} %>
                             </div>
                         </div>
                         <%} %>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Setting</a>
-                            <div class="dropdown-menu m-0">
+                            <div class="dropdown-menu m-0 dropdown-first">
                                 <a href="booking.html" class="dropdown-item">프로필</a>
                                 <a href="booking.html" class="dropdown-item">정보수정</a>
                                 <a href="booking.html" class="dropdown-item">회원탈퇴</a>
@@ -112,11 +120,15 @@
                                 <a href="booking.html" class="dropdown-item">가게상세보기</a>
                                 <%} else if (userDAO.perCheck(sid)==2) {%>
                                 <a href="booking.html" class="dropdown-item">회원관리</a>
-                                <a class="dropdown-item dropdown-toggle">푸드 트럭 관리</a>
-                                <div class="dropdown-menu m-0">
-	                                <a href="booking.html" class="dropdown-item">가게승인</a>
-	                                <a href="booking.html" class="dropdown-item">가게목록</a>
-                                </div>
+                                <li class="dropdown-submenu">
+                                    <div class="dropend">
+                                        <a class="dropdown-item dropdown-toggle" href="#">푸드 트럭 관리</a>
+                                    </div>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">가게승인</a></li>
+                                        <li><a class="dropdown-item" href="#">가게목록</a></li>
+                                    </ul>
+                                </li>
                                 <a href="booking.html" class="dropdown-item">공지사항관리</a>
                                 <a href="booking.html" class="dropdown-item">리뷰관리</a>
                                 <%} %>
@@ -127,7 +139,7 @@
                         <%if (sid == null) {%>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login</a>
-                            <div class="dropdown-menu m-0">
+                            <div class="dropdown-menu m-0 dropdown-first">
                                 <a href="booking.html" class="dropdown-item">Sign</a>
                             </div>
                         </div>

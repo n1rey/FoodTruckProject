@@ -6,8 +6,6 @@
           0.5(기본작업 23/02/16) 
           1.0(1차 완성 23/02/20)
  -->
-<!-- location.href 수정 -->
-
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="util.FileUtil"%>
@@ -74,14 +72,14 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 수정 성공</h1>
-		        <button type="button" onclick="location.href='foodUpdate.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		        <button type="button" onclick="location.href='/main.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        푸드 트럭 정보 수정에 성공했습니다. <br>
 		    메인 페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
-			        <button onclick="location.href='foodUpdate.jsp'" class="btn btn-primary">메인으로 이동</button>
+			        <button onclick="location.href='/main.jsp'" class="btn btn-primary">메인으로 이동</button>
 
 		      </div>
 		    </div>
@@ -127,6 +125,6 @@
  	}
 
 	%>
-
+<%@ include file = "/footer.jsp" %> 
 </body>
 </html>
