@@ -16,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
+
 public class notiDAO {
 
 
@@ -99,4 +101,44 @@ public class notiDAO {
         }
         return totalPage;
     }
+    public static int edit(String nno, String ntitle, String ncontent) throws NamingException, SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		conn = ConnectionPool.get();
+		
+		try {
+			String sql = "UPDATE user SET password=?, name=?, mail=? WHERE id=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nno);
+			pstmt.setString(2, ntitle);
+			pstmt.setString(3, ncontent);
+
+			return pstmt.executeUpdate(); 
+
+		}finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+	} // end of edit
+
+	public static int delete(String nno) throws NamingException, SQLException {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			String sql = "DELETE FROM user WHERE id=?";
+
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nno);
+
+			return	pstmt.executeUpdate(); //성공1, 실패0 을 가지고 나간다.
+		}finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+	}
+	
 }

@@ -10,25 +10,23 @@
 <%@ page import="jdbc.*" %>    
 <%request.setCharacterEncoding("utf-8"); %>
 <%
-String id = request.getParameter("id");
-String password = request.getParameter("password");
-String name = request.getParameter("name");
-String mail = request.getParameter("mail");
+String id = request.getParameter("ntitle");
+String password = request.getParameter("ncontent");
 
 
 
-if (userDAO.edit(id,password, name, mail) == 1) {
+if (notiDAO.edit(nno, title, content) == 1) {
 	%>
 
 	<script>
-	  alert("회원 정보 수정이 성공하였습니다.");
-	  window.location.href = "";
+	  alert("공지 수정이 성공하였습니다.");
+	  window.location.href = "notice.jsp";
 	</script>
 	<%
 }else {
 	%>
 	<script>
-	  alert("회원 정보 수정이 성공하였습니다.");
+	  alert("공지 수정이 성공하였습니다.");
 	  //window.location.href = "리다이렉트할 페이지 URL";
 	</script>
 	<%
