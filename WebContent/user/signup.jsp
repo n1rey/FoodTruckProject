@@ -22,37 +22,47 @@
 <body class="bg-gradient-primary">
 
 <%@include file="/header.jsp" %>
-<link href="/css/sign-in.css" rel="stylesheet">
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">회원가입</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                  
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+    
+        <!— Navbar & Hero End —>
 
-    <div class="container">
-<form action="signupCheck.jsp">
+
 
  <div class="container">  
  
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-50 m-auto">
   <form action="signupCheck.jsp" method="post">
-    <img class="mb-4" src="" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+    
 
 
 	  <input type="radio"  name="per" value="user" checked/>user
  	  <input type="radio"  name="per" value="ceo" />ceo
-
-	
+	<br>
+	<br>
     <div class="form-floating">
       <input type="text" name="id" class="form-control" id="floatingInput" placeholder="아이디를 입력하세요">
       <label for="floatingInput">아이디</label>
     </div>
+    <br>
     <div class="form-floating">
       <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="암호를 입력하세요">
       <label for="floatingPassword">암호</label>
     </div>
-    
+    <br>
       <div class="form-floating">
       <input type="email"  name="mail" class="form-control" id="floatingInput" placeholder="이메일을 입력하세요">
       <label for="floatingInput">이메일</label>
     </div>
-    
+    <br>
       <div class="form-floating">
       <input type="text"  name="name" class="form-control" id="floatingInput" placeholder="이름을 입력하세요">
       <label for="floatingInput">이름</label>
@@ -60,13 +70,11 @@
     
 
 	<br>
-   	<input type="submit" class="mtop-20" value="회원가입">
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">회원가입</button>
   </form>
 </main>
 </div>
-</form>
-    </div>
+
 
 <%@ include file ="/footer.jsp" %>	
 
