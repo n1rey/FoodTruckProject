@@ -5,6 +5,7 @@
 src/util/ConnectionPool.java
 WebContent/META-INF/context.xml
 build/FoodTruckProject
+build/classes
 
 # Log file
 *.log
