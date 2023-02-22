@@ -29,7 +29,7 @@
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
-    const $dropdownMenu = $(".dropdown-menu");
+    const $dropdownMenu = $(".dropdown-first");
     const showClass = "show";
     
     $(window).on("load resize", function() {

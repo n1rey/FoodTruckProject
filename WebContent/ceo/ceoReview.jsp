@@ -23,6 +23,10 @@
         .date{
             float: right;
         }
+
+        .review_header {
+            margin-bottom: 20px;
+        }
     </style>
     <script>
         <% int fno = Integer.parseInt(request.getParameter("fno")); %>
@@ -44,7 +48,7 @@
                     var str = "";
 
                     for (var i = 0; i < reviews.length; i++) {
-                        str += "<ul><div class='box shadow'>";
+                        str += "<div class='box shadow'>";
                         str += "<div class='review_header'>";
                         str += "<div class='id fw-bold'>" + reviews[i].id + "</div>";
                         for (var j = 0; j < 5 - reviews[i].point; j++) {
@@ -59,10 +63,10 @@
                         } else {
                             str += "<span class='date'>" + reviews[i].rupdatetime + " (수정됨)</span></div>";
                         }
-                        str += "<div>" + reviews[i].rcontent + "</div></ul>";
+                        str += "<div>" + reviews[i].rcontent + "</div></div>";
                     }
-                    str += "<ul><div id='moreList' style='display: flex;'>";
-                    str += "<div class='box shadow text-center' id='moreView' onclick='moreView()'>더보기 ∨</div></div></ul>"
+                    str += "<div id='moreList' style='display: flex;'>";
+                    str += "<div class='box shadow text-center' id='moreView' onclick='moreView()'>더보기 ∨</div></div>"
 
                     $("#review").html(str);
 
@@ -90,19 +94,29 @@
 </head>
 <body>
     <%@ include file="/header.jsp" %>
-    <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid">
-            <h1 class="display-5 fw-bold">내 가게 리뷰</h1>
-            <p class="col-md-8 fs-4">내 가게의 리뷰를 볼 수 있습니다. </p>
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">내 가게 리뷰 목록</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">MYPAGE</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">내 가게 리뷰 목록</li>
+                </ol>
+            </nav>
         </div>
     </div>
-    <div class="container">
-        <h2 class="shadow py-3 text-center"><%= foodDAO.getName(Integer.parseInt(request.getParameter("fno"))) %></h2>
-        <hr>
-        <div class="fw-bold bs-3">전체 리뷰 <%= reviewDAO.totalReview(fno) %>건</div>
     </div>
-    <div class="container" id="review">
 
+    <div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <h2 class="shadow py-3 text-center"><%= foodDAO.getName(Integer.parseInt(request.getParameter("fno"))) %></h2>
+            <hr>
+            <div class="fw-bold bs-3">전체 리뷰 <%= reviewDAO.totalReview(fno) %>건</div>
+        </div>
+        <div class="container" id="review">
+        </div>
     </div>
+    <%@ include file="/footer.jsp" %>
 </body>
 </html>

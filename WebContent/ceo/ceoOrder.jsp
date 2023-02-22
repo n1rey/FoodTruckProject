@@ -116,8 +116,8 @@
                         } else {
                             str += "<div class='col-3 themed-grid-col text-success'>완료</div>";
                         }
-                        str += "<div class='col-2 themed-grid-col btn btn-danger cancelOrder' onclick='cancelOrder(" + orders[i].ono + ")'>주문 취소</div>"
-                        str += "<div class='col-2 themed-grid-col btn btn-success successOrder' onclick='successOrder(" + orders[i].ono + ")'>완료</div>"
+                        str += "<div class='col-2 themed-grid-col btn btn-danger rounded-pill cancelOrder ' onclick='cancelOrder(" + orders[i].ono + ")'>주문 취소</div>"
+                        str += "<div class='col-2 themed-grid-col btn btn-success rounded-pill successOrder ' onclick='successOrder(" + orders[i].ono + ")'>완료</div>"
 
                         str += "<div class='col-12 themed-grid-col text-center' id='odetail" + orders[i].ono + "' style='display: none'>";
                         str += "<div class='box shadow'>";
@@ -166,78 +166,87 @@
     </script>
 </head>
 <body>
-<%@ include file="/header.jsp" %>
-<div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">주문 사항</h1>
-        <p class="col-md-8 fs-4">가게의 주문 사항을 알려드립니다. </p>
-    </div>
-</div>
-<div class="container">
-    <div class="row mb-3 text-center">
-        <div class="col-4 themed-grid-col">메뉴</div>
-        <div class="col-8 themed-grid-col">처리 여부</div>
-    </div>
-    <hr>
-    <div class="container" id="order">
-
-    </div>
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item prev" style="display: none;">
-                <a class="page-link" href="?page=1"><<</a>
-            </li>
-            <li class="page-item prev" style="display: none;">
-                <a class="page-link prev"><</a>
-            </li>
-            <li id="pageNumber"></li>
-            <li class="page-item next" style="display: inline-block;">
-                <a class="page-link next" href="?page=">></a>
-            </li>
-            <li class="page-item next" style="display: inline-block;">
-                <a class="page-link" href="?page=<%= orderDAO.ceoOrderPaging(fno) %>">>></a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="cancelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="cancelModalLabel">주문 취소</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                정말 주문을 취소하시겠습니까?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cancelOk" data-bs-dismiss="modal">네</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+    <%@ include file="/header.jsp" %>
+        <div class="container-xxl py-5 bg-dark hero-header mb-5">
+            <div class="container text-center my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">주문내역</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">MYPAGE</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">주문내역</li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="successModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="successModalLabel">음식 완료</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                정말 완료 처리 하시겠습니까?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary successOk" data-bs-dismiss="modal">네</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+    <div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row mb-3 text-center">
+            <div class="col-4 themed-grid-col">메뉴</div>
+            <div class="col-8 themed-grid-col">처리 여부</div>
+        </div>
+        <hr>
+        <div class="container" id="order">
+
+        </div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item prev" style="display: none;">
+                    <a class="page-link" href="?page=1"><<</a>
+                </li>
+                <li class="page-item prev" style="display: none;">
+                    <a class="page-link prev"><</a>
+                </li>
+                <li id="pageNumber"></li>
+                <li class="page-item next" style="display: inline-block;">
+                    <a class="page-link next" href="?page=">></a>
+                </li>
+                <li class="page-item next" style="display: inline-block;">
+                    <a class="page-link" href="?page=<%= orderDAO.ceoOrderPaging(fno) %>">>></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cancelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="cancelModalLabel">주문 취소</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    정말 주문을 취소하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancelOk" data-bs-dismiss="modal">네</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="successModalLabel">음식 완료</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    정말 완료 처리 하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary successOk" data-bs-dismiss="modal">네</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%@ include file="/footer.jsp" %>
 </body>
 </html>
