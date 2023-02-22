@@ -28,16 +28,24 @@
   <body class="text-center">
 
 <%@include file="/header.jsp" %>
+	<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">비밀번호 찾기</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                  
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+       
+        <!— Navbar & Hero End —>
 
-<link href="/css/sign-in.css" rel="stylesheet">
 
-	<div class="card align-middle" style="width:25rem;">
-		<div class="card-title" style="margin-top:30px;">
-            
-			<h2 class="card-title" style="color:#f58b34;"><img src=""/></h2>
-		</div>
+
         
-		<div class="card-body">
+		 <div class="container">  
+ 		<main class="form-signin w-50 m-auto">
       <form action="findpasscheck.jsp" class="form-signin" method="POST">
         <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required><br>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required><BR>
@@ -48,11 +56,14 @@
       
 		</div>
         <div class="links">
+        <br>
             <a href="findid.jsp">아이디 찾기</a> | <a href="login.jsp">로그인</a> | <a href="signup.jsp">회원가입</a>
 
+		</main>
         </div>
-	</div>
-  
+        
+	
+   <%@include file="/footer.jsp" %>
   </body>
     <script type="text/javascript">
 

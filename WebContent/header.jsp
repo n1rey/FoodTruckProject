@@ -103,8 +103,7 @@
                                 <a href="booking.html" class="dropdown-item">내리뷰목록</a>
                                 <!-- per : ceo -->
 								<%} else {%>
-                                <a href="/ceo/ceoOrder.jsp?fno=1&page=1" class="dropdown-item">주문내역</a>
-                                <a href="/ceo/ceoReview.jsp?fno=1" class="dropdown-item">내가게리뷰목록</a>
+                                <a href="/ceo/ceoFoodList.jsp" class="dropdown-item">내 가게</a>
                         		<%} %>
                             </div>
                         </div>

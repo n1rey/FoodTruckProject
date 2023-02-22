@@ -10,7 +10,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
             <%@ include file ="/header.jsp" %>	
- 
+ 			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">회원가입</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                  
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+    
+        <!— Navbar & Hero End —>
   <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
 
