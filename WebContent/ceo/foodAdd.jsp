@@ -6,151 +6,39 @@
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/16)
           1.0(1차 완성 23/02/20)
+          2.0(2차 완성 23/02/22)
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
     <title>푸드 트럭 등록</title>
+</head>
+<body>
+<%@ include file="/header.jsp"%>
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">푸드 트럭 등록</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">설정</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">푸드 트럭 등록</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
 
-    
-
-    
-
-<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#712cf9">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      .body {
-      	display : flex;
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
-  </head>
-  <body class="bg-light">
-<script>
-	function add(){
-		let tmp = '';
-		tmp += '<div class="input-group has-validation">';
-		tmp += '<input type="text" class="form-control" name="fmenu" id="fmenu" placeholder="메뉴">';
-		tmp += '<input type="text" class="form-control" name="fprice" id="fprice" placeholder="가격">';
-		tmp += '<button type="button" class="btn btn-danger btnRemove">삭제</button></div>';
-		$('.addInput').append(
-				tmp
-				
-			);
-			$('.btnRemove').on('click', function(){
-				$(this).prev().remove();
-				$(this).prev().remove();
-				$(this).next().remove();
-				$(this).remove();
-			});
-	}
-	
-	function addCheck () {
-		let frm = document.getElementById("frm");
-		
-		/* let fmenuArr = $('input[name=fmenu]');
-		let fmenus = new Array();
-		fmenuArr.each(function(e,data){ //
-		    fmenus[e] = data.value;  
-		});
-		frm.fmenu.value = fmenus;
-		
-		let fpriceArr = $('input[name=fprice]');
-		let fprices = new Array();
-	    fpriceArr.each(function(e,data){
-		    fprices[e] = data.value;  
-		});
-	    frm.fprice.value = fprices; */
-		
-	    frm.submit();
-	}
-
-</script>  
-<%@ include file = "/header.jsp" %>   
+        <!-- Reservation Start -->
 <div class="container"> 
-  <main>
-    <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../etc/car3.png" alt="" width="72" height="57">
-      <h2>푸드 트럭 등록</h2>
-    </div>
-
-    <div class="row g-5 justify-content-center">
+  <main>        
+      <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3 text-center">푸드 트럭 정보 입력</h4><br>
-        <form name="frm" id="frm" class="needs-validation" enctype="multipart/form-data" method="post" action="foodAddCheck.jsp">
+        <form class="needs-validation" action="foodAddCheckTest.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
@@ -175,27 +63,6 @@
                 Please enter your shipping address.
               </div>
             </div>
-            
-           <div class="col-12">
-              <label class="form-label">위도</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" name="flat" required>
-              </div>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-            
-           <div class="col-12">
-              <label class="form-label">경도</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" name="flon" required>
-              </div>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-            
 
             <div class="col-12">
               <label class="form-label">영업 시간</label>
@@ -267,25 +134,53 @@
                 Please enter your shipping address.
               </div>
             </div>
-            
+
           <hr class="my-4"> 
 		  <input type="hidden" name="id" value="<%=sid%>">
-		  <input type="button" class="w-100 btn btn-warning btn-lg" value="등록" onclick="addCheck();">
+          <button class="w-100 btn btn-primary btn-lg" onclick="addFood();" type="button">등록</button>
         </form>
       </div>
     </div>
   </main>
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1"></p>
-    <ul class="list-inline">
-    </ul>
-  </footer>
 </div>
+        <!-- Reservation Start -->
+  
+<script>
+	function add(){
+		let tmp = '';
+		tmp += '<div class="input-group has-validation">';
+		tmp += '<input type="text" class="form-control" name="fmenu" id="fmenu" placeholder="메뉴">';
+		tmp += '<input type="text" class="form-control" name="fprice" id="fprice" placeholder="가격">';
+		tmp += '<button type="button" class="btn btn-secondary btnRemove">삭제</button></div>';
+		$('.addInput').append(
+				tmp
+				
+			);
+			$('.btnRemove').on('click', function(){
+				$(this).prev().remove();
+				$(this).prev().remove();
+				$(this).next().remove();
+				$(this).remove();
+			});
+	}
+	
+	function addFood(){
+		let fnameArr = $('input[name=fname]');
+		let fprice = $('input[name=fprice]');
+		let saveData = $(fnameArr).map((idx,data)=> {
+		    return{
+		        fname : data.value,
+		        fprice : fprice[idx]
+		    }
+		});
+		let tmp = JSON.stringify(saveData.get());
+		console.log(tmp);
+	}
+	
 
+</script>          
 
-    <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<%@ include file="/footer.jsp"%>        
+</body>
 
-      <script src="form-validation.js"></script>
-  </body>
 </html>

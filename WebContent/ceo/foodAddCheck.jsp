@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>푸드 트럭 등록</title>
 </head>
 <body>
 <%@ include file = "/header.jsp" %> 
@@ -62,12 +62,6 @@
 	flon 	  	  = multipartRequest.getParameter("flon");
 	
 	ftime = time1 + time2 + "&" + time3 + time4;
-	/* 
-	fphoto = item.getName();
-	fbu = item.get();
-	String root = application.getRealPath(java.io.File.separator);
-	FileUtil.saveImage(root, fphoto, fbu);	
-	*/
 	
  	if((foodDAO.inserttemp(fname, id, fphoto, flocation, ftime, fmenu, fprice, flat, flon) == 1) ? true : false) {
 		%>
@@ -78,14 +72,14 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h1 class="modal-title fs-5" id="exampleModalLabel">푸드 트럭 등록 성공</h1>
-		        <button type="button" onclick="location.href='foodAdd.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		        <button type="button" onclick="location.href='/main.jsp'" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
 		        푸드 트럭 등록에 성공했습니다. <br>
 		    24시간 이내에 승인 혹은 거부 처리됩니다.
 		      </div>
 		      <div class="modal-footer">
-			        <button onclick="location.href='foodAdd.jsp'" class="btn btn-primary">메인으로 이동</button>
+			        <button onclick="location.href='/main.jsp'" class="btn btn-primary">메인으로 이동</button>
 
 		      </div>
 		    </div>
@@ -131,6 +125,6 @@
 	}
 
 	%>
-
+<%@ include file = "/footer.jsp" %> 
 </body>
 </html>

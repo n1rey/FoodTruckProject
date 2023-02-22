@@ -5,85 +5,20 @@
 버전  기록 : 0.1(시작 23/02/16) 
           0.5(기본작업 23/02/16) 
           0.7(추가 디자인 23/02/17)
-          1.0(1차 완성 23/02/20)
+          1.0(1차 완성 23/02/21)
+          2.0(2차 완성 23/02/22)
  -->
-<!-- 로그인 되면 sid로 변경 / 처음에 삭제 버튼 안 눌리는 것 해결-->
 <%@page import="jdbc.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
     <title>푸드 트럭 정보 수정</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      .body {
-      	display : flex;
-      }
-    </style>
-
-  </head>
-  <body class="bg-light">
-<%@ include file = "/header.jsp" %>   
+</head>
+<body>
+<%@ include file="../header.jsp"%>
 <%
 	String fno = request.getParameter("fno");
 
@@ -103,9 +38,9 @@
 			menus += "<input type='text' class='form-control' value='" + menu[i].trim() + "' name='fmenu' id='menu' placeholder='메뉴'>";
 			menus += "<input type='text' class='form-control' value='" + price[i].trim() + "' name='fprice' id='price' placeholder='가격'>";
 			if(i == 0) {
-				menus += "<button type='button' class='btn btn-primary' onclick='add();'>추가</button></div>";
+				menus += "<button type='button' class='btn btn-info' onclick='add();'>추가</button></div>";
 			} else {
-				menus += "<button type='button' class='btn btn-danger btnRemove'>삭제</button></div>";
+				menus += "<button type='button' class='btn btn-secondary btnRemove'>삭제</button></div>";
 			}
 		}
 		
@@ -114,16 +49,27 @@
 		
 		
 %>
-<div class="container">
-  <main>
-    <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../etc/car3.png" alt="" width="72" height="57">
-      <h2>푸드 트럭 수정</h2>
-    </div>
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">푸드 트럭 수정</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">설정</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">푸드 트럭 수정</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
 
-    <div class="row g-5 justify-content-center">
+
+        <!-- Reservation Start -->
+<div class="container"> 
+  <main>        
+      <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3 text-center">푸드 트럭 정보 수정</h4><br>
         <form class="needs-validation" action="foodUpdateCheck.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
@@ -133,7 +79,7 @@
               </div>
             </div>
             
-            <div class="col-8">
+            <div class="col-12">
               <label class="form-label">사진</label>
               <div class="input-group has-validation">
                 <input type="file" class="form-control" name="fphoto" required>
@@ -223,9 +169,6 @@
             <div class="col-8 addInput" >
               <label class="form-label">메뉴 & 가격</label> 
               <div class="input-group has-validation">
-<!--                 <input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴" required> -->
-<!--                 <input type="text" class="form-control" name="fprice" id="price" placeholder="가격" required> -->
-<!--                 <button type="button" class="btn btn-info btnAdd" onclick="add();">추가</button> -->
               </div>
               <%=menus %>
               <div class="invalid-feedback">
@@ -237,41 +180,31 @@
 		  <input type="hidden" name="fno" value="<%=food.getFno()%>">
 		  <div class="row justify-content-center">
 			  <div class="col-3">
-	          	<button class="w-100 btn btn-warning btn-lg" type="submit">수정</button>
+	          	<button class="w-100 btn btn-primary btn-lg" type="submit">수정</button>
 	          </div>	
 	          <div class="col-3">
 	          	<input type="button" class="w-100 btn btn-danger btn-lg" onclick="del('<%=food.getFno() %>');" value="삭제">
 	          </div>	
+          </div>
           </div>	
         </form>
       </div>
     </div>
   </main>
+</div>
 
 <% 
 	}
 %>
-
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1"></p>
-    <ul class="list-inline">
-    </ul>
-  </footer>
-</div>
-
-
-    <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-      <script src="form-validation.js"></script>
-      
-      
+        <!-- Reservation Start -->
+  
 <script>
 	function add(){
 		let tmp = '';
 		tmp += '<div class="input-group has-validation">';
 		tmp += '<input type="text" class="form-control" name="fmenu" id="menu" placeholder="메뉴">';
 		tmp += '<input type="text" class="form-control" name="fprice" id="price" placeholder="가격">';
-		tmp += '<button type="button" class="btn btn-danger btnRemove">삭제</button></div>';
+		tmp += '<button type="button" class="btn btn-secondary btnRemove">삭제</button></div>';
 		$('.addInput').append(
 				tmp
 				
@@ -306,6 +239,9 @@
 	
 	
 	
-</script>       
-  </body>
+</script>          
+
+<%@ include file="../footer.jsp"%>        
+</body>
+
 </html>
