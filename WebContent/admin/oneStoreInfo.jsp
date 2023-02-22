@@ -9,46 +9,17 @@
 <%@ include file="../header.jsp"%>
 <% 
 	String fno = request.getParameter("fno");
+	//sid = (String) session.getAttribute("id");
+	sid = "min";//임시
 %>
-<% sid = (String) session.getAttribute("id");
-if (sid == null){
-%>		
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" >
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalLabel">회원 전용 메뉴</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/user/login.jsp'"></button>
-		      </div>
-		      <div class="modal-body">
-		        로그인을 한 회원만 사용 가능한 메뉴입니다.<br>
-		      </div>
-		      <div class="modal-footer">
-		        <button onclick="location.href='/user/login.jsp'" class="btn btn-primary">로그인 이동</button>
-
-		      </div>
-		    </div>
-		  </div>
-		</div>
-
-		<script>
-			$(function() {
-				$("#exampleModal1").modal("show");
-			});
-		</script>		
-		
-<%} else {
-	session.setAttribute("id", sid);
-}%>
 <div class="container-xxl py-5 bg-dark hero-header mb-5">
              <div class="container text-center my-5 pt-5 pb-4">
                  <h1 class="display-3 text-white mb-3 animated slideInDown">가게</h1>
                  <nav aria-label="breadcrumb">
                      <ol class="breadcrumb justify-content-center text-uppercase">
                          <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         <li class="breadcrumb-item"><a href="#">Store</a></li>
-                         <li class="breadcrumb-item text-white active" aria-current="page">메뉴</li>
+                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                         <li class="breadcrumb-item text-white active" aria-current="page">Menu</li>
                      </ol>
                  </nav>
              </div>
@@ -138,10 +109,8 @@ if (sid == null){
  				$("#flocation").html(str);
  				
  				var str = "";
- 				var ftime = infos[0].ftime.split("&");
- 				console.log(ftime);
  				str += "<h5 class='section-title ff-secondary text-start text-primary fw-normal'>Open Hours</h5>";
-				str += "<p>"+ftime[0]+" ~ "+ftime[1]+"</p>";
+				str += "<p>"+infos[0].ftime+"</p>";
  				$("#ftime").html(str);
  				
  				var str = "";

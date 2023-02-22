@@ -4,8 +4,7 @@
 
 버전  기록 : 	  0.1(시작 23/02/15) 
               0.5(기본작업 23/02/16) 
-              0.7(추가 디자인 23/02/18)
-              1.0(1차 완성 23/02/20)
+              1.0(1차 완성 23/02/22)
  -->
 <%request.setCharacterEncoding("utf-8"); %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,11 +21,17 @@
 </head>
 <body>
 
-
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">정보 수정</h1>
+                   
+                </div>
+            </div>
 
 <div class="container">
 <form action="editProc.jsp" method="post">
-<h2> 회원 정보 수정 </h2>
+
+<!-- 유저 정보 표시 구역 -->  
 
 <div class="mb-3 row">
 	<div class="mb-3" style="margin-top:5%">
@@ -50,6 +55,7 @@
 
 <div class="d-grid gap-2">
 	<button class="btn btn-primary" type="submit">회원 정보 수정</button>
+	<button class="btn btn-secondary" type="button" onclick="goBack()">뒤로가기</button>
 </div>
 </form>
 <hr>
@@ -61,4 +67,12 @@
 </div>
 
 </body>
+
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+<%@ include file="/footer.jsp"%>
 </html>

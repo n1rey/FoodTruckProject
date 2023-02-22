@@ -18,7 +18,7 @@
     <title>푸드 트럭 상세 보기</title>
 </head>
 <body>
-<%@ include file="/header.jsp"%>
+<%@ include file="../header.jsp"%>
 <% 
 	String fno = request.getParameter("fno");
 
@@ -47,27 +47,48 @@
 
 
         <!-- Reservation Start -->
-<div class="container">
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="row">상호명</th>
-        <th scope="row">위치</th>
-        <th scope="row">영업시간</th>
-      </tr>
-    </thead>
-		<tbody id="ajaxTable1">
-	    </tbody>
-    <thead>
-      <tr>
-        <th scope="row">메뉴</th>
-        <th scope="row">가격</th>
-      </tr>
-    </thead>
-	<tbody id="ajaxTable2">
-    </tbody>
-</table>
+<div class="container-xxl py-5">
+    <div class="container">
+    	<!-- 가게명 -->
+        <div id="fname" class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        </div>
+        
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+            <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                <li class="nav-item">
+                    <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill">
+                        <i class="fa fa-hamburger fa-2x text-primary"></i>
+                        <div class="ps-3">
+                            <small class="text-body">Special</small>
+                            <h6 class="mt-n1 mb-0">Menu</h6>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+            	<!-- 메뉴, 가격 -->
+                <div id="menu" class="tab-pane fade show p-0 active">
+                    
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-12">
+            <div class="row g-4">
+                <div class="col-md-2">
+                </div>
+                <!-- 위치 -->
+                <div class="col-md-5" id="flocation">
+                </div>
+                <!-- 영업시간 -->
+                <div class="col-md-5" id="ftime">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Menu End -->
 
 <input id="fno" type="hidden" value="<%=fno %>">
 <div class="container">
@@ -93,16 +114,24 @@
  				var foods = JSON.parse(data.trim());
  				var str = "";
  				
+ 				str += "<h5 class='section-title ff-secondary text-center text-primary fw-normal'>Food Menu</h5>";
+ 				str += "<h1 class='mb-5'>"+foods[0].fname+"</h1>";
+ 				$("#fname").html(str);
+ 				
+ 				var str = "";
+ 				str += "<h5 class='section-title ff-secondary text-start text-primary fw-normal'>Location</h5>";
+ 				str += "<p>"+foods[0].flocation+"</p>";
+ 				$("#flocation").html(str);
+ 				
+ 				var str = "";
+ 				str += "<h5 class='section-title ff-secondary text-start text-primary fw-normal'>Open Hours</h5>";
+ 				
  				for(var i = 0; i < foods.length; i++){
  					var time = foods[i].ftime.split("&");
- 					
- 					str += "<tr><td>" + foods[i].fname + "</td>";
- 					str += "<td>" + foods[i].flocation + "</td>";
-					str += "<td>" + time[0] + " ~ " + time[1] + "</td></tr>";
+ 					str += "<p>" + time[0] + " ~ " + time[1] +"</p>";
  				} 
- 				$("#ajaxTable1").html(str);
+ 				$("#ftime").html(str);
  				
- 				var infos = JSON.parse(data.trim());
  				var str = "";
  				
  				for(var i = 0; i < foods.length; i++){
@@ -113,14 +142,26 @@
  					var keys1 = Object.keys(menu);
  					for (var i=0; i<keys1.length; i++) {
  				    	var key = keys1[i];
- 						str += "<tr><td>" + menu[key] + "</td>";
- 						str += "<td>" + price[key] + "</td></tr>";
+ 				    	str += "<div class='row g-4'>";
+ 						str +=     "<div class='col-lg'>";
+ 						str +=         "<div class='d-flex align-items-center'>";
+ 						str +=             "<div class='w-100 d-flex flex-column text-start ps-4'>";
+ 						str +=                 "<h5 class='d-flex justify-content-between border-bottom pb-2'>";
+ 						str +=                     "<span>"+menu[key]+"</span>";
+ 						str +=                     "<span class='text-primary'>"+price[key]+"</span>";
+ 						str +=                 "</h5>";
+ 						str +=             "</div>";
+ 						str +=         "</div>";
+ 						str +=     "</div>";
+ 						str += "</div>";
  				    }
  				}
- 				$("#ajaxTable2").html(str);
+ 				$("#menu").html(str);
  			}
  		});
  	}
+	
+	
 	
 	window.onload = function() {
 		foodDetail();
@@ -131,7 +172,7 @@
 	}
 %>  
 
-<%@ include file="/footer.jsp"%>        
+<%@ include file="../footer.jsp"%>        
 </body>
 
 </html>

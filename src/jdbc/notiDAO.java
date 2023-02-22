@@ -11,14 +11,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import util.ConnectionPool;
 
+import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class notiDAO {
-
-
 
     public static String notiList(int page) throws SQLException {
         String sql = "SELECT * " +
@@ -99,4 +98,102 @@ public class notiDAO {
         }
         return totalPage;
     }
+
+    public static notiDTO info(int nno) throws NamingException, SQLException {
+        String sql = "SELECT * FROM noti WHERE nno=?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionPool.get();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, nno);
+
+            rs = pstmt.executeQuery();
+            notiDTO notiDTO = new notiDTO();
+
+            if(rs.next()) {
+                notiDTO.setNtitle(rs.getString(2));
+                notiDTO.setNcontent(rs.getString(3));
+                notiDTO.setNregtime(rs.getString(4));
+                notiDTO.setNupdatetime(rs.getString(5));
+            }
+
+            return notiDTO;
+
+        }finally {
+            if(rs != null) rs.close();
+            if(pstmt != null) pstmt.close();
+            if(conn != null) conn.close();
+        }
+    }
+
+    //공지 등록
+    public static int insert(String ntitle, String ncontent) throws SQLException {
+
+        String sql = "INSERT INTO noti(ntitle, ncontent) VALUES(?,?)";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = ConnectionPool.get();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, ntitle);
+            pstmt.setString(2, ncontent);
+            int result = pstmt.executeUpdate();
+
+            return result;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            if(pstmt != null) pstmt.close();
+            if(conn != null) conn.close();
+        }
+    }
+
+    //공지 수정
+    public static int edit(String nno, String ntitle, String ncontent) throws NamingException, SQLException {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        conn = ConnectionPool.get();
+
+        try {
+            String sql = "UPDATE noti SET ntitle=?, ncontent=?, nupdatetime=CURRENT_TIMESTAMP WHERE nno=?";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, ntitle);
+            pstmt.setString(2, ncontent);
+            pstmt.setString(3, nno);
+
+            return pstmt.executeUpdate();
+
+        }finally {
+            if(pstmt != null) pstmt.close();
+            if(conn != null) conn.close();
+        }
+    } // end of edit
+
+    //공지 삭제
+    public static int delete(String nno) throws NamingException, SQLException {
+        String sql = "DELETE FROM noti WHERE nno=?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = ConnectionPool.get();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nno);
+
+            return   pstmt.executeUpdate(); //성공1, 실패0 을 가지고 나간다.
+        }finally {
+            if(pstmt != null) pstmt.close();
+            if(conn != null) conn.close();
+        }
+    }
+
 }

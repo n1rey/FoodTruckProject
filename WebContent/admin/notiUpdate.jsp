@@ -5,23 +5,29 @@
 	
  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="jdbc.questionDAO" %>
+<%@ page import="jdbc.*" %>
 <html>
 <head>
     <title>공지</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid">
-        <h1 class="display-5 fw-bold">공지 사항</h1>
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">공지사항</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Community</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">공지사항</li>
+            </ol>
+        </nav>
     </div>
 </div>
+</div>
+<div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
 <div class="container">
- <!--    <form id="requestForm" action="../common.notice.jsp" method="post"> -->
+    <form id="requestForm" action="notiInsert.jsp" method="post">
         <h3 class="text-center fw-bold">공지사항</h3>
         <hr>
         <div class="row mb-3">
@@ -29,7 +35,7 @@
                 <label for="title">제목</label>
             </strong>
             <div class="col-sm-10">
-                <input type="text" id="title" name="qtitle" class="form-control" placeholder="제목을 입력해주세요">
+                <input type="text" id="title" name="ntitle" class="form-control" placeholder="제목을 입력해주세요">
             </div>
         </div>
         <div class="row mb-3">
@@ -37,16 +43,21 @@
                 <label for="summernote">공지 내용</label>
             </strong>
             <div class="col-sm-10">
-                <textarea id="summernote" name="qcontent" class="form-control"></textarea>
+                <textarea id="summernote" name="ncontent" class="form-control"></textarea>
             </div>
         </div>
         <hr>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary">등록</button>
-            <button type="delete" class="btn btn-primary">삭제</button>
+            <button type="delete" class="btn btn-primary">취소</button>
         </div>
     </form>
 </div>
+
+<%@ include file="/footer.jsp" %>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <script>
     

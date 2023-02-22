@@ -28,8 +28,6 @@
 request.setCharacterEncoding("utf-8");
 sid = (String) session.getAttribute("id");
 
-sid="t3"; // 로그인 처리 시 필요없음.
-
 userDTO uDTO = userDAO.info(sid);
 
 

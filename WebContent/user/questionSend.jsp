@@ -24,7 +24,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="sendQuestionLabel">문의 전송 성공</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='myQuestion.jsp?page=1'"></button>
             </div>
             <div class="modal-body">
                 문의 사항이 전송되었습니다.

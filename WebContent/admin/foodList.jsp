@@ -53,7 +53,7 @@
 	function addFood(fno) {
  		$.ajax({
  			type:"post",
- 			url: "foodAdd.jsp",
+ 			url: "foodAddAdmin.jsp",
  			data : {fno:fno
  				   
  			},
@@ -120,12 +120,10 @@
         <!-- Navbar & Hero End -->
 
 	<div class="container shadow mx-auto p-5 w-75">
-		<center><h2>푸드 트럭 목록</h2></center>
 		<div>
 			<div class="input-group justify-content-center" >
 			
 			</div>
-			<hr>
 			<table align="center" width="400">
 				<thead>
 				</thead>

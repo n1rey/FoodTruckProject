@@ -16,14 +16,45 @@
 	String icontent = request.getParameter("icontent");
 
 %>
+<% sid = (String) session.getAttribute("id");
+if (sid == null){
+%>		
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false" >
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">회원 전용 메뉴</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='/user/login.jsp'"></button>
+		      </div>
+		      <div class="modal-body">
+		        로그인을 한 회원만 사용 가능한 메뉴입니다.<br>
+		      </div>
+		      <div class="modal-footer">
+		        <button onclick="location.href='/user/login.jsp'" class="btn btn-primary">로그인 이동</button>
+
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<script>
+			$(function() {
+				$("#exampleModal1").modal("show");
+			});
+		</script>		
+		
+<%} else {
+	session.setAttribute("id", sid);
+}%>
 			<div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
                     <h1 class="display-3 text-white mb-3 animated slideInDown">제보</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center text-uppercase">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Service</li>
+                            <li class="breadcrumb-item"><a href="#">Report</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">제보</li>
                         </ol>
                     </nav>
                 </div>

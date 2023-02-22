@@ -55,7 +55,7 @@
 	 	function addFood(fno) {
 	 		$.ajax({
 	 			type:"post",
-	 			url: "foodAdd.jsp",
+	 			url: "foodAddAdmin.jsp",
 	 			data : {fno:fno
 	 				   
 	 			},

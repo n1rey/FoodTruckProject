@@ -14,7 +14,7 @@
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="display-3 text-white animated slideInLeft">오늘 오세요?</h1>
                         <p class="text-white animated slideInLeft mb-4 pb-2">당신 주변의 푸드 트럭을 찾아보세요</p>
-                        <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">검색</a>
+                        <a href="/user/foodtruckmain.jsp" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">검색</a>
                     </div>
                     <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                         <img class="img-fluid" src="/resources/img/pizza.png" alt="">

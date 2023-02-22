@@ -38,7 +38,7 @@
   <main>        
       <div class="row g-5 justify-content-center">
       <div class="col-md-7 col-lg-8">
-        <form class="needs-validation" action="foodAddCheckTest.jsp" method="post" enctype="multipart/form-data">
+        <form class="needs-validation" action="foodAddCheck.jsp" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label">가게명</label>
@@ -137,7 +137,7 @@
 
           <hr class="my-4"> 
 		  <input type="hidden" name="id" value="<%=sid%>">
-          <button class="w-100 btn btn-primary btn-lg" onclick="addFood();" type="button">등록</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">등록</button>
         </form>
       </div>
     </div>
@@ -164,18 +164,25 @@
 			});
 	}
 	
-	function addFood(){
-		let fnameArr = $('input[name=fname]');
-		let fprice = $('input[name=fprice]');
-		let saveData = $(fnameArr).map((idx,data)=> {
-		    return{
-		        fname : data.value,
-		        fprice : fprice[idx]
-		    }
-		});
-		let tmp = JSON.stringify(saveData.get());
-		console.log(tmp);
-	}
+// 	function addCheck () {
+// 		let frm = document.getElementById("frm");
+		
+// 		/* let fmenuArr = $('input[name=fmenu]');
+// 		let fmenus = new Array();
+// 		fmenuArr.each(function(e,data){ //
+// 		    fmenus[e] = data.value;  
+// 		});
+// 		frm.fmenu.value = fmenus;
+		
+// 		let fpriceArr = $('input[name=fprice]');
+// 		let fprices = new Array();
+// 	    fpriceArr.each(function(e,data){
+// 		    fprices[e] = data.value;  
+// 		});
+// 	    frm.fprice.value = fprices; */
+		
+// 	    frm.submit();
+// 	}
 	
 
 </script>          

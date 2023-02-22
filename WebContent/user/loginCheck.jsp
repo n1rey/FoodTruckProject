@@ -32,12 +32,12 @@
 	
 	if(result == 1) {
 		%>	
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <h1 class="modal-title fs-5" id="exampleModalLabel">로그인 실패</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="location.href='signup.jsp'"></button>
 		      </div>
 		      <div class="modal-body">
 		  아이디가 존재하지않습니다. 회원가입페이지로 이동합니다.
@@ -86,7 +86,7 @@
 	}else{
 		session.setAttribute("id", id);
 		%>
-				<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="exampleModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">

@@ -1,8 +1,10 @@
-<% 
-/* 최초작성자 : 심현민 (nimnuyhmihs@gmail.com)
-최초작성일 : 2023/2/20
+<%  
+//최초작성자 : 심현민 (nimnuyhmihs@gmail.com)
+//최초작성일 : 2023/2/16
 
-버전 기록 : 0.1(시작 23/02/20) */
+//버전 기록 : 0.1(시작 23/02/16)
+//			0.1(수정 23/02/21)
+//			0.1(종료 23/02/21)
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,7 +13,6 @@
 <%@page import="org.json.simple.*"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%
-	
 	request.setCharacterEncoding("utf-8");
 
 	String fno = request.getParameter("fno");
@@ -44,12 +45,10 @@
 	String jsonString = json.toString();
 	System.out.print(total);
 	orderDAO.order(fno, id, jsonString, total);
-	response.sendRedirect("oneStoreInfo.jsp");
+	response.sendRedirect("searchFoodtruck.jsp");
 
 	//string to json
 	//JSONParser parser = new JSONParser(); 
 	//Object obj = parser.parse( jsonString ); 
 	//JSONObject jsonObj = (JSONObject) obj; 
-	
-
 %>

@@ -12,9 +12,6 @@
 <%@page import="java.util.*"%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.Enumeration"%>
-<%@page import="org.apache.commons.fileupload.*"%>
-<%@page import="org.apache.commons.fileupload.disk.*"%>
-<%@page import="org.apache.commons.fileupload.servlet.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,7 +33,7 @@
 		%>
 
 		<!-- Modal -->
-		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false" >
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -48,7 +45,7 @@
 		        푸드 트럭 승인 관리 페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
-			        <button onclick="location.href='foodProcess.jsp'" class="btn btn-primary">메인으로 이동</button>
+			        <button onclick="location.href='foodProcess.jsp'" class="btn btn-primary">관리 페이지로 이동</button>
 
 		      </div>
 		    </div>
@@ -65,7 +62,7 @@
  	} else {
 			%>
 			<!-- Modal -->
-			<div class="modal fade" id="exampleModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal fade" id="exampleModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false" >
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">

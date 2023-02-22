@@ -11,12 +11,20 @@
 <head>
 
 <%@ include file="/header.jsp" %>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta charset="UTF-8">
 <title>내 리뷰 목록</title>
 </head>
 <body>
-
+<% String id =request.getParameter("id"); %>
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">리뷰 목록</h1>
+           
+        </div>
+    </div>
 
 
 <!-- 주문 목록 -->
@@ -46,7 +54,7 @@ function getOrderInfo(order) {
  		
  		$.ajax({
  			type:'post',
- 			url:'myReviewAll.jsp',
+ 			url:'myReviewAll.jsp?id=<%=id%>',
  			success:function(data){
  				var myReviews = JSON.parse(data.trim());
  				
@@ -118,6 +126,6 @@ function getOrderInfo(order) {
     </div>
   </div>
 </div>
-
+<%@ include file="/footer.jsp" %>
 </body>
 </html>

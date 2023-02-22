@@ -277,7 +277,7 @@
 		
 		
 
-<form action="oneStoreInfo.jsp" method="POST">
+<form action="/food/oneStoreInfo.jsp" method="POST">
 <input id="fno" name="fno" type="hidden" value="">
 <button id="infoButton" style="display:none" type="submit"></button>
 </form>	

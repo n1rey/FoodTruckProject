@@ -53,7 +53,7 @@
 	 	function searchFunction(){
 	 		$.ajax({
 				type : 'post',
-				url  : '../admin/foodListAll.jsp',
+				url  : '/admin/foodListAll.jsp',
 				success : function(data){
 					var foods = JSON.parse(data.trim());
 					
@@ -61,7 +61,7 @@
 					for(var i = 0; i < foods.length; i++) {
 						if ("<%=sid %>" == foods[i].id) {
 						str += "<tr><td>" + foods[i].fno + "&nbsp;</td>";
-	 					str += "<td><a href='../common/foodUpdate.jsp?fno="+ foods[i].fno +"'><small>(" + foods[i].fname + ")</small></a></td>";		
+	 					str += "<td><a href='/common/foodUpdate.jsp?fno="+ foods[i].fno +"'><small>(" + foods[i].fname + ")</small></a></td>";		
 	 					str += "<td><small>&nbsp;(" + foods[i].flocation + ")</small></td></tr>";		
 	 					str += "<tr><td colspan=3 height=40><hr></td></tr>";
 						}

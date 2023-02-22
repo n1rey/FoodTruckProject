@@ -76,7 +76,8 @@ String sid = (String) session.getAttribute("id");
 			<a href="" class="navbar-brand p-0">
 				<h1 class="text-primary m-0">
 					<i class="fa fa-utensils me-3"></i>FoodTruck
-				</h1> <!-- <img src="img/logo.png" alt="Logo"> -->
+				</h1>
+				<!-- <img src="img/logo.png" alt="Logo"> -->
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -90,7 +91,7 @@ String sid = (String) session.getAttribute("id");
 							data-bs-toggle="dropdown">Foodtruck</a>
 						<div class="dropdown-menu m-0 dropdown-first">
 							<a href="booking.html" class="dropdown-item">가게목록</a> <a
-								href="booking.html" class="dropdown-item">제보하기</a>
+								href="/food/info.jsp" class="dropdown-item">제보하기</a>
 						</div>
 					</div>
 					<div class="nav-item dropdown">
@@ -146,35 +147,35 @@ String sid = (String) session.getAttribute("id");
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown">Setting</a>
 						<div class="dropdown-menu m-0 dropdown-first">
-							<a href="booking.html" class="dropdown-item">프로필</a> <a
-								href="booking.html" class="dropdown-item">정보수정</a> <a
-								href="booking.html" class="dropdown-item">회원탈퇴</a>
+							<a href="#" class="dropdown-item">프로필</a> <a
+								href="#" class="dropdown-item">정보수정</a> <a
+								href="#" class="dropdown-item">회원탈퇴</a>
 							<!-- per : ceo -->
 							<%
 							if (userDAO.perCheck(sid) == 1) {
 							%>
-							<a href="booking.html" class="dropdown-item">가게등록</a> <a
-								href="booking.html" class="dropdown-item">가게상세보기</a>
+							<a href="/ceo/foodAdd.jsp" class="dropdown-item">가게등록</a> <a
+								href="/ceo/foodListCeo.jsp" class="dropdown-item">가게상세보기</a>
 							<%
 							} else if (userDAO.perCheck(sid) == 2) {
 							%>
-							<a href="booking.html" class="dropdown-item">회원관리</a>
+							<a href="#" class="dropdown-item">회원관리</a>
 							<li class="dropdown-submenu">
 								<div class="dropend">
 									<a class="dropdown-item dropdown-toggle" href="#">푸드 트럭 관리</a>
 								</div>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">가게승인</a></li>
-									<li><a class="dropdown-item" href="#">가게목록</a></li>
+									<li><a class="dropdown-item" href="/admin/foodProcess.jsp">가게승인</a></li>
+									<li><a class="dropdown-item" href="/admin/foodList.jsp">가게목록</a></li>
 								</ul>
-							</li> <a href="booking.html" class="dropdown-item">공지사항관리</a> <a
-								href="booking.html" class="dropdown-item">리뷰관리</a>
+							</li> <a href="#" class="dropdown-item">공지사항관리</a> <a
+								href="#" class="dropdown-item">리뷰관리</a>
 							<%
 							}
 							%>
 						</div>
 					</div>
-					<a href="contact.html" class="nav-item nav-link">Logout</a>
+					<a href="/user/logout.jsp" class="nav-item nav-link">Logout</a>
 					<%
 					}
 					%>
@@ -185,13 +186,15 @@ String sid = (String) session.getAttribute("id");
 						<a href="#" class="nav-link dropdown-toggle"
 							data-bs-toggle="dropdown">Login</a>
 						<div class="dropdown-menu m-0 dropdown-first">
-							<a href="booking.html" class="dropdown-item">Sign</a>
+							<a href="/user/login.jsp" class="dropdown-item">로그인</a>
+							<a href="/user/signup.jsp" class="dropdown-item">회원가입</a>
+							<a href="/main.jsp" class="dropdown-item">메인화면</a>
 						</div>
 					</div>
 					<%
 					}
 					%>
 				</div>
-				<a href="" class="btn btn-primary py-2 px-4">Search</a>
+				<a href="/food/searchFoodtruck.jsp" class="btn btn-primary py-2 px-4">Search</a>
 			</div>
 		</nav>
