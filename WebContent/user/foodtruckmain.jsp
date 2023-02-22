@@ -56,7 +56,18 @@
 </head>
 <body>
 <%@ include file ="/header.jsp" %>	
-
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">푸드트럭 메인</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                  
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+       
+        <!— Navbar & Hero End —>
 <%
 	sid = (String) session.getAttribute("id");
 	if(sid == null){
@@ -94,7 +105,7 @@
 	
 		 
 
-<br><br><br>
+
 	<div id="map" style="width:100%;height:400px;"></div>
 	<div id="foodlist"></div>
 	
@@ -265,15 +276,18 @@
 		
 		
 		
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-	
+
 <form action="oneStoreInfo.jsp" method="POST">
 <input id="fno" name="fno" type="hidden" value="">
 <button id="infoButton" style="display:none" type="submit"></button>
 </form>	
 	
  <form action="/food/info.jsp">
+ <div class="text-center">
   <button type="submit" class="btn btn-secondary btn-lg">제보하기</button>
+  </div>
   </form>
+  
+  <%@include file="/footer.jsp" %>
 </body>
 </html>

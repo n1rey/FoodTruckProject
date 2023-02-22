@@ -24,32 +24,43 @@
  <body class="text-center">
 
 <%@include file="/header.jsp" %>
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container text-center my-5 pt-5 pb-4">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">아이디 찾기</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                  
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+       
+        <!— Navbar & Hero End —>
 
-<link href="/css/sign-in.css" rel="stylesheet">
 
-	<div class="card align-middle" style="width:25rem;">
-		<div class="card-title" style="margin-top:30px;">
-            
-			<h2 class="" style="color:;"><img src=""/></h2>
-		</div>
+
         
-		<div class="card-body">
+		 <div class="container">  
+ 		<main class="form-signin w-50 m-auto">
       <form action="findidcheck.jsp" class="form-signin" method="POST">
   		
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="email" name="mail" id="mail" class="form-control" placeholder="이메일" required><br>
-        	<p class="check" id="check2">${check2}</p><br/>
+        	<p class="check" id="check2">${check2}</p>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
       
       </form>
         
 		</div>
         <div class="links">
+        <br>
             <a href="findpass.jsp">비밀번호 찾기</a> | <a href="login.jsp">로그인</a> | <a href="signup.jsp">회원가입</a>
 
         </div>
-	</div>
-   
+	</main>
+	
+	
+  <%@include file="/footer.jsp" %>
   </body>
   <script type="text/javascript">
 		
