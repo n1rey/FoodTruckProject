@@ -14,20 +14,17 @@
 <title>리뷰 수정</title>
 </head>
 <body>
-<%@ include file="/header.jsp"%>
+<%@ include file="../header.jsp"%>
 <% 
 	int rno = Integer.parseInt(request.getParameter("rno"));
 	
 	reviewDTO rDTO = reviewDAO.getMyReview(rno);
-	String id =sid= request.getParameter("id");
+	//sid = (String) session.getAttribute("id");
+	sid = "t2";//임시
+	
 	
 	%>
-<div class="container-xxl py-5 bg-dark hero-header mb-5">
-        <div class="container text-center my-5 pt-5 pb-4">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">리뷰 수정</h1>
-           
-        </div>
-    </div>
+
 
 <!-- 리뷰등록 -->
 <form action="editMyReviewProc.jsp" method="get">
@@ -76,6 +73,9 @@
 </form>
 
 </body>
-<%@ include file="/footer.jsp"%>
+<script>
 
+
+
+</script>
 </html>

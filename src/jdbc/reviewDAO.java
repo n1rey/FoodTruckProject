@@ -200,11 +200,15 @@ public class reviewDAO {
 			
 			try {
 				
-				String sql = "SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime, f.fname, o.menu, o.opro, o.total " + 
+				String sql = "SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime, " + 
+						"       f.fname, " + 
+						"       o.menu, o.opro, o.total " + 
 						"FROM `review` r " + 
-						"JOIN `order` o ON r.id = o.id " + 
 						"JOIN `food` f ON r.fno = f.fno " + 
-						"WHERE r.id =? AND o.opro = '1'"; 
+						"JOIN `order` o ON r.id = o.id " + 
+						"WHERE r.id =? " +
+					//	"LIMIT (SELECT COUNT(*) FROM `review` WHERE id = ?) '
+						"AND o.opro !='0' " ;
 
 				
 				conn = ConnectionPool.get();
