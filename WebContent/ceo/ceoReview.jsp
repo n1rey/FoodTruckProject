@@ -100,7 +100,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
                     <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">MYPAGE</a></li>
+                    <li class="breadcrumb-item"><a href="/ceo/ceoFoodList.jsp">MYPAGE</a></li>
                     <li class="breadcrumb-item text-white active" aria-current="page">내 가게 리뷰 목록</li>
                 </ol>
             </nav>

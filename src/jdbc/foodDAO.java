@@ -454,12 +454,58 @@ public class foodDAO {
 			}
 			
 		}
-		
-		
-		
-		
-		
-	
-	
-	
+
+	//가게 목록 가져오기(관리자)
+	public static String getCeoList(String sid) throws SQLException {
+		String sql = "SELECT * FROM food WHERE fpro = 1 and id=?  ORDER BY fno ASC";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sid);
+
+			rs = pstmt.executeQuery();
+
+			JSONArray foods = new JSONArray();
+
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("fno", rs.getString(1));
+				obj.put("id", rs.getString(2));
+				obj.put("fname", rs.getString(3));
+				obj.put("fphoto", rs.getString(4));
+				obj.put("flocation", rs.getString(5));
+				obj.put("ftime", rs.getString(6));
+				obj.put("fmenu", rs.getString(7));
+				obj.put("fprice", rs.getString(8));
+				obj.put("fpro", rs.getString(9));
+				obj.put("flat", rs.getString(10));
+				obj.put("flon", rs.getString(11));
+
+				foods.add(obj);
+			}
+
+			return foods.toJSONString();
+		} catch (Exception e){
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+
+	}
+
+
+
+
+
+
+
+
 }
