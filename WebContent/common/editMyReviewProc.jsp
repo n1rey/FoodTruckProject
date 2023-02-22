@@ -15,7 +15,6 @@ String rcontent = request.getParameter("rcontent");
 String rno = request.getParameter("rno");
 
 
-
 if (reviewDAO.editMyReview(point, rcontent, rno) == 1) {
 	%>
 
@@ -27,7 +26,7 @@ if (reviewDAO.editMyReview(point, rcontent, rno) == 1) {
 }else {
 	%>
 	<script>
-	  alert("리뷰 수정이 실패하였습니다.\n이전 화면으로 이동합니다."+ "po"+<%=point%>+ "po"+<%=rcontent%>+ "po"+<%=rno%> );
+	  alert("리뷰 수정이 실패하였습니다.\n이전 화면으로 이동합니다.");
 	  history.back();
 	</script>
 	<%

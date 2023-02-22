@@ -21,8 +21,8 @@ if (userDAO.edit(id, password, name, mail) == 1) {
 }else {
 	%>
 	<script>
-	  alert("회원 정보 수정이 성공하였습니다.");
-	  //window.location.href = "리다이렉트할 페이지 URL";
+	  alert("회원 정보 수정이 실패하였습니다.");
+	  window.location.href = "myInfo.jsp";
 	</script>
 	<%
 }
