@@ -21,6 +21,35 @@ import util.ConnectionPool;
 
 
 public class userDAO {
+
+	public static int perCheck(String id) throws SQLException, NamingException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT per FROM user WHERE id=?";
+
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				if(rs.getString("per").equals("ceo")) {
+					return 1;//ceo일 때 1
+				} else if(rs.getString("per").equals("user")) {
+					return 0;//user일 때 0
+				}
+			}
+
+		} finally {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+		return 2;//admin
+	}
 	
 	public static int perCheck(String id) throws SQLException, NamingException {
 		Connection conn = null;
@@ -225,7 +254,7 @@ public class userDAO {
 			String sql = "insert into user(?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getId());
-			pstmt.setString(2, dto.getMname());
+			pstmt.setString(2, dto.getName());
 			pstmt.setString(3, dto.getMail());
 			pstmt.executeLargeUpdate();
 			con.close();
@@ -243,7 +272,7 @@ public class userDAO {
 			while(rs.next()) {
 				userDTO dto = new userDTO();
 				dto.setId(rs.getString(1));
-				dto.setMname(rs.getString(2));
+				dto.setName(rs.getString(2));
 				dto.setMail(rs.getString(3));
 				userList.add(dto);
 			}
@@ -274,7 +303,7 @@ public class userDAO {
 				userDTO.setId(rs.getString(1));
 				userDTO.setPassword(rs.getString(2));
 				userDTO.setMail(rs.getString(3));
-				userDTO.setMname(rs.getString(4));
+				userDTO.setName(rs.getString(4));
 			}
 
 			return userDTO;

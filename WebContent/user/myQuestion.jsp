@@ -39,17 +39,27 @@
 </head>
 <body>
     <%@ include file="/header.jsp" %>
-    <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">내 문의</h1>
-            <p class="col-md-8 fs-4">문의 사항에 대한 처리 여부를 알려드립니다. </p>
+    <div class="container-xxl py-5 bg-dark hero-header mb-5">
+        <div class="container text-center my-5 pt-5 pb-4">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">내 문의</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Community</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">내 문의</li>
+                </ol>
+            </nav>
         </div>
     </div>
-    <div class="container">
-        <div class="row mb-3 text-center">
-            <div class="col-1 themed-grid-col">번호</div>
-            <div class="col-8 themed-grid-col">제목</div>
-            <div class="col-3 themed-grid-col">처리 여부</div>
+    </div>
+
+    <div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row mb-3 text-center">
+                <div class="col-1 themed-grid-col">번호</div>
+                <div class="col-8 themed-grid-col">제목</div>
+                <div class="col-3 themed-grid-col">처리 여부</div>
+            </div>
         </div>
         <hr>
         <div class="container" id="question">
@@ -73,6 +83,8 @@
             </ul>
         </nav>
     </div>
+
+    <%@ include file="/footer.jsp" %>
 
     <script>
 
