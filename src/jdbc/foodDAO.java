@@ -164,43 +164,83 @@ public class foodDAO {
 	      }
 	   }
 	
-	//자신의 푸드 트럭 가게 보기
-	public static ArrayList<foodDTO> getList(String id) throws NamingException, SQLException{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			String sql = "SELECT * FROM food WHERE id = ?";
-			conn = ConnectionPool.get();
-			pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
+		//자신의 푸드 트럭 가게 보기 JSON
+		public static String getMyList(String fno) throws NamingException, SQLException{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				String sql = "SELECT * FROM food WHERE fno = ?";
+				conn = ConnectionPool.get();
+				pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, fno);
+					
+				rs = pstmt.executeQuery();
 				
-			rs = pstmt.executeQuery();
-			
-			ArrayList<foodDTO> foods = new ArrayList<foodDTO>();
-			
-			while(rs.next()) {
-				foods.add(new foodDTO(rs.getString(1),
-									  rs.getString(2),
-									  rs.getString(3),
-									  rs.getString(4),
-									  rs.getString(5),
-									  rs.getString(6),
-									  rs.getString(7),
-									  rs.getString(8),
-									  rs.getString(9),
-									  rs.getString(10),
-									  rs.getString(11))
-						);
+				JSONArray foods = new JSONArray();
+				
+				while(rs.next()) {
+					JSONObject obj = new JSONObject();
+					obj.put("fno", rs.getString(1));
+					obj.put("id", rs.getString(2));
+					obj.put("fname", rs.getString(3));
+					obj.put("fphoto", rs.getString(4));
+					obj.put("flocation", rs.getString(5));
+					obj.put("ftime", rs.getString(6));
+					obj.put("fmenu", rs.getString(7));
+					obj.put("fprice", rs.getString(8));
+					obj.put("fpro", rs.getString(9));
+					obj.put("flat", rs.getString(10));
+					obj.put("flon", rs.getString(11));
+					
+					foods.add(obj);
+				}
+				
+				return foods.toJSONString();
+			} finally {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
 			}
-			
-			return foods;
-		} finally {
-			if(rs != null) rs.close();
-			if(pstmt != null) pstmt.close();
-			if(conn != null) conn.close();
 		}
-	}
+		
+		//푸드 트럭 상세 정보 보기
+		public static ArrayList<foodDTO> getDetail(String fno) throws NamingException, SQLException{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				String sql = "SELECT * FROM food WHERE fno = ?";
+				conn = ConnectionPool.get();
+				pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, fno);
+					
+				rs = pstmt.executeQuery();
+				
+				ArrayList<foodDTO> foods = new ArrayList<foodDTO>();
+				
+				while(rs.next()) {
+					foods.add(new foodDTO(rs.getString(1),
+										  rs.getString(2),
+										  rs.getString(3),
+										  rs.getString(4),
+										  rs.getString(5),
+										  rs.getString(6),
+										  rs.getString(7),
+										  rs.getString(8),
+										  rs.getString(9),
+										  rs.getString(10),
+										  rs.getString(11))
+							);
+				}
+				
+				return foods;
+			} finally {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}
+		}
 	
 
 
@@ -377,7 +417,48 @@ public class foodDAO {
 		
 	}		
 	
-	
+	//주소에 검색 키워드 포함 된 가게 목록 
+		public static String search(String search) throws NamingException, SQLException {	
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "SELECT * FROM food WHERE fname LIKE ? OR flocation LIKE ?";
+				
+				conn = ConnectionPool.get();
+				pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, '%'+search+'%');
+					pstmt.setString(2, '%'+search+'%');
+				rs = pstmt.executeQuery();
+				
+				JSONArray results = new JSONArray();
+				
+				while(rs.next()) {
+					JSONObject obj = new JSONObject();
+					obj.put("fno", rs.getString(1));
+					obj.put("fname", rs.getString(3));
+					obj.put("fphoto", rs.getString(4));
+					obj.put("flocation", rs.getString(5));
+					obj.put("flat", rs.getString(10));
+					obj.put("flon", rs.getString(11));
+					
+					results.add(obj);
+				}
+				
+				return results.toJSONString();
+				
+			} finally {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}
+			
+		}
+		
+		
+		
+		
+		
 	
 	
 	

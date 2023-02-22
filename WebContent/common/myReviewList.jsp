@@ -1,4 +1,3 @@
-
 <!--  
 최초작성자 : 박성준 (sjpttr927@gmail.com)
 최초작성일 : 2023/2/16
@@ -23,14 +22,7 @@
 <!-- 주문 목록 -->
 <div class="container">
 <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">가게 이름</th>
-        <th scope="col">o주문확인</th>
-        <th scope="col">f메뉴</th>
-        <th scope="col">f가격</th>
-      </tr>
-    </thead>
+    
 	<tbody id="ajaxTable">
     </tbody>
 </table>
@@ -40,7 +32,13 @@
 <script>
 function getOrderInfo(order) {
 	  var modalBody = document.querySelector(".modal-body");
-	  modalBody.innerHTML = "주문가게명: " + order.fname + "<br>주문자: " + order.id + "<br>주문확인: " + order.fpro + "<br>주문한 메뉴: " + order.fmenu + "<br>합계: " + order.fprice;
+	  modalBody.innerHTML = "주문가게명: " + order.fname + "<br>별점: " + order.point + 
+	  					"<br>주문확인: " + order.opro + "<br>리뷰 내용: " + order.rcontent + 
+	  					"<br>합계: " + order.total +
+	  					"<div class='modal-footer'>" +
+	  					"<input type='button' class='btn btn-success' onclick='editReview("+order.rno +")' value='수정'/>" +
+	  					"<input type='button' class='btn btn-danger'  onclick='deleteReview("+order.rno+")' value='삭제'/>";
+	  
 	}
 
 
@@ -55,17 +53,48 @@ function getOrderInfo(order) {
  				var str = "";
  				for(var i = 0; i < myReviews.length; i++){
  					
- 					str += "<tr><td> 주문가게명:" + myReviews[i].fname +"주문자"+ myReviews[i].id + "</td>";
- 					str += "<td> 주문확인:" + myReviews[i].fpro + "</td>";
- 					str += "<td> 주문한 메뉴:" + myReviews[i].fmenu + "</td>";
- 					str += "<td><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='getOrderInfo(" + JSON.stringify(myReviews[i]) + ")'>리뷰 상세보기</button></td></tr>";
-
- 				    
- 				    
+ 					str += "<tr><td><div><img src='../img/bookmark-heart-fill.svg' style='width:70px; height:40px; float:right;' class='rounded'>"; // 음식점 이미지
+					str += "<strong>"+myReviews[i].fname+"</strong>"; //음식점 이름
+					str += "<br>주문한 메뉴:" +myReviews[i].menu+""; 
+					str += "<br>작성일자:" +(myReviews[i].rupdatetime == null ? myReviews[i].rregtime : myReviews[i].rupdatetime) ; 
+					str += "<br>합계:" +myReviews[i].total+""; //total.
+					str += "<br><button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick='getOrderInfo(" + JSON.stringify(myReviews[i]) + ")'>리뷰 상세보기</button>";
+				//	str += (orders[i].opro == 0 ? "<button style='float:right' class='badge text-bg-danger' onclick='delOrder("+orders[i].ono+")'>주문 취소</button></span>" : " ");
+				    str += "</div><td></tr></div>";
+				    
  				} $("#ajaxTable").html(str);
- 			}
+ 			},
+ 			 error : function(request, status, error) { // 결과 에러 콜백함수
+ 		        console.log(error)
+ 		    }
  		});
  	}
+	
+	function deleteReview(rno) {
+	  $.ajax({
+	    type: 'get',
+	    url: 'deleteMyReview.jsp',
+	    data: {rno: rno},
+	    success: function(response) {
+	    	 $('#exampleModal').modal('hide');
+	    	 listFunction();
+	    },
+	    error: function(xhr, status, error) {
+	    }
+	  });
+	}
+	function editReview(rno) {
+		  $.ajax({
+		    type: 'POST',
+		    url: 'editMyReview.jsp',
+		    data: { rno: rno },
+		    success: function(response) {
+		      window.location.href = 'editMyReview.jsp?rno=' + rno;
+		    },
+		    error: function(xhr, status, error) {
+		    }
+		  });
+		}
 	
 	window.onload = function() {
 		listFunction();
@@ -84,11 +113,8 @@ function getOrderInfo(order) {
       </div>
       <div class="modal-body">
   "내용표시"
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" href="myorder.jsp">리뷰 수정</button>
-        <button type="button" class="btn btn-danger" href="#">삭제</button>
-      </div>
+  	  </div>
+      
     </div>
   </div>
 </div>

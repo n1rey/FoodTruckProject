@@ -5,6 +5,7 @@
 버전  기록 : 0.1(시작 23/02/20) 
           0.5(기본작업 23/02/20) 
           1.0(1차 완성 23/02/20)
+          2.0(2차 완성 23/02/22)
  -->
 
 <%@page import="util.FileUtil"%>
@@ -21,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>푸드 트럭 삭제 실패</title>
 </head>
 <body>
 <%@ include file = "/header.jsp" %> 
@@ -56,6 +57,6 @@
 			});
 		</script>	
 
-
+<%@ include file = "/footer.jsp" %> 
 </body>
 </html>
