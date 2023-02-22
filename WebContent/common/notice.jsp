@@ -83,7 +83,7 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">공지사항</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/main.jsp">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item text-white active" aria-current="page">Booking</li>
                 </ol>
@@ -92,35 +92,35 @@
     </div>
     </div>
 
-    <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row mb-3 text-center">
                 <div class="col-1 themed-grid-col">번호</div>
                 <div class="col-8 themed-grid-col">제목</div>
                 <div class="col-3 themed-grid-col">작성일</div>
             </div>
-            <hr>
-            <div class="container" id="notice">
-
-            </div>
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item prev" style="display: none;">
-                        <a class="page-link" href="?page=1"><<</a>
-                    </li>
-                    <li class="page-item prev" style="display: none;">
-                        <a class="page-link prev"><</a>
-                    </li>
-                    <li id="pageNumber"></li>
-                    <li class="page-item next" style="display: inline-block;">
-                        <a class="page-link next" href="?page=">></a>
-                    </li>
-                    <li class="page-item next" style="display: inline-block;">
-                        <a class="page-link" href="?page=<%= notiDAO.paging() %>">>></a>
-                    </li>
-                </ul>
-            </nav>
         </div>
+        <hr>
+        <div class="container" id="notice">
+
+        </div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item prev" style="display: none;">
+                    <a class="page-link" href="?page=1"><<</a>
+                </li>
+                <li class="page-item prev" style="display: none;">
+                    <a class="page-link prev"><</a>
+                </li>
+                <li id="pageNumber"></li>
+                <li class="page-item next" style="display: inline-block;">
+                    <a class="page-link next" href="?page=">></a>
+                </li>
+                <li class="page-item next" style="display: inline-block;">
+                    <a class="page-link" href="?page=<%= notiDAO.paging() %>">>></a>
+                </li>
+            </ul>
+        </nav>
     </div>
     <%@ include file="/footer.jsp" %>
 </body>
