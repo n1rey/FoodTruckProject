@@ -42,8 +42,9 @@
 	String flat = "";
 	String flon = "";
 	
-	String path = application.getRealPath(java.io.File.separator);
-	MultipartRequest multipartRequest = new MultipartRequest(request,path,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
+	String uploadPath = "C:\\develop\\project\\FoodTruckProject\\WebContent\\img"; //개인마다 WebContent 아래에 img 폴더 경로로 지정해야 함
+	System.out.println(uploadPath);
+	MultipartRequest multipartRequest = new MultipartRequest(request,uploadPath,1024*1024*10,"UTF-8",new DefaultFileRenamePolicy());
 	
 	fname 	  = multipartRequest.getParameter("fname");
 	id 	  	  = multipartRequest.getParameter("id");
@@ -61,8 +62,8 @@
 	ftime = time1 + time2 + "&" + time3 + time4;
 	
  	if((foodDAO.inserttemp(fname, id, fphoto, flocation, ftime, fmenu, fprice, flat, flon) == 1) ? true : false) {
+		String userFileName = multipartRequest.getFilesystemName("fphoto");
 		%>
-
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-bs-backdrop="static" data-bs-keyboard="false">
 		  <div class="modal-dialog">
@@ -88,6 +89,7 @@
 				$("#exampleModal1").modal("show");
 			});
 		</script>	
+
 	<% 		
 		
 	} else {

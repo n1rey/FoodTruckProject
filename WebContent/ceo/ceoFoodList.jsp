@@ -14,6 +14,13 @@
         .orderInfo {
             margin-right: 5px;
         }
+
+        .foodText {
+            margin-top : 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 
     <script>
@@ -38,8 +45,8 @@
 
                     for(var i = 0; i < foods.length; i++){
                         str += "<div class='row mb-3 text-center'>";
-                        str += "<div class='col-3 themed-grid-col'>" + foods[i].fname + "</div>";
-                        str += "<div class='col-4 themed-grid-col'>" + foods[i].flocation + "</div>";
+                        str += "<div class='col-3 themed-grid-col foodText'>" + foods[i].fname + "</div>";
+                        str += "<div class='col-4 themed-grid-col foodText'>" + foods[i].flocation + "</div>";
                         str += "<a class='col-2 themed-grid-col btn btn-info rounded-pill orderInfo' href='/ceo/ceoOrder.jsp?page=1&fno=" + foods[i].fno + "'>주문 내역</a>";
                         str += "<a class='col-2 themed-grid-col btn btn-warning rounded-pill' href='/ceo/ceoReview.jsp?fno=" + foods[i].fno + "'>리뷰</a></div>";
                     }

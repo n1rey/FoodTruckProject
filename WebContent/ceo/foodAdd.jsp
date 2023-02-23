@@ -63,6 +63,26 @@
                 Please enter your shipping address.
               </div>
             </div>
+            
+           <div class="col-12">
+              <label class="form-label">위도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flat" required>
+              </div>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            
+           <div class="col-12">
+              <label class="form-label">경도</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" name="flon" required>
+              </div>
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>            
 
             <div class="col-12">
               <label class="form-label">영업 시간</label>
