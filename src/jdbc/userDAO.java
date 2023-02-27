@@ -38,9 +38,9 @@ public class userDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				if(rs.getString("per").equals("ceo")) {
+				if(rs.getString(2).equals("ceo")) {
 					return 1;//ceo일 때 1 
-				} else if(rs.getString("per").equals("user")) {
+				} else if(rs.getString(2).equals("user")) {
 					return 0;//user일 때 0
 				}
 			}
