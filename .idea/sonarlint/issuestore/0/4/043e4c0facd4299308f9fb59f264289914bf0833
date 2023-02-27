@@ -1,0 +1,15 @@
+
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8äÌÑÀç0
+
+java:S1488‘"^Immediately return this expression instead of assigning it to the temporary variable "result".(Òà±™şÿÿÿÿ8çÌÑÀç0
+h	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ãğ·8éÌÑÀç0
+l
+java:S2095M"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8ĞÁúÀç0
+l
+java:S2095""OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8ÃÏÑÀç0
+l
+java:S2095o"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8ÄÏÑÀç0
+Z
+java:S2589°"7Remove this expression which always evaluates to "true"(â¹şÃùÿÿÿÿ8ÇÏÑÀç0
+V
+java:S1118":Add a private constructor to hide the implicit public one.(Ãğ·8ÊÏÑÀç0

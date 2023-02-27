@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="FoodTruck:Web" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b497241d-638b-445c-a63a-19934b79fd2a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/WebContent/common/notiInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/WEB-INF/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/foodList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/foodList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/foodProDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/foodProDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/foodProcess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/foodProcess.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/myInfo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/notiDel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/notiDel.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/notiEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/notiEdit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/notiInsert.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/notiInsert.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/notiUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/notiUpdate.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/notidelete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/notidelete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/oneStoreInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/oneStoreInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/oneStoreInfoAll.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/oneStoreInfoAll.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/userDelete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/userDelete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/admin/userEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/admin/userEdit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/ceoFoodList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/ceo/ceoFoodList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/ceoOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/ceo/ceoOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/ceoReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/ceo/ceoReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/foodAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/ceo/foodAdd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/foodAddCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/ceo/foodAddCheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/ceo/foodListCeo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/deleteMyOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/deleteMyOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/editMyReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/editMyReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/editMyReviewProc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/editMyReviewProc.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/foodDelFail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/foodDelFail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/foodDelSuccess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/foodDelSuccess.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/foodUpdate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/foodUpdate.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/myInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/myInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/myOrderList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/myOrderList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/myReviewAll.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/myReviewAll.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/myReviewList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/myReviewList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/noti.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/common/notice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/common/notice.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/delete.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/infoadd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/infoadd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/infoall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/infoall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/infodel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/infodel.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/infoedit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/infoedit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/infoeditproc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/infoeditproc.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/oneStoreInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/oneStoreInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/oneStoreInfoAll.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/oneStoreInfoAll.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/order.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/orderCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/orderCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/review.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/reviewadd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/reviewadd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/reviewall.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/reviewall.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/searchFoodtruck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/searchFoodtruck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/food/searchProc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/food/searchProc.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/img/building.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/about-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/about-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/about-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/about-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/menu-8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/team-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/team-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/team-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/team-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/testimonial-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/testimonial-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/testimonial-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/testimonial-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/img/video.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/findid.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/findid.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/findidcheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/findidcheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/findpass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/findpass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/findpasscheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/findpasscheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/foodtruckmain.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/foodtruckmain.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/loginCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/loginCheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/loginKakaoCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/loginKakaoCheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/logout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/myInfo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/myQuestion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/myQuestion.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/questionAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/questionAdd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/questionSend.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/questionSend.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/user/signupCheck.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/user/signupCheck.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/userInfo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/foodDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/foodDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/notiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/notiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/orderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/orderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/questionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/questionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/reviewDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/reviewDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jdbc/userDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jdbc/userDAO.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+        <option value="JSP File" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="sbKang" />
+                    <option name="lastUsedInstant" value="1677037903" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1677037464" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LioI8812oFRmjU1yjbPAlCTmPr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/develop/project/FoodTruckProject/WebContent/common&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.16210938&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\common" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\ceo" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\user" />
+      <recent name="C:\develop\project\FoodTruckProject\build\classes" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\WEB-INF\lib" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\ceo" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\common" />
+      <recent name="C:\develop\project\FoodTruckProject\src" />
+      <recent name="C:\develop\project\FoodTruckProject\WebContent\jdbc" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="smtp" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.78">
+    <configuration name="Tomcat 8.5.78" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.78" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="FoodTruck:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="3a5ff646-33c8-45ff-97d1-597dfb6bd50e" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="10189" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FoodTruck:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.68" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.68" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="FoodTruck:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="e5092581-e734-4432-82df-c1d9a35236c1" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="3799" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FoodTruck:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Tomcat 9.0.68" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.78" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b497241d-638b-445c-a63a-19934b79fd2a" name="Changes" comment="" />
+      <created>1676363184953</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676363184953</updated>
+      <workItem from="1676363186758" duration="1797000" />
+      <workItem from="1676419444511" duration="3510000" />
+      <workItem from="1676425210699" duration="137000" />
+      <workItem from="1676425357497" duration="1166000" />
+      <workItem from="1676426537179" duration="5793000" />
+      <workItem from="1676432398309" duration="2199000" />
+      <workItem from="1676438027121" duration="16000" />
+      <workItem from="1676438054039" duration="2093000" />
+      <workItem from="1676440358544" duration="7677000" />
+      <workItem from="1676448496799" duration="1867000" />
+      <workItem from="1676450978540" duration="186000" />
+      <workItem from="1676506175605" duration="20355000" />
+      <workItem from="1676536172093" duration="1225000" />
+      <workItem from="1676537431579" duration="517000" />
+      <workItem from="1676592248676" duration="12951000" />
+      <workItem from="1676605543352" duration="15455000" />
+      <workItem from="1676624471777" duration="18000" />
+      <workItem from="1676624559190" duration="480000" />
+      <workItem from="1676852405004" duration="20982000" />
+      <workItem from="1676881590782" duration="134000" />
+      <workItem from="1676882116362" duration="172000" />
+      <workItem from="1676938321847" duration="300000" />
+      <workItem from="1676938644483" duration="846000" />
+      <workItem from="1676939513914" duration="10494000" />
+      <workItem from="1676957235611" duration="3355000" />
+      <workItem from="1676963509328" duration="375000" />
+      <workItem from="1676967035565" duration="268000" />
+      <workItem from="1676967554579" duration="1145000" />
+      <workItem from="1677024293329" duration="10377000" />
+      <workItem from="1677037420446" duration="735000" />
+      <workItem from="1677039334522" duration="215000" />
+      <workItem from="1677040240532" duration="137000" />
+      <workItem from="1677040430784" duration="365000" />
+      <workItem from="1677040821246" duration="3000" />
+      <workItem from="1677040877098" duration="116000" />
+      <workItem from="1677041821088" duration="116000" />
+      <workItem from="1677042277419" duration="8000" />
+      <workItem from="1677042735240" duration="561000" />
+      <workItem from="1677043393018" duration="86000" />
+      <workItem from="1677043702648" duration="2357000" />
+      <workItem from="1677046076954" duration="915000" />
+      <workItem from="1677047100510" duration="6689000" />
+      <workItem from="1677054425294" duration="785000" />
+      <workItem from="1677055540373" duration="1338000" />
+      <workItem from="1677060204754" duration="34000" />
+      <workItem from="1677110136801" duration="6794000" />
+      <workItem from="1677117201563" duration="95000" />
+      <workItem from="1677136959404" duration="292000" />
+      <workItem from="1677137857058" duration="3911000" />
+      <workItem from="1677142665015" duration="1233000" />
+      <workItem from="1677196425495" duration="7588000" />
+      <workItem from="1677207975463" duration="219000" />
+      <workItem from="1677208881030" duration="4746000" />
+      <workItem from="1677215142260" duration="673000" />
+      <workItem from="1677215897188" duration="359000" />
+      <workItem from="1677216569499" duration="417000" />
+      <workItem from="1677217802086" duration="517000" />
+      <workItem from="1677223303612" duration="189000" />
+      <workItem from="1677223707411" duration="92000" />
+      <workItem from="1677224400093" duration="496000" />
+      <workItem from="1677225080512" duration="38000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

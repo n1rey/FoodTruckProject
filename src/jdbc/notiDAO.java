@@ -84,7 +84,7 @@ public class notiDAO {
             }
             totalPage = totalContent / 10; // 최종 전체 페이지 갯수 (5개 단위로 나눈다)
             if (totalContent % 10 > 0) {
-                totalPage++;	// 나머지가 있다면 1을 더해줌
+                totalPage++;   // 나머지가 있다면 1을 더해줌
             }
             if(totalPage == 0) {
                 totalPage = 1;

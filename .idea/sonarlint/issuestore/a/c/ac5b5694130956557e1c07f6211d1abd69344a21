@@ -1,0 +1,10 @@
+
+€
+java:S1488%"^Immediately return this expression instead of assigning it to the temporary variable "result".(Òà±™şÿÿÿÿ8£õÁêæ0
+€
+java:S1488a"^Immediately return this expression instead of assigning it to the temporary variable "result".(Òà±™şÿÿÿÿ8¤õÁêæ0
+€
+java:S1488z"^Immediately return this expression instead of assigning it to the temporary variable "result".(Òà±™şÿÿÿÿ8¦õÁêæ0
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÁÜÄèüÿÿÿÿ8©õÁêæ0
+\
+java:S1118":Add a private constructor to hide the implicit public one.(ÁÜÄèüÿÿÿÿ8öõÁêæ0

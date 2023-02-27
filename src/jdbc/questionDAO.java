@@ -47,7 +47,7 @@ public class questionDAO {
         Map<String, String> emailInfo = new HashMap<String, String>();
 
         emailInfo.put("from", "qz6789.sk@gmail.com"); //보내는 사람
-        emailInfo.put("to", "qeqe6789@naver.com"); //받는사람
+        emailInfo.put("to", "idtictactoc@naver.com"); //받는사람
         emailInfo.put("subject", qtitle); //메일 제목
 
         String content = qcontent.replace("\r\n", "<br/>"); //줄바꿈을 html 형식으로 변환

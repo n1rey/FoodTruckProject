@@ -192,56 +192,48 @@ public class reviewDAO {
 		}
 	}
 	//내 리뷰 목록
-		public static String getMyReviewList(String id) throws NamingException, SQLException {
-			
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			
-			try {
+			public static String getMyReviewList(String id) throws NamingException, SQLException {
 				
-				String sql = "SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime, " + 
-						"       f.fname, " + 
-						"       o.menu, o.opro, o.total " + 
-						"FROM `review` r " + 
-						"JOIN `food` f ON r.fno = f.fno " + 
-						"JOIN `order` o ON r.id = o.id " + 
-						"WHERE r.id =? " +
-					//	"LIMIT (SELECT COUNT(*) FROM `review` WHERE id = ?) '
-						"AND o.opro !='0' " ;
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				try {
+					
+					String sql = " SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime, r.id, f.fname " +
+							" FROM `review` r " +
+							" JOIN food f ON f.fno=r.fno " +
+							" WHERE r.id = ? " +
+							" ORDER BY r.rno DESC ";
 
-				
-				conn = ConnectionPool.get();
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				
-				rs = pstmt.executeQuery();
-				
-				JSONArray reviews = new JSONArray();
-				
-				while(rs.next()) {
-					JSONObject obj = new JSONObject();
-					obj.put("rno", rs.getString(1));
-					obj.put("fno", rs.getString(2));
-					obj.put("point", rs.getString(3));
-					obj.put("rcontent", rs.getString(4));
-					obj.put("rregtime", rs.getString(5));
-					obj.put("rupdatetime", rs.getString(6));
 					
-					obj.put("fname", rs.getString(7));
-					obj.put("menu", rs.getString(8));
-					obj.put("opro", rs.getString(9));
-					obj.put("total", rs.getString(10));
-					//추가 하고 싶은 데이터 열 추가해서 가져오면 됨.
+					conn = ConnectionPool.get();
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
 					
-					reviews.add(obj);
+					rs = pstmt.executeQuery();
+					
+					JSONArray reviews = new JSONArray();
+					
+					while(rs.next()) {
+						JSONObject obj = new JSONObject();
+						obj.put("rno", rs.getString(1));
+						obj.put("fno", rs.getString(2));
+						obj.put("point", rs.getString(3));
+						obj.put("rcontent", rs.getString(4));
+						obj.put("rregtime", rs.getString(5));
+						obj.put("rupdatetime", rs.getString(6));
+						obj.put("id", rs.getString(7));
+						obj.put("fname", rs.getString(8));
+						
+						reviews.add(obj);
+					}
+					return reviews.toJSONString();
+				} finally {
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
 				}
-				return reviews.toJSONString();
-			} finally {
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
 			}
-		}
 		// 내 리뷰 업뎃 -별점, 내용, 번호, 시간
 		public static int editMyReview(String point, String rcontent, String rno) throws NamingException, SQLException {
 			Connection conn = null;
@@ -249,9 +241,9 @@ public class reviewDAO {
 			conn = ConnectionPool.get();
 			
 			try {
-				String sql =" UPDATE review r "+
-							" SET r.`point`=?, r.rcontent=? "+
-							" WHERE r.rno=? ";
+				String sql =" UPDATE review "+
+							" SET point=?, rcontent=?  "+ 
+							" WHERE rno=? ";
 
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, point);
@@ -286,32 +278,32 @@ public class reviewDAO {
 		}
 		//내 리뷰 찾기 rno 값
 		public static reviewDTO getMyReview(int rno) throws NamingException, SQLException {
-		    Connection conn = null;
-		    PreparedStatement pstmt = null;
-		    ResultSet rs = null;
-		    reviewDTO rDTO = null; 
-		    try {
-		        conn = ConnectionPool.get();
-		        String sql = "SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime " + 
-		                     "FROM review r " +
-		                     "WHERE r.rno = ?";
-		        pstmt = conn.prepareStatement(sql);
-		        pstmt.setInt(1, rno);
-		        rs = pstmt.executeQuery();
-		        if (rs.next()) {
-		            rDTO = new reviewDTO();
-		            rDTO.setRno(rs.getString("rno"));
-		            rDTO.setFno(rs.getString("fno"));
-		            rDTO.setPoint(rs.getString("point"));
-		            rDTO.setRcontent(rs.getString("rcontent"));
-		            rDTO.setRregtime(rs.getString("rregtime"));
-		            rDTO.setRupdatetime(rs.getString("rupdatetime"));
-		        }
-		    } finally {
-		        if (rs != null) rs.close();
-		        if (pstmt != null) pstmt.close();
-		        if (conn != null) conn.close();
-		    }
-		    return rDTO; 
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			reviewDTO rDTO = null; 
+			try {
+				conn = ConnectionPool.get();
+				String sql = "SELECT r.rno, r.fno, r.point, r.rcontent, r.rregtime, r.rupdatetime " + 
+							 "FROM review r " +
+							 "WHERE r.rno = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, rno);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					rDTO = new reviewDTO();
+					rDTO.setRno(rs.getString("rno"));
+					rDTO.setFno(rs.getString("fno"));
+					rDTO.setPoint(rs.getString("point"));
+					rDTO.setRcontent(rs.getString("rcontent"));
+					rDTO.setRregtime(rs.getString("rregtime"));
+					rDTO.setRupdatetime(rs.getString("rupdatetime"));
+				}
+			} finally {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			}
+			return rDTO; 
 		}
 }

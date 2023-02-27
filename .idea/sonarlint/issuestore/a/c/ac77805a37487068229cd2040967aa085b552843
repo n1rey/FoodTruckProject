@@ -1,0 +1,33 @@
+
+u
+java:S2293Ü"YReplace the type specification in this constructor call with the diamond operator ("<>").(ğå‰ûşÿÿÿÿ
+b
+java:S1192½"FDefine a constant instead of duplicating this literal "ftime" 6 times.(Å«ÊÚşÿÿÿÿ
+]
+java:S1192º"FDefine a constant instead of duplicating this literal "fname" 7 times.(ê„–
+^
+java:S1192»"GDefine a constant instead of duplicating this literal "fphoto" 6 times.(·¥‘á
+a
+java:S1192¼"JDefine a constant instead of duplicating this literal "flocation" 7 times.(œÖøç
+^
+java:S1192¿"GDefine a constant instead of duplicating this literal "fprice" 6 times.(şçİ†
+b
+java:S1192¾"FDefine a constant instead of duplicating this literal "fmenu" 5 times.(ÉÒ›’ùÿÿÿÿ
+Œ
+java:S1319Ğ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(÷§æ–ùÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(”âù–şÿÿÿÿ
+m
+java:S2095×"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8‘ùœéç0
+f
+java:S2095¯"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù
+m
+java:S2095¨"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8 Âç0
+m
+java:S2095ƒ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8‘ùœéç0
+m
+java:S2095Ô"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8‘ùœéç0
+V	java:S107"<Method has 9 parameters, which is greater than 7 authorized.(õÃ‹Çûÿÿÿÿ
+P	java:S1071"<Method has 9 parameters, which is greater than 7 authorized.(Ø†„
+U
+java:S1118":Add a private constructor to hide the implicit public one.(”âù–şÿÿÿÿ
+V	java:S125t"<This block of commented-out lines of code should be removed.(Ğ‰“Ûıÿÿÿÿ

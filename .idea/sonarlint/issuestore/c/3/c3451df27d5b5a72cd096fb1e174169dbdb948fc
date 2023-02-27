@@ -1,0 +1,25 @@
+
+h	java:S112ê"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ûãêç0
+M
+java:S3740ñ"/Provide the parametrized type for this generic.(àâú8şãêç0
+
+java:S1319ğ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ïÓ´«8‚ãêç0
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ˆÒïÏıÿÿÿÿ8ÇÓéç0
+l
+java:S2095\"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8¿É†è0
+m
+java:S2095Ú"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8Ÿ¿É†è0
+m
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8¿É†è0
+m
+java:S2095û"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8Ÿ¿É†è0
+l
+java:S2095x"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8Ÿ¿É†è0
+m
+java:S2095¶"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8Ÿ¿É†è0
+m
+java:S2095“"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8Ÿ¿É†è0
+I
+java:S1168Ğ"+Return an empty collection instead of null.(¥¹ï8°¿É†è0
+[
+java:S1117ñ"=Rename "userList" which hides the field declared at line 206.(àâú8´¿É†è0

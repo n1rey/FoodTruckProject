@@ -1,0 +1,18 @@
+
+_
+java:S1192C"IDefine a constant instead of duplicating this literal "rregtime" 4 times.(ÒÖÔ
+b
+java:S1192k"LDefine a constant instead of duplicating this literal "rupdatetime" 3 times.(¹˜³„
+\
+java:S1192A"FDefine a constant instead of duplicating this literal "point" 4 times.(ï™ıÖ
+_
+java:S1192B"IDefine a constant instead of duplicating this literal "rcontent" 4 times.(æÒİæ
+y
+java:S1488!"^Immediately return this expression instead of assigning it to the temporary variable "result".(Òà±™şÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Óåİ¥ùÿÿÿÿ
+m
+java:S2095¢"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ä×Óù8È¥±Şç0
+Z
+java:S2589"7Remove this expression which always evaluates to "true"(â¹şÃùÿÿÿÿ8È¥±Şç0
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Óåİ¥ùÿÿÿÿ

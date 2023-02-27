@@ -24,9 +24,6 @@
         </nav>
     </div>
 </div>
-</div>
-<div class="container-xxl py-5 px-5 wow fadeInUp" data-wow-delay="0.1s">
-<div class="container">
     <form id="requestForm" action="notiInsert.jsp" method="post">
         <h3 class="text-center fw-bold">공지사항</h3>
         <hr>

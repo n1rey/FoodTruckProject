@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FoodTruck:Web">
+    <output-path>$PROJECT_DIR$/build/artifacts/FoodTruck_Web</output-path>
+    <root id="archive" name="FoodTruck_Web.war">
+      <element id="artifact" artifact-name="FoodTruck:Web exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="lib1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

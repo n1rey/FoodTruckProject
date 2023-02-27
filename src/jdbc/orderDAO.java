@@ -59,6 +59,7 @@ public class orderDAO {
 					reviews.add(obj);
 				}
 				return reviews.toJSONString();
+
 			} finally {
 				if(pstmt != null) pstmt.close();
 				if(conn != null) conn.close();
@@ -68,18 +69,19 @@ public class orderDAO {
 		public static int deleteMyOrder(int ono) throws NamingException, SQLException {
 			  Connection conn = null;
 			  PreparedStatement pstmt = null;
-			 
 			  
 			  try {
 				String sql = "DELETE FROM `order` WHERE ono=?";
-			    conn = ConnectionPool.get();
-			    pstmt = conn.prepareStatement(sql);
-			    pstmt.setInt(1, ono);
-			    int result = pstmt.executeUpdate();
-			    return result;
+				conn = ConnectionPool.get();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, ono);
+				int result = pstmt.executeUpdate();
+				
+				return result;
+
 			  } finally {
-			    if (pstmt != null) pstmt.close();
-			    if (conn != null) conn.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			  }
 			}
 	  
@@ -178,7 +180,8 @@ public class orderDAO {
 				obj.put("ono", rs.getString(1));
 				obj.put("id", rs.getString(3));
 				obj.put("menu", rs.getString(4));
-				obj.put("opro", rs.getString(5));
+				obj.put("total", rs.getString(5));
+				obj.put("opro", rs.getString(6));
 
 				orders.add(obj);
 			}
